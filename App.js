@@ -73,7 +73,7 @@ export default class ViroSample extends Component {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>Welcome! </Text>
+          <Text style={localStyles.titleText}>Welcome! Hello World!</Text>
 
           <TouchableHighlight
             style={localStyles.buttons}
