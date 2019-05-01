@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
+require('./secrets');
 
 /*
  TODO: Insert your API key below
@@ -27,7 +28,8 @@ var sharedProps = {
 };
 
 // Sets the default scene you want for AR and VR
-var InitialARScene = require('./js/HelloWorldSceneAR');
+// var InitialARScene = require('./js/HelloWorldSceneAR');
+var InitialARScene = require('./js/ARPortals/MainScene.js');
 // var InitialVRScene = require('./js/HelloWorldScene');
 
 var UNSET = 'UNSET';
