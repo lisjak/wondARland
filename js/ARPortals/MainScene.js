@@ -9,6 +9,7 @@ import {
   ViroScene,
   ViroARScene,
   ViroAmbientLight,
+  ViroSpinner,
   Viro360Video,
   Viro360Image,
   ViroUtils,
@@ -25,18 +26,56 @@ class MainScene extends Component {
     super(props);
     this.state = {
       portalText: 'Hello There!',
+      text: 'Initializing AR...',
+      isLoading: true,
+      isPortalRendered: false,
     };
+    this._onInitialized = this._onInitialized.bind(this);
+    this._onEnterPortal = this._onEnterPortal.bind(this);
+  }
+
+  // Text update when AR initialized
+  _onInitialized() {
+    this.setState({
+      text: `Are you ready? Don't get too lost... `,
+    });
+  }
+
+  _onEnterPortal() {
+    this.setState({
+      portalText: 'Find the key!',
+    });
   }
 
   // render: function() {
   render() {
     return (
-      <ViroARScene>
+      <ViroARScene onTrackingUpdated={this._onInitialized}>
         <ViroAmbientLight color="#ffffff" intensity={200} />
+
+        {/* Loading Spinner for Portal */}
+        <ViroSpinner
+          type="Light"
+          position={[0, 0, -2]}
+          visible={this.state.isLoading}
+        />
+
+        {/* Initializing Text Component */}
+        <ViroText
+          text={this.state.text}
+          width={2}
+          height={2}
+          scale={[0.5, 0.5, 0.5]}
+          position={[0, 0.5, -1]}
+          style={styles.helloWorldTextStyle}
+        />
         <ViroPortalScene
           passable={true}
           dragType="FixedDistance"
-          onDrag={() => {}}
+          // onDrag={() => {}}
+          onPortalEnter={() => {
+            this._onEnterPortal();
+          }}
         >
           <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
@@ -84,13 +123,13 @@ class MainScene extends Component {
 }
 
 const styles = StyleSheet.create({
-  // helloWorldTextStyle: {
-  //   fontFamily: 'IM Fell English',
-  //   fontSize: 20,
-  //   color: '#C8243B',
-  //   textAlignVertical: 'center',
-  //   textAlign: 'center',
-  // },
+  helloWorldTextStyle: {
+    fontFamily: 'IM Fell English',
+    fontSize: 20,
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
   portalTextStyles: {
     fontFamily: 'IM Fell English',
     fontSize: 28,
