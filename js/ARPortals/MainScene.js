@@ -17,7 +17,10 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroText,
+  ViroImage
 } from 'react-viro';
+
+import { PortalScene2 } from '../PortalScene2'
 
 // var createReactClass = require('create-react-class');
 // var MainScene = createReactClass({
@@ -28,10 +31,11 @@ class MainScene extends Component {
       portalText: 'Hello There!',
       text: 'Initializing AR...',
       isLoading: true,
-      isPortalRendered: false,
+      isPortalRendered: false,     //where do we use this state???
     };
     this._onInitialized = this._onInitialized.bind(this);
     this._onEnterPortal = this._onEnterPortal.bind(this);
+    this._jumpNextScene = this._jumpNextScene.bind(this);
   }
 
   // Text update when AR initialized
@@ -44,7 +48,15 @@ class MainScene extends Component {
   _onEnterPortal() {
     this.setState({
       portalText: 'Find the key!',
+      isLoading: false,
+      text: ''
     });
+  }
+
+  //jump to second scene
+  _jumpNextScene(){
+
+    this.props.arSceneNavigator.jump("scene2", {scene: PortalScene2})
   }
 
   // render: function() {
@@ -66,18 +78,18 @@ class MainScene extends Component {
           width={2}
           height={2}
           scale={[0.5, 0.5, 0.5]}
-          position={[0, 0.5, -1]}
+          position={[0, 0.5, -3]}
           style={styles.helloWorldTextStyle}
         />
         <ViroPortalScene
           passable={true}
-          dragType="FixedDistance"
+          // dragType="FixedDistance"
           // onDrag={() => {}}
           onPortalEnter={() => {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[0, 0, -2]} scale={[0.3, 0.3, 0.3]}>
             <Viro3DObject
               source={require('./portal_res/portal_ship/portal_ship.vrx')}
               resources={[
@@ -89,6 +101,9 @@ class MainScene extends Component {
             />
           </ViroPortal>
           <Viro360Image source={require('./portal_res/360_island.jpg')} />
+          <ViroImage source={require('../res/Clickme.jpg')}
+              position={[2,2,-4]} scale={[0.3,0.3,0.3]}
+              onClick={this._jumpNextScene}/>
           <ViroText
             text={this.state.portalText}
             width={2}
