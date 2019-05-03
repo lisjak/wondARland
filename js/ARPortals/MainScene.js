@@ -101,6 +101,51 @@ class MainScene extends Component {
             />
           </ViroPortal>
           <Viro360Image source={require('./portal_res/360_island.jpg')} />
+
+          <ViroPortalScene
+          passable={true}
+          // dragType="FixedDistance"
+          // onDrag={() => {}}
+          onPortalEnter={() => {
+            this._onEnterPortal();
+          }}
+        >
+          <ViroPortal position={[-2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+            <Viro3DObject
+              source={require('./portal_res/portal_ship/portal_ship.vrx')}
+              resources={[
+                require('./portal_res/portal_ship/portal_ship_diffuse.png'),
+                require('./portal_res/portal_ship/portal_ship_normal.png'),
+                require('./portal_res/portal_ship/portal_ship_specular.png'),
+              ]}
+              type="VRX"
+            />
+          </ViroPortal>
+          <Viro360Image source={require('../res/360_space.jpg')} />
+          </ViroPortalScene>
+
+          <ViroPortalScene
+          passable={true}
+          // dragType="FixedDistance"
+          // onDrag={() => {}}
+          onPortalEnter={() => {
+            this._onEnterPortal();
+          }}
+        >
+          <ViroPortal position={[2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+            <Viro3DObject
+              source={require('./portal_res/portal_ship/portal_ship.vrx')}
+              resources={[
+                require('./portal_res/portal_ship/portal_ship_diffuse.png'),
+                require('./portal_res/portal_ship/portal_ship_normal.png'),
+                require('./portal_res/portal_ship/portal_ship_specular.png'),
+              ]}
+              type="VRX"
+            />
+          </ViroPortal>
+          <Viro360Image source={require('../res/360tile.jpg')} />
+          </ViroPortalScene>
+
           <ViroImage source={require('../res/Clickme.jpg')}
               position={[2,2,-4]} scale={[0.3,0.3,0.3]}
               onClick={this._jumpNextScene}/>
@@ -113,25 +158,6 @@ class MainScene extends Component {
             style={styles.portalTextStyles}
           />
         </ViroPortalScene>
-
-        {/* <ViroPortalScene
-          passable={true}
-          dragType="FixedDistance"
-          onDrag={() => {}}
-        >
-          <ViroPortal position={[0, 0, -1]} scale={[0.1, 0.1, 0.1]}>
-            <Viro3DObject
-              source={require('./portal_res/portal_ship/portal_ship.vrx')}
-              resources={[
-                require('./portal_res/portal_ship/portal_ship_diffuse.png'),
-                require('./portal_res/portal_ship/portal_ship_normal.png'),
-                require('./portal_res/portal_ship/portal_ship_specular.png'),
-              ]}
-              type="VRX"
-            />
-          </ViroPortal>
-          <Viro360Image source={require('./portal_res/360_island.jpg')} />
-        </ViroPortalScene> */}
       </ViroARScene>
     );
   }
