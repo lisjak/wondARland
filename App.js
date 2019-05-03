@@ -19,6 +19,7 @@ import {
 
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 require('./secrets');
+import Winner from './Winner';
 
 /*
  TODO: Insert your API key below
