@@ -20,6 +20,7 @@ import {
 import { ViroVRSceneNavigator, ViroARSceneNavigator } from 'react-viro';
 require('./secrets');
 import Winner from './Winner';
+import PasswordScreen from './js/PasswordScreen'
 
 /*
  TODO: Insert your API key below
@@ -79,28 +80,29 @@ export default class ViroSample extends Component {
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
     return (
-      <View style={localStyles.outer}>
-        <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>Welcome! Hello World!</Text>
+    //   <View style={localStyles.outer}>
+    //     <View style={localStyles.inner}>
+    //       <Text style={localStyles.titleText}>Welcome! Hello World!</Text>
 
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'}
-          >
-            <Text style={localStyles.buttonText}>Play</Text>
-          </TouchableHighlight>
+    //       <TouchableHighlight
+    //         style={localStyles.buttons}
+    //         onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
+    //         underlayColor={'#68a0ff'}
+    //       >
+    //         <Text style={localStyles.buttonText}>Play</Text>
+    //       </TouchableHighlight>
 
-          {/* <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(VR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'}
-          >
-            <Text style={localStyles.buttonText}>VR</Text>
-          </TouchableHighlight> */}
-        </View>
-      </View>
-    );
+    //       {/* <TouchableHighlight
+    //         style={localStyles.buttons}
+    //         onPress={this._getExperienceButtonOnPress(VR_NAVIGATOR_TYPE)}
+    //         underlayColor={'#68a0ff'}
+    //       >
+    //         <Text style={localStyles.buttonText}>VR</Text>
+    //       </TouchableHighlight> */}
+    //     </View>
+    //   </View>
+    // );
+    <PasswordScreen />)
   }
 
   // Returns the ViroARSceneNavigator which will start the AR experience
