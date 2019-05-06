@@ -1,3 +1,4 @@
+
 /**
  * Copyright (c) 2017-present, Viro, Inc.
  * All rights reserved.
@@ -74,6 +75,7 @@ export default class ViroSample extends Component {
         </View>
       </View>
     );
+    // <PasswordScreen />)
   }
 
   // Returns the ViroARSceneNavigator which will start the AR experience

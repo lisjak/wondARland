@@ -21,6 +21,8 @@ import {
 } from 'react-viro';
 
 import { PortalScene2 } from '../PortalScene2'
+import PasswordScreen from '../PasswordScreen'
+
 
 // var createReactClass = require('create-react-class');
 // var MainScene = createReactClass({
@@ -36,6 +38,7 @@ class MainScene extends Component {
     this._onInitialized = this._onInitialized.bind(this);
     this._onEnterPortal = this._onEnterPortal.bind(this);
     this._jumpNextScene = this._jumpNextScene.bind(this);
+    this._handleClick = this._handleClick.bind(this)
   }
 
   // Text update when AR initialized
@@ -59,9 +62,14 @@ class MainScene extends Component {
     this.props.arSceneNavigator.jump("scene2", {scene: PortalScene2})
   }
 
+  //Exit to the PasswordScreen
+  _handleClick(){
+    // this.setState({ isExit: true })
+  }
+
   // render: function() {
   render() {
-    return (
+    return  (
       <ViroARScene onTrackingUpdated={this._onInitialized}>
         <ViroAmbientLight color="#ffffff" intensity={200} />
 
@@ -78,7 +86,7 @@ class MainScene extends Component {
           width={2}
           height={2}
           scale={[0.5, 0.5, 0.5]}
-          position={[0, 0.5, -3]}
+          position={[0, 0.5, -2]}
           style={styles.helloWorldTextStyle}
         />
         <ViroPortalScene
@@ -157,9 +165,11 @@ class MainScene extends Component {
             position={[0, 0.4, -3]}
             style={styles.portalTextStyles}
           />
+          <ViroImage source={require('../res/signExit.png')}
+                      position={[1,1,-3]} scale={[0.1,0.1,0.1]}
+                      onClick={this._handleClick} />
         </ViroPortalScene>
-      </ViroARScene>
-    );
+      </ViroARScene>)
   }
 }
 
