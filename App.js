@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2017-present, Viro, Inc.
  * All rights reserved.
@@ -13,9 +12,9 @@ import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 
 import { ViroARSceneNavigator } from 'react-viro';
 require('./secrets');
+
 import Timer from './js/Timer';
 // import AppNavigator from './js/AppNavigator';
-
 let sharedProps = {
   apiKey: process.env.APIKEY,
 };
