@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowView.m \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowView.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Views/RCTShadowView.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Views/RCTLayout.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/ios/build/ViroSample/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/ios/build/ViroSample/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/ios/build/ViroSample/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/ios/build/ViroSample/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/Surface/RCTSurfaceRootShadowViewDelegate.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Modules/RCTI18nUtil.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Views/RCTShadowView+Layout.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Modules/RCTUIManagerUtils.h \
+  /Users/lisajakubczyk/Desktop/capstone-master/node_modules/react-native/React/Base/RCTAssert.h
