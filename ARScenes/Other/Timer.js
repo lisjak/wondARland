@@ -1,14 +1,16 @@
-import React from '../../node_modules/react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import TimerCountdown from '../../node_modules/react-native-timer-countdown';
+import { connect } from 'react-redux';
+import { timerRanOut } from '../../store';
+import TimerCountdown from 'react-native-timer-countdown';
 
-const Timer = () => (
+const Timer = props => (
   <View style={styles.container}>
     <TimerCountdown
-      initialMilliseconds={1000 * 600}
+      initialMilliseconds={1000 * 5}
       onTick={milliseconds => console.log('tick', milliseconds)}
       onExpire={() => alert("time's up")}
-      // onExpire={() => this.props.navigation.navigate('Loser')}
+      // onExpire={props.timerRanOut}
       formatMilliseconds={milliseconds => {
         const remainingSec = Math.round(milliseconds / 1000);
         const seconds = parseInt((remainingSec % 60).toString(), 10);
@@ -22,6 +24,22 @@ const Timer = () => (
     />
   </View>
 );
+
+const mapState = state => {
+  return {
+    timerRunning: state.game.timerRunning,
+    gameLost: state.game.gameLost,
+  };
+};
+
+const mapDispatch = dispatch => ({
+  timerRanOut: () => dispatch(timerRanOut()),
+});
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Timer);
 
 const styles = StyleSheet.create({
   container: {
@@ -38,5 +56,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default Timer;

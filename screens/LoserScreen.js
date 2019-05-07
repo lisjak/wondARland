@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class Winner extends Component {
+class Loser extends Component {
   render() {
     return (
       <View style={styles.outer}>
@@ -18,6 +19,17 @@ export default class Winner extends Component {
   }
 }
 
+const mapState = state => {
+  return {
+    gameLost: state.game.gameLost,
+  };
+};
+
+export default connect(
+  mapState,
+  null
+)(Loser);
+
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
@@ -31,8 +43,6 @@ const styles = StyleSheet.create({
     height: 600,
   },
   title: {
-    // flex: 3,
-    // marginTop: 40,
     justifyContent: 'space-between',
     alignItems: 'center',
     fontWeight: 'bold',

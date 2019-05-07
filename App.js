@@ -10,19 +10,19 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import { ViroARSceneNavigator } from 'react-viro';
+import {Provider} from 'react-redux';
+
 // require('./secrets');
 
 //* Timer overlay on screen
-import Timer from './ARScenes/Other/Timer.js';
-
+import Timer from './ARScenes/Other/Timer';
 
 let sharedProps = {
-  apiKey: 'put it here'
+  apiKey: process.env.APIKEY,
 };
 
 //* First Scene --> FindingCards
-let InitialARScene = require('./ARScenes/FindingCards/FindingCards.js');
-
+let InitialARScene = require('./ARScenes/FindingCards/FindingCards');
 
 let UNSET = 'UNSET';
 let AR_NAVIGATOR_TYPE = 'AR';
@@ -41,13 +41,11 @@ export default class ViroSample extends Component {
     };
     this._welcomeScreen = this._welcomeScreen.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._welcomeScreenOnPress = this._welcomeScreenOnPress.bind(
-      this
-    );
+    this._welcomeScreenOnPress = this._welcomeScreenOnPress.bind(this);
     // this._exitViro = this._exitViro.bind(this);
   }
 
-//* renders the welcome screen on default, on state change we navigate
+  //* renders the welcome screen on default, on state change we navigate
   render() {
     if (this.state.navigatorType === UNSET) {
       return this._welcomeScreen();
@@ -56,7 +54,7 @@ export default class ViroSample extends Component {
     }
   }
 
-//* Presents user with Welcome text and Play button to start game
+  //* Presents user with Welcome text and Play button to start game
   _welcomeScreen() {
     return (
       <View style={localStyles.outer}>
@@ -99,13 +97,13 @@ export default class ViroSample extends Component {
     };
   }
 
-/// This function "exits" Viro by setting the navigatorType to UNSET.
-//   _exitViro() {
-//     this.setState({
-//       navigatorType: UNSET,
-//     });
-//   }
- }
+  /// This function "exits" Viro by setting the navigatorType to UNSET.
+  //   _exitViro() {
+  //     this.setState({
+  //       navigatorType: UNSET,
+  //     });
+  //   }
+}
 
 //* stylings
 let localStyles = StyleSheet.create({
