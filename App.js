@@ -9,23 +9,26 @@
 
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-
 import { ViroARSceneNavigator } from 'react-viro';
-require('./secrets');
+// require('./secrets');
 
-import Timer from './js/Timer';
-// import AppNavigator from './js/AppNavigator';
+//* Timer overlay on screen
+import Timer from './ARScenes/Other/Timer.js';
+
+
 let sharedProps = {
-  apiKey: process.env.APIKEY,
+  apiKey: 'put it here'
 };
 
-let InitialARScene = require('./js/ARPortals/MainScene.js');
+//* First Scene --> FindingCards
+let InitialARScene = require('./ARScenes/FindingCards/FindingCards.js');
+
 
 let UNSET = 'UNSET';
 let AR_NAVIGATOR_TYPE = 'AR';
 
-// This determines which type of experience to launch in, or UNSET, if the user should
-// be presented with a choice of AR or VR. By default, we offer the use r a choice.
+//* This determines which type of experience to launch in, or UNSET, if the user should
+//* be presented with a choice of AR or VR. By default, we offer the user a choice.
 let defaultNavigatorType = UNSET;
 
 export default class ViroSample extends Component {
@@ -36,29 +39,25 @@ export default class ViroSample extends Component {
       navigatorType: defaultNavigatorType,
       sharedProps: sharedProps,
     };
-    this._getExperienceSelector = this._getExperienceSelector.bind(this);
+    this._welcomeScreen = this._welcomeScreen.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(
+    this._welcomeScreenOnPress = this._welcomeScreenOnPress.bind(
       this
     );
-    this._exitViro = this._exitViro.bind(this);
+    // this._exitViro = this._exitViro.bind(this);
   }
 
-  // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
-  // if you are building a specific type of experience.
+//* renders the welcome screen on default, on state change we navigate
   render() {
-    if (this.state.navigatorType == UNSET) {
-      return this._getExperienceSelector();
-      // } else if (this.state.navigatorType == VR_NAVIGATOR_TYPE) {
-      //   return this._getVRNavigator();
-      // } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
+    if (this.state.navigatorType === UNSET) {
+      return this._welcomeScreen();
     } else {
       return this._getARNavigator();
     }
   }
 
-  // Presents the user with a choice of an AR or VR experience
-  _getExperienceSelector() {
+//* Presents user with Welcome text and Play button to start game
+  _welcomeScreen() {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
@@ -66,8 +65,8 @@ export default class ViroSample extends Component {
 
           <TouchableHighlight
             style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'}
+            onPress={this._welcomeScreenOnPress(AR_NAVIGATOR_TYPE)}
+            underlayColor="#68a0ff"
           >
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
@@ -77,7 +76,7 @@ export default class ViroSample extends Component {
     // <PasswordScreen />)
   }
 
-  // Returns the ViroARSceneNavigator which will start the AR experience
+  //* Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
       <View style={localStyles.ARScene}>
@@ -90,9 +89,9 @@ export default class ViroSample extends Component {
     );
   }
 
-  // This function returns an anonymous/lambda function to be used
-  // by the experience selector buttons
-  _getExperienceButtonOnPress(navigatorType) {
+  //* This function returns an anonymous/lambda function to be used
+  //* by the experience selector buttons
+  _welcomeScreenOnPress(navigatorType) {
     return () => {
       this.setState({
         navigatorType: navigatorType,
@@ -100,15 +99,16 @@ export default class ViroSample extends Component {
     };
   }
 
-  // This function "exits" Viro by setting the navigatorType to UNSET.
-  _exitViro() {
-    this.setState({
-      navigatorType: UNSET,
-    });
-  }
-}
+/// This function "exits" Viro by setting the navigatorType to UNSET.
+//   _exitViro() {
+//     this.setState({
+//       navigatorType: UNSET,
+//     });
+//   }
+ }
 
-var localStyles = StyleSheet.create({
+//* stylings
+let localStyles = StyleSheet.create({
   ARScene: {
     flex: 1,
     backgroundColor: 'transparent',
