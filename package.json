@@ -15,6 +15,7 @@
     "react-native-timer-countdown": "^4.1.0",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1",
+    "react-router-native": "^5.0.0",
     "react-viro": "^2.14.0"
   },
   "devDependencies": {
