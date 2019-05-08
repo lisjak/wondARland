@@ -26,8 +26,7 @@ let sharedProps = {
 };
 
 //* First Scene --> FindingCards
-// let InitialARScene = require('./ARScenes/FindingCards/FindingCards.js');
-let InitialARScene = require('../ARScenes/Portals/PortScene');
+let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
 
 let UNSET = 'UNSET';
 let AR_NAVIGATOR_TYPE = 'AR';
