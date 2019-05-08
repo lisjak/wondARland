@@ -1,6 +1,6 @@
-import React, { Component } from '../node_modules/react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Input, Button } from '../node_modules/react-native-elements'
+import { Input, Button } from 'react-native-elements'
 import Winner from './WinnerScreen'
 import Loser from './LoserScreen'
 
