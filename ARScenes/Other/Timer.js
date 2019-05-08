@@ -31,7 +31,7 @@ export default Timer;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.08,
+    flex: 0.15,
     alignItems: 'center',
     backgroundColor: 'rgba(52, 52, 52, 0.7)',
   },

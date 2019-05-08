@@ -17,7 +17,7 @@ class Loser extends Component {
         <View style={styles.container}>
           <TouchableHighlight
             style={styles.buttons}
-            onPress={() => history.push('/')}
+            onPress={()=> history.push('/')}
             underlayColor="#68a0ff"
           >
             <Text style={styles.buttonText}>Try again?</Text>

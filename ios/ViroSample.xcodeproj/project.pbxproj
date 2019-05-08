@@ -39,6 +39,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+
 		D969FFB5E6FC4303A5F4736C /* Alice_in_Wonderland_3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B5230FD800745D983848AA7 /* Alice_in_Wonderland_3.ttf */; };
 		A5D086FC13E34B8FB5F4A9A0 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9059D25C56964D88906DD094 /* AntDesign.ttf */; };
 		2453C116D86C441581F199B7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A22B857A67E14EA1AB0CF8D2 /* Entypo.ttf */; };
@@ -60,6 +61,7 @@
 		CB569F167584480CA17A17F3 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2B07BD8FCD149548AB61172 /* libRNVectorIcons.a */; };
 		7AA6C301F6B448C4A71D0246 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C29574AEFE34428A4352FBF /* libRNVectorIcons-tvOS.a */; };
 		55B37908A5014144A10EC5F6 /* AliciaWonderland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07B8C9F57CC8445A939DEABD /* AliciaWonderland.ttf */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,6 +392,7 @@
 		B2B07BD8FCD149548AB61172 /* libRNVectorIcons.a */ = {isa = PBXFileReference; name = "libRNVectorIcons.a"; path = "libRNVectorIcons.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0C29574AEFE34428A4352FBF /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; name = "libRNVectorIcons-tvOS.a"; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		07B8C9F57CC8445A939DEABD /* AliciaWonderland.ttf */ = {isa = PBXFileReference; name = "AliciaWonderland.ttf"; path = "../assets/Fonts/AliciaWonderland.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -613,6 +616,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				3574927CE39F44DB96B88D54 /* RNGestureHandler.xcodeproj */,
 				81ECDDAB693A45A58D4CC052 /* RNVectorIcons.xcodeproj */,
+
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1347,6 +1351,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+
 				);
 			};
 			name = Debug;
@@ -1370,6 +1375,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+
 				);
 			};
 			name = Release;
