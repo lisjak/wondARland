@@ -33,10 +33,11 @@ export default class PasswordScreen extends Component{
   }
 
   renderResult(){
+    const { history } = this.props
     if(this.state.isWin){
-      return <Winner />
+      return <Winner history={history}/>
     } else{
-      return <Loser />
+      return <Loser history={history}/>
     }
   }
 
@@ -46,6 +47,7 @@ export default class PasswordScreen extends Component{
   }
 
   render() {
+    const { history } = this.props
     return !this.state.isSubmit ? (
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -65,7 +67,7 @@ export default class PasswordScreen extends Component{
 
        <Button containerStyle={styles.link}
        buttonStyle={styles.buttonstyle2 }
-       title='<-Go Back' type='solid' onPress={()=>{}} />
+       title='<-Go Back' type='solid' onPress={()=> history.push('/')}/>
       </View>
     ) : this.renderResult()
   }

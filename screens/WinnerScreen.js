@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet,TouchableHighlight } from 'react-native';
 
 export default class Winner extends Component {
+
   render() {
+    const { history } = this.props
     return (
       <View style={styles.outer}>
         <View style={styles.container}>
@@ -10,7 +12,13 @@ export default class Winner extends Component {
           <Text style={styles.subtitle}>You've escaped!</Text>
         </View>
         <View style={styles.container}>
-          <Text style={styles.subtitle}>Play again?</Text>
+          <TouchableHighlight
+            style={styles.buttons}
+            onPress={()=> history.push('/')}
+            underlayColor="#68a0ff"
+          >
+            <Text style={styles.buttonText}>Play again?</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -46,5 +54,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     color: 'white',
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  buttons: {
+    height: 60,
+    width: 160,
+    paddingTop: 20,
+    paddingBottom: 10,
+    backgroundColor: 'green',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
   },
 });
