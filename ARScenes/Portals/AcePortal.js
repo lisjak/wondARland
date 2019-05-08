@@ -161,14 +161,14 @@ source={require('../res/signExit.png')}
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: 'IM Fell English',
+    fontFamily: 'Arial',
     fontSize: 20,
     color: '#C8243B',
     textAlignVertical: 'center',
     textAlign: 'center',
   },
   portalTextStyles: {
-    fontFamily: 'IM Fell English',
+    fontFamily: 'Arial',
     fontSize: 28,
     color: '#C8243B',
     textAlignVertical: 'center',

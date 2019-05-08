@@ -8,7 +8,7 @@ class Timer extends Component {
     return (
       <View style={styles.container}>
         <TimerCountdown
-          initialMilliseconds={10000 * 5}
+          initialMilliseconds={1000 * 1000}
           onTick={milliseconds => console.log('tick', milliseconds)}
           onExpire={() => history.push('/loser')}
           formatMilliseconds={milliseconds => {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   timerText: {
     position: 'absolute',
     textAlign: 'center',
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Arial',
     fontSize: 36,
     color: 'white',
   },

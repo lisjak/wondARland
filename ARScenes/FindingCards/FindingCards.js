@@ -15,7 +15,7 @@ import { PortalScene2 } from '../Portals/AcePortalScene2'
 import PasswordScreen from '../../screens/PasswordScreen'
 
 
-import QueenPortal from '../Portals/QueenPortal'
+import QueenPortal2 from '../Portals/QueenPortal2'
 
 import {
     ViroARScene,
@@ -31,32 +31,48 @@ import {
     Viro360Image,
     ViroPortal,
     ViroPortalScene,
+    ViroAnimatedImage,
     ViroARTrackingTargets,
+    ViroARPlane,
+    ViroConstants
 } from '../../node_modules/react-viro';
 
 
 // let createReactClass = require('create-react-class');
 
 
+const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
+
+
 class FindingCards extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: 'Initializing AR...',
+            text: 'Look around to initialize camera.',
             isLoading: true,
+            playAnim: false
             // isPortalRendered: false
         }
         this._onInitialized = this._onInitialized.bind(this);
         this._isPortalLoading = this._isPortalLoading.bind(this);
+        this._onAnchorFound = this._onAnchorFound(this);
 
         }
 
     // Text update when AR initialized
     _onInitialized() {
+        if (this.state === ViroConstants.TRACKING_NORMAL) {
         this.setState({
             text: `Portal incoming...`,
         });
     }
+}
+
+_onAnchorFound() {
+    this.setState({
+      playAnim: true
+    })
+  }
 
         _isPortalLoading() {
             this.setState({
@@ -69,10 +85,26 @@ class FindingCards extends Component {
         return (
             <ViroARScene onTrackingUpdated={this._onInitialized}>
 
+            <ViroText text={this.state.text} scale={[0.5, 0.5, 0.5]} position={[0, 0, -0.5]} style={styles.helloWorldTextStyle} />
+
             <ViroAmbientLight color="#ffffff" intensity={200} />
 
+            <ViroAnimatedImage
+        scale={[1, 1, 1]}
+        position={[0, 0, -0.5]}
+        animation={{
+          name: 'cheshireCat',
+          run: this.state.playAnim,
+          loop: true,
+          delay: 0
+        }}
+        height={0.5}
+        width={0.5}
+        source={transparentCheshire}
+      />
 
-                <ViroARImageMarker target="queen" >
+
+                <ViroARImageMarker target="queen" onAnchorFound={this._onAnchorFound}>
 
 
                     <ViroSpinner
@@ -91,27 +123,27 @@ class FindingCards extends Component {
                     />
 
 
-                    <QueenPortal />
+                    <QueenPortal2 />
 
 
                 </ViroARImageMarker>
-
 
             </ViroARScene>
         );
     }
 }
 
+
 const styles = StyleSheet.create({
     helloWorldTextStyle: {
-        fontFamily: 'IM Fell English',
+        fontFamily: 'Arial',
         fontSize: 20,
         color: '#ffffff',
         textAlignVertical: 'center',
         textAlign: 'center',
     },
     portalTextStyles: {
-        fontFamily: 'IM Fell English',
+        fontFamily: 'Arial',
         fontSize: 28,
         color: '#C8243B',
         textAlignVertical: 'center',

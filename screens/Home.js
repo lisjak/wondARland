@@ -8,6 +8,23 @@ import {
   Button,
 } from 'react-native';
 
+//* Timer overlay on screen
+import ButtonBar from '../ARScenes/Other/ButtonBar';
+
+let sharedProps = {
+  apiKey: process.env.APIKEY,
+};
+
+//* First Scene --> FindingCards
+let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
+
+let UNSET = 'UNSET';
+let AR_NAVIGATOR_TYPE = 'AR';
+
+//* This determines which type of experience to launch in, or UNSET, if the user should
+//* be presented with a choice of AR or VR. By default, we offer the user a choice.
+let defaultNavigatorType = UNSET;
+
 
 export default class ViroSample extends Component {
 
