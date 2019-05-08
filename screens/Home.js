@@ -19,7 +19,7 @@ import { ViroARSceneNavigator } from 'react-viro';
 require('../secrets');
 
 //* Timer overlay on screen
-import Timer from '../ARScenes/Other/Timer';
+import ButtonBar from '../ARScenes/Other/ButtonBar';
 
 let sharedProps = {
   apiKey: process.env.APIKEY,
@@ -99,7 +99,7 @@ export default class ViroSample extends Component {
           {...this.state.sharedProps}
           initialScene={{ scene: InitialARScene }}
         />
-        <Timer history={history} />
+        <ButtonBar history={history} />
       </View>
     );
   }

@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Login from './screens/LogIn';
 import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
+import PasswordScreen from './screens/PasswordScreen';
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/instructions" component={Instructions} />
             <Route exact path="/loser" component={Loser} />
+            <Route exact path="/password" component={PasswordScreen} />
           </Switch>
         </View>
       </NativeRouter>
