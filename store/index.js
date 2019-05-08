@@ -1,5 +1,5 @@
-import { createStore } from 'redux';
-import { combineReducers } from 'redux-loop';
+import { createStore, combineReducers } from 'redux';
+
 import objects from './objectsReducer';
 import game from './gameReducer';
 

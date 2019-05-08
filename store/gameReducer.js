@@ -30,6 +30,7 @@ let initialState = {
   gameInProgress: false,
   gameWon: false,
   gameLost: false,
+  millisecondsRemaining: 5000
 };
 
 // REDUCER

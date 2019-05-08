@@ -10,6 +10,7 @@
   "dependencies": {
     "material-design-icons": "^3.0.1",
     "react": "16.8.3",
+    "react-loop": "^0.1.0",
     "react-native": "0.59.3",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.2.1",

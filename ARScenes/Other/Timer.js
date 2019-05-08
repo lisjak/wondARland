@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
 
@@ -8,7 +9,7 @@ class Timer extends Component {
     return (
       <View style={styles.container}>
         <TimerCountdown
-          initialMilliseconds={1000 * 5}
+          initialMilliseconds={this.props.millisecondsRemaining}
           onTick={milliseconds => console.log('tick', milliseconds)}
           onExpire={() => history.push('/loser')}
           formatMilliseconds={milliseconds => {
@@ -26,8 +27,17 @@ class Timer extends Component {
     );
   }
 }
+const mapState = state => {
+  return {
+    timerRunning: state.game.timerRunning,
+    millisecondsRemaining: state.game.millisecondsRemaining,
+  };
+};
 
-export default Timer;
+export default connect(
+  mapState,
+  null
+)(Timer);
 
 const styles = StyleSheet.create({
   container: {

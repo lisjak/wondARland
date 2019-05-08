@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NativeRouter, Route, Switch } from 'react-router-native';
-import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
+import { Provider } from 'react-redux';
+import { COLOR } from 'react-native-material-ui';
+import store from './store';
 import Home from './screens/Home';
 import Login from './screens/LogIn';
 import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
+import Winner from './screens/WinnerScreen';
 
 const uiTheme = {
   palette: {
@@ -25,7 +28,7 @@ const uiTheme = {
 export default class App extends Component {
   render() {
     return (
-      <ThemeContext.Provider value={getTheme(uiTheme)}>
+      <Provider store={store}>
         <NativeRouter>
           <View style={styles.outer}>
             <Switch>
@@ -34,10 +37,11 @@ export default class App extends Component {
               <Route exact path="/instructions" component={Instructions} />
               <Route exact path="/loser" component={Loser} />
               <Route exact path="/password" component={PasswordScreen} />
+              <Route exact path="/winner" component={Winner} />
             </Switch>
           </View>
         </NativeRouter>
-      </ThemeContext.Provider>
+      </Provider>
     );
   }
 }
