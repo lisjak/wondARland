@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Timer from './Timer';
+import { connect } from 'react-redux';
+import { gamePausedThunk } from '../../store/gameReducer';
 import PasswordButton from './Button';
 import { Subheader, Button } from 'react-native-material-ui';
 
@@ -25,19 +27,25 @@ const styles = StyleSheet.create({
   },
 });
 
-class ButtonPage extends Component {
+class ButtonBar extends Component {
+  constructor() {
+    super();
+    this.handlePress = this.handlePress.bind(this);
+  }
+
+  handlePress() {
+    const { history, pauseGame } = this.props;
+    pauseGame();
+    history.push('/password');
+  }
+
   render() {
-    const { history } = this.props;
     return (
       <View style={styles.rowContainer}>
         {/* <View style={styles.rowContainer}> */}
         <Timer history={this.props.history} />
         {/* <View style={styles.rowContainer}> */}
-        <Button
-          accent
-          text="enter password"
-          onPress={() => history.push('/password')}
-        />
+        <Button accent text="enter password" onPress={this.handlePress} />
       </View>
       // </View>
       // </View>
@@ -45,33 +53,13 @@ class ButtonPage extends Component {
   }
 }
 
-export default ButtonPage;
+const mapDispatch = dispatch => {
+  return {
+    pauseGame: () => dispatch(gamePausedThunk()),
+  };
+};
 
-// import React from 'react';
-// import { View, StyleSheet } from 'react-native';
-// import Timer from './Timer';
-// import PasswordButton from './Button';
-// import { BottomNavigation } from 'react-native-material-ui'
-
-// export default class Login extends React.Component {
-//   render() {
-//     const { history } = this.props;
-//     return (
-//       <View style={styles.container}>
-//         <Timer style={styles.items} history={history} />
-//         <PasswordButton style={styles.items} history={history} />
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 0.12,
-//     flexDirection: 'column',
-//     backgroundColor: 'transparent',
-//   },
-//   items: {
-//     // justifyContent: 'space-between',
-//   },
-// });
+export default connect(
+  null,
+  mapDispatch
+)(ButtonBar);

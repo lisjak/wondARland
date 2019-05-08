@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Text,
@@ -8,11 +7,22 @@ import {
   Button,
 } from 'react-native';
 
+import { connect } from 'react-redux';
+import { gameStartedThunk } from '../store/gameReducer';
 
-export default class ViroSample extends Component {
+class ViroSample extends Component {
+  constructor() {
+    super();
+    this.handleStart = this.handleStart.bind(this);
+  }
+
+  handleStart() {
+    const { history, startGame } = this.props;
+    startGame();
+    history.push('/entryarscene');
+  }
 
   render() {
-
     const { history } = this.props;
     return (
       <View style={localStyles.outer}>
@@ -22,7 +32,7 @@ export default class ViroSample extends Component {
           <TouchableHighlight
             style={localStyles.buttons}
             // onPress={this._welcomeScreenOnPress(AR_NAVIGATOR_TYPE)}
-            onPress={() => history.push('/entryarscene')}
+            onPress={this.handleStart}
             underlayColor="#68a0ff"
           >
             <Text style={localStyles.buttonText}>Play</Text>
@@ -41,8 +51,18 @@ export default class ViroSample extends Component {
       </View>
     );
   }
-
 }
+
+const mapDispatch = dispatch => {
+  return {
+    startGame: () => dispatch(gameStartedThunk()),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatch
+)(ViroSample);
 
 //* stylings
 
@@ -104,7 +124,5 @@ let localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
 });
-
-module.exports = ViroSample;

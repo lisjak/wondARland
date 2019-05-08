@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import { gameResumedThunk } from '../store/gameReducer';
 import Winner from './WinnerScreen';
 import Loser from './LoserScreen';
 
 const passcode = ['9', '3', '7'];
 
-export default class PasswordScreen extends Component {
+class PasswordScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -19,6 +21,7 @@ export default class PasswordScreen extends Component {
     this.onSubmitChange = this.onSubmitChange.bind(this);
     this.renderResult = this.renderResult.bind(this);
     this.focusNextField = this.focusNextField.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentDidMount() {}
@@ -45,6 +48,12 @@ export default class PasswordScreen extends Component {
 
   focusNextField(nextField) {
     this.refs[nextField].focus();
+  }
+
+  handleGoBack() {
+    const { history, resumeGame } = this.props;
+    resumeGame();
+    history.goBack();
   }
 
   render() {
@@ -90,15 +99,30 @@ export default class PasswordScreen extends Component {
           onPress={() => this.onSubmitChange()}
         />
 
-       <Button containerStyle={styles.link}
-       buttonStyle={styles.buttonstyle2 }
-       title='<-Go Back' type='solid' onPress={()=> history.goBack()}/>
+        <Button
+          containerStyle={styles.link}
+          buttonStyle={styles.buttonstyle2}
+          title="<-Go Back"
+          type="solid"
+          onPress={this.handleGoBack}
+        />
       </View>
     ) : (
       this.renderResult()
     );
   }
 }
+
+const mapDispatch = dispatch => {
+  return {
+    resumeGame: () => dispatch(gameResumedThunk()),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatch
+)(PasswordScreen);
 
 const styles = StyleSheet.create({
   container: {

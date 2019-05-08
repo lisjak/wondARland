@@ -11,6 +11,7 @@ import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
 import Winner from './screens/WinnerScreen';
 import EntryARScene from './ARScenes/EntryScene';
+import Timer from './ARScenes/Other/Timer';
 
 const uiTheme = {
   palette: {
@@ -28,20 +29,23 @@ const uiTheme = {
 
 export default class App extends Component {
   render() {
+    const { history } = this.props;
     return (
-      <NativeRouter>
-        <View style={styles.outer}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/instructions" component={Instructions} />
-            <Route exact path="/loser" component={Loser} />
-            <Route exact path="/password" component={PasswordScreen} />
-            <Route exact path='/winner' component={Winner} />
-            <Route exact path='/entryarscene' component={EntryARScene} />
-          </Switch>
-        </View>
-      </NativeRouter>
+      <Provider store={store}>
+        <NativeRouter>
+          <View style={styles.outer}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/instructions" component={Instructions} />
+              <Route exact path="/loser" component={Loser} />
+              <Route exact path="/password" component={PasswordScreen} />
+              <Route exact path="/winner" component={Winner} />
+              <Route exact path="/entryarscene" component={EntryARScene} />
+            </Switch>
+          </View>
+        </NativeRouter>
+      </Provider>
     );
   }
 }
