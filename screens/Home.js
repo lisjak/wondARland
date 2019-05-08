@@ -87,7 +87,7 @@ export default class ViroSample extends Component {
         />
       </View>
     );
-    // <PasswordScreen />)
+
   }
 
   //* Returns the ViroARSceneNavigator which will start the AR experience

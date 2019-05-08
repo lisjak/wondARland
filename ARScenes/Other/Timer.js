@@ -8,7 +8,7 @@ class Timer extends Component {
     return (
       <View style={styles.container}>
         <TimerCountdown
-          initialMilliseconds={1000 * 5}
+          initialMilliseconds={10000 * 5}
           onTick={milliseconds => console.log('tick', milliseconds)}
           onExpire={() => history.push('/loser')}
           formatMilliseconds={milliseconds => {
