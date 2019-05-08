@@ -1,47 +1,73 @@
 import React, { Component } from '../node_modules/react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Input, Button } from '../node_modules/react-native-elements'
+import Winner from './WinnerScreen'
+import Loser from './LoserScreen'
+
+const passcode = ['9','3','7'];
 
 export default class PasswordScreen extends Component{
   constructor(){
     super();
     this.state = {
-      value: ''
+      firstcode: '',
+      secondcode: '',
+      thirdcode: '',
+      isWin: false,
+      isSubmit: false,
     }
+    this.onSubmitChange = this.onSubmitChange.bind(this);
+    this.renderResult = this.renderResult.bind(this);
+    this.focusNextField = this.focusNextField.bind(this);
   }
 
   componentDidMount(){
 
   }
 
-  onChange(value){
-    this.setState(value)
+  onSubmitChange(){
+    if (this.state.firstcode === passcode[0] && this.state.secondcode === passcode[1] && this.state.thirdcode === passcode[2]){
+      this.setState({isWin: true})
+    }
+    this.setState({isSubmit: true})
   }
 
-  onSubmitChange(){
+  renderResult(){
+    if(this.state.isWin){
+      return <Winner />
+    } else{
+      return <Loser />
+    }
+  }
 
+
+  focusNextField(nextField){
+    this.refs[nextField].focus()
   }
 
   render() {
-    return (
+    return !this.state.isSubmit ? (
       <View style={styles.container}>
         <View style={styles.textContainer}>
            <Text style={styles.text}>Ready to enter your passcode?</Text>
         </View>
         <View style={styles.inputContainer}>
-           <Input containerStyle={styles.input} inputStyle={styles.inputstyle} />
-           <Input containerStyle={styles.input} inputStyle={styles.inputstyle} />
-           <Input containerStyle={styles.input} inputStyle={styles.inputstyle} />
+           <Input ref='1' containerStyle={styles.input} inputStyle={styles.inputstyle} defaultvalue={this.state.firstcode} onChangeText={(text) => this.setState( {firstcode:text} ) }
+           returnKeyType='next' onSubmitEditing={()=>this.focusNextField('2')} />
+           <Input ref='2' containerStyle={styles.input} inputStyle={styles.inputstyle}
+           defaultvalue={this.state.secondcode} onChangeText={(text) => this.setState({secondcode:text})}
+           returnKeyType='next' onSubmitEditing={()=>this.focusNextField('3')}  />
+           <Input ref='3' containerStyle={styles.input} inputStyle={styles.inputstyle}
+           defaultvalue={this.state.secondcode} onChangeText={(text) => this.setState({thirdcode:text})}/>
         </View>
 
-       <Button containerStyle={styles.button} buttonStyle={styles.buttonstyle1 }title="submit" type="solid" onPress={() => this.onSubmitChange()} />
+       <Button containerStyle={styles.button} buttonStyle={styles.buttonstyle1 }title='submit' type='solid' onPress={() => this.onSubmitChange()} />
 
-       <Button
-containerStyle={styles.link}
+       <Button containerStyle={styles.link}
        buttonStyle={styles.buttonstyle2 }
-       title="<-Go Back" type="solid" onPress={() => {}} />
+       title='<-Go Back' type='solid' onPress={()=>{}} />
       </View>
-    )
+    ) : this.renderResult()
   }
 
 }
