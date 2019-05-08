@@ -7,6 +7,7 @@ import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
 import Winner from './screens/WinnerScreen';
+import EntryARScene from './ARScenes/EntryScene';
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class App extends Component {
             <Route exact path="/loser" component={Loser} />
             <Route exact path="/password" component={PasswordScreen} />
             <Route exact path='/winner' component={Winner} />
+            <Route exact path='/entryarscene' component={EntryARScene} />
           </Switch>
         </View>
       </NativeRouter>
