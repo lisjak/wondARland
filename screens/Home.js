@@ -123,7 +123,21 @@ export default class ViroSample extends Component {
 }
 
 //* stylings
+
 let localStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    // backgroundColor: 'rgba(52, 52, 52, 0.7)',
+    backgroundColor: 'transparent',
+  },
+  rowContainer: {
+    flex: 1,
+    // margin: 0.4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'transparent',
+  },
   ARScene: {
     flex: 1,
     backgroundColor: 'transparent',

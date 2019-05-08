@@ -31,13 +31,13 @@ export default Timer;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.15,
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: 'rgba(52, 52, 52, 0.7)',
+    // backgroundColor: 'rgba(52, 52, 52, 0.7)',
   },
 
   timerText: {
-    position: 'absolute',
+    // position: 'absolute',
     textAlign: 'center',
     fontFamily: 'Helvetica Neue',
     fontSize: 36,
