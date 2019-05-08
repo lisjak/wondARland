@@ -1,22 +1,21 @@
-import React from 'react'
-import { View, Text, StyleSheet,Button } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-export default class Login extends React.Component{
-  render(){
-    const {history} = this.props
+export default class Login extends React.Component {
+  render() {
+    const { history } = this.props;
     return (
       <View style={styles.container}>
         <Text>Login</Text>
-        <Button title='go back' onPress={()=>history.push("/")} />
+        <Button title="go back" onPress={() => history.push('/')} />
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "green",
-    flex:1
-  }
-}
-)
+    backgroundColor: 'green',
+    flex: 1,
+  },
+});
