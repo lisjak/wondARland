@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   timerText: {
     // position: 'absolute',
     textAlign: 'center',
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Arial',
     fontSize: 36,
     color: 'white',
   },
