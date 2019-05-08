@@ -90,13 +90,9 @@ export default class PasswordScreen extends Component {
           onPress={() => this.onSubmitChange()}
         />
 
-        <Button
-          containerStyle={styles.link}
-          buttonStyle={styles.buttonstyle2}
-          title="<-Go Back"
-          type="solid"
-          onPress={() => history.push('/')}
-        />
+       <Button containerStyle={styles.link}
+       buttonStyle={styles.buttonstyle2 }
+       title='<-Go Back' type='solid' onPress={()=> history.goBack()}/>
       </View>
     ) : (
       this.renderResult()
