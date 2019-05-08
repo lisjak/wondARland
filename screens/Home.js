@@ -8,7 +8,13 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableHighlight, Button } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableHighlight,
+  Button,
+} from 'react-native';
 import { ViroARSceneNavigator } from 'react-viro';
 require('../secrets');
 
@@ -55,7 +61,7 @@ export default class ViroSample extends Component {
 
   //* Presents user with Welcome text and Play button to start game
   _welcomeScreen() {
-    const { history } = this.props
+    const { history } = this.props;
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
@@ -69,8 +75,16 @@ export default class ViroSample extends Component {
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
         </View>
-        <Button title='Login'  style={localStyles.buttons} onPress={() => history.push('/login')} />
-        <Button title='Instructions'  style={localStyles.buttons} onPress={() => history.push('/instructions')} />
+        <Button
+          title="Login"
+          style={localStyles.buttons}
+          onPress={() => history.push('/login')}
+        />
+        <Button
+          title="Instructions"
+          style={localStyles.buttons}
+          onPress={() => history.push('/instructions')}
+        />
       </View>
     );
     // <PasswordScreen />)
@@ -78,13 +92,14 @@ export default class ViroSample extends Component {
 
   //* Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
+    const { history } = this.props;
     return (
       <View style={localStyles.ARScene}>
         <ViroARSceneNavigator
           {...this.state.sharedProps}
           initialScene={{ scene: InitialARScene }}
         />
-        <Timer />
+        <Timer history={history} />
       </View>
     );
   }

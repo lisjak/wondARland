@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
+import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 
 class Loser extends Component {
   render() {
+    const { history } = this.props;
     return (
       <View style={styles.outer}>
         <View style={styles.container}>
           <Text style={styles.title}>You Lose!</Text>
-          <Text style={styles.subtitle}>Jinkies!</Text>
-          <Text style={styles.subtitle}>You weren't able to escape!</Text>
+          {/* <Text style={styles.subtitle}>Jinkies!</Text> */}
+          <Text style={styles.subtitle}>
+            You weren't able to escape in time.
+          </Text>
         </View>
+
         <View style={styles.container}>
-          <Text style={styles.subtitle}>Play again?</Text>
+          <TouchableHighlight
+            style={styles.buttons}
+            onPress={() => history.push('/')}
+            underlayColor="#68a0ff"
+          >
+            <Text style={styles.buttonText}>Try again?</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
   }
 }
 
-const mapState = state => {
-  return {
-    gameLost: state.game.gameLost,
-  };
-};
-
-export default connect(
-  mapState,
-  null
-)(Loser);
+export default Loser;
 
 const styles = StyleSheet.create({
   outer: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#c4440d',
     height: 600,
   },
   title: {
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 50,
     color: 'white',
-    // justifyContent: 'space-between',
   },
   subtitle: {
     marginTop: 20,
@@ -57,5 +56,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     color: 'white',
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  buttons: {
+    height: 60,
+    width: 160,
+    paddingTop: 20,
+    paddingBottom: 10,
+    backgroundColor: '#ac3c0b',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
   },
 });

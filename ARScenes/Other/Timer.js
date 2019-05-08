@@ -1,45 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { connect } from 'react-redux';
-import { timerRanOut } from '../../store';
 import TimerCountdown from 'react-native-timer-countdown';
 
-const Timer = props => (
-  <View style={styles.container}>
-    <TimerCountdown
-      initialMilliseconds={1000 * 5}
-      onTick={milliseconds => console.log('tick', milliseconds)}
-      onExpire={() => alert("time's up")}
-      // onExpire={props.timerRanOut}
-      formatMilliseconds={milliseconds => {
-        const remainingSec = Math.round(milliseconds / 1000);
-        const seconds = parseInt((remainingSec % 60).toString(), 10);
-        const minutes = parseInt(((remainingSec / 60) % 60).toString(), 10);
-        const s = seconds < 10 ? '0' + seconds : seconds;
-        const m = minutes < 10 ? '0' + minutes : minutes;
-        return m + ':' + s;
-      }}
-      allowFontScaling={true}
-      style={styles.timerText}
-    />
-  </View>
-);
+class Timer extends Component {
+  render() {
+    const { history } = this.props;
+    return (
+      <View style={styles.container}>
+        <TimerCountdown
+          initialMilliseconds={1000 * 5}
+          onTick={milliseconds => console.log('tick', milliseconds)}
+          onExpire={() => history.push('/loser')}
+          formatMilliseconds={milliseconds => {
+            const remainingSec = Math.round(milliseconds / 1000);
+            const seconds = parseInt((remainingSec % 60).toString(), 10);
+            const minutes = parseInt(((remainingSec / 60) % 60).toString(), 10);
+            const s = seconds < 10 ? '0' + seconds : seconds;
+            const m = minutes < 10 ? '0' + minutes : minutes;
+            return m + ':' + s;
+          }}
+          allowFontScaling={true}
+          style={styles.timerText}
+        />
+      </View>
+    );
+  }
+}
 
-const mapState = state => {
-  return {
-    timerRunning: state.game.timerRunning,
-    gameLost: state.game.gameLost,
-  };
-};
-
-const mapDispatch = dispatch => ({
-  timerRanOut: () => dispatch(timerRanOut()),
-});
-
-export default connect(
-  mapState,
-  mapDispatch
-)(Timer);
+export default Timer;
 
 const styles = StyleSheet.create({
   container: {
