@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   Text,
@@ -8,28 +7,22 @@ import {
   Button,
 } from 'react-native';
 
-//* Timer overlay on screen
-import ButtonBar from '../ARScenes/Other/ButtonBar';
+import { connect } from 'react-redux';
+import { gameStartedThunk } from '../store/gameReducer';
 
-let sharedProps = {
-  apiKey: process.env.APIKEY,
-};
+class ViroSample extends Component {
+  constructor() {
+    super();
+    this.handleStart = this.handleStart.bind(this);
+  }
 
-//* First Scene --> FindingCards
-let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
-
-let UNSET = 'UNSET';
-let AR_NAVIGATOR_TYPE = 'AR';
-
-//* This determines which type of experience to launch in, or UNSET, if the user should
-//* be presented with a choice of AR or VR. By default, we offer the user a choice.
-let defaultNavigatorType = UNSET;
-
-
-export default class ViroSample extends Component {
+  handleStart() {
+    const { history, startGame } = this.props;
+    startGame();
+    history.push('/entryarscene');
+  }
 
   render() {
-
     const { history } = this.props;
     return (
       <View style={localStyles.outer}>
@@ -39,7 +32,7 @@ export default class ViroSample extends Component {
           <TouchableHighlight
             style={localStyles.buttons}
             // onPress={this._welcomeScreenOnPress(AR_NAVIGATOR_TYPE)}
-            onPress={() => history.push('/entryarscene')}
+            onPress={this.handleStart}
             underlayColor="#68a0ff"
           >
             <Text style={localStyles.buttonText}>Play</Text>
@@ -58,11 +51,35 @@ export default class ViroSample extends Component {
       </View>
     );
   }
-
 }
 
+const mapDispatch = dispatch => {
+  return {
+    startGame: () => dispatch(gameStartedThunk()),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatch
+)(ViroSample);
+
 //* stylings
+
 let localStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    // backgroundColor: 'rgba(52, 52, 52, 0.7)',
+    backgroundColor: 'transparent',
+  },
+  rowContainer: {
+    flex: 1,
+    // margin: 0.4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: 'transparent',
+  },
   ARScene: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -107,7 +124,5 @@ let localStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-  }
+  },
 });
-
-module.exports = ViroSample;

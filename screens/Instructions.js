@@ -1,31 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-material-ui';
 
-export default class Instructions extends React.Component {
+class Instructions extends React.Component {
   render() {
     const { history } = this.props;
     return (
-      <View style={styles.outer}>
-        <View style={styles.container}>
-          <Text style={styles.title}>Instructions</Text>
+      <View>
+        <View>
+          <Text>Instructions</Text>
         </View>
-        <View style={styles.container}>
-          <Text style={styles.subtitle}>Welcome to WondARLand!</Text>
-          <Text style={styles.subtitle}>
+        <View>
+          <Text>Welcome to WondARLand!</Text>
+          <Text>
             Go find the keys in real life and race against the timer to find a 3
             digit password.
           </Text>
-          <Text style={styles.subtitle}>
-            Can you find the clues and escape in time?
-          </Text>
+          <Text>Can you find the clues and escape in time?</Text>
         </View>
-        <View style={styles.container}>
-          <Button title="go back" onPress={() => history.push('/')} />
+        <View>
+          <Button primary text="go back" onPress={() => history.push('/')} />
         </View>
       </View>
     );
   }
 }
+
+export default Instructions;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,25 +34,24 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
     height: 600,
   },
-  title: {
-    // flex: 3,
-    // marginTop: 40,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 50,
-    color: 'white',
-    // justifyContent: 'space-between',
-  },
-  subtitle: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
-    color: 'white',
-  },
+  // title: {
+  //   // flex: 3,
+  //   // marginTop: 40,
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   fontWeight: 'bold',
+  //   fontSize: 50,
+  //   color: 'white',
+  //   // justifyContent: 'space-between',
+  // },
+  // subtitle: {
+  //   marginTop: 20,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   fontWeight: 'bold',
+  //   fontSize: 30,
+  //   color: 'white',
+  // },
 });

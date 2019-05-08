@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 
 class PasswordButton extends Component {
+  state = { isPressed: false };
   render() {
     const { history } = this.props;
     return (
@@ -14,6 +15,32 @@ class PasswordButton extends Component {
     );
   }
 }
+
+const enterPasswordScreen = () => {
+  // this.setState
+  // hisotry.push
+}
+
+
+
+class B extends Component {
+  state = { isPressed: false };
+  render() {
+    return (
+      <View styles={{ flex: 1 }}>
+        <Button
+          title={`${this.state.isPressed ? "Button Pressed" : "Button"}`}
+          onPress={() => {
+            this.setState({ isPressed: true });
+          }}
+        />
+      </View>
+    );
+  }
+}
+
+
+
 
 export default PasswordButton;
 
