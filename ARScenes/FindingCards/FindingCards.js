@@ -10,6 +10,8 @@
 import React, {Component} from '../../node_modules/react';
 import { AppRegistry, StyleSheet, Text, View, Vibration } from 'react-native';
 
+import { PortalScene2 } from '../Portals/AcePortalScene2';
+import PasswordScreen from '../../screens/PasswordScreen';
 
 import { PortalScene2 } from '../Portals/AcePortalScene2'
 import PasswordScreen from '../../screens/PasswordScreen'
@@ -38,12 +40,9 @@ import {
 
 } from '../../node_modules/react-viro';
 
-
 // let createReactClass = require('create-react-class');
 
-
 const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
-
 
 class FindingCards extends Component {
     constructor(props) {
@@ -69,9 +68,9 @@ class FindingCards extends Component {
             visible: false,
         });
     }
-}
+  }
 
-_onAnchorFound() {
+  _onAnchorFound() {
     this.setState({
       playAnim: true,
       visible: true,
@@ -208,24 +207,22 @@ _isPortalLoading() {
     }
 }
 
-
 const styles = StyleSheet.create({
-    helloWorldTextStyle: {
-        fontFamily: 'Arial',
-        fontSize: 20,
-        color: '#ffffff',
-        textAlignVertical: 'center',
-        textAlign: 'center',
-    },
-    portalTextStyles: {
-        fontFamily: 'Arial',
-        fontSize: 28,
-        color: '#C8243B',
-        textAlignVertical: 'center',
-        textAlign: 'center',
-    },
+  helloWorldTextStyle: {
+    fontFamily: 'Arial',
+    fontSize: 20,
+    color: '#ffffff',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+  portalTextStyles: {
+    fontFamily: 'Arial',
+    fontSize: 28,
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
 });
-
 
 ViroARTrackingTargets.createTargets({
     queen: {
@@ -266,6 +263,5 @@ ViroARTrackingTargets.createTargets({
         physicalWidth: 0.08, // real world width in meters
     }
 });
-
 
 module.exports = FindingCards;

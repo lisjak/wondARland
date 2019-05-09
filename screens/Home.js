@@ -9,6 +9,7 @@ import {
 
 import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
+// import BgAudio from 'react-native-background-audio';
 
 class ViroSample extends Component {
   constructor() {
@@ -27,6 +28,7 @@ class ViroSample extends Component {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
+          {/* <BgAudio options={audio_options} /> */}
           <Text style={localStyles.titleText}>Welcome!</Text>
 
           <TouchableHighlight
@@ -65,7 +67,6 @@ export default connect(
 )(ViroSample);
 
 //* stylings
-
 let localStyles = StyleSheet.create({
   container: {
     flex: 1,
