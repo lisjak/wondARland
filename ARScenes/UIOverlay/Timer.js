@@ -5,13 +5,6 @@ import { StyleSheet, View } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
 
 class Timer extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   timeRemaining: this.props.millisecondsRemaining,
-    // };
-  }
-
   handleStart() {
     const { history, resumeGame } = this.props;
     resumeGame();
@@ -24,9 +17,6 @@ class Timer extends Component {
       <View style={styles.container}>
         <TimerCountdown
           initialMilliseconds={this.props.timeRemaining}
-          // onTick={milliseconds =>
-          //   this.setState({ timeRemaining: milliseconds })
-          // }
           onExpire={() => history.push('/loser')}
           formatMilliseconds={milliseconds => {
             const remainingSec = Math.round(milliseconds / 1000);
@@ -45,8 +35,7 @@ class Timer extends Component {
 }
 const mapState = state => {
   return {
-    timerRunning: state.game.timerRunning,
-    timeRemaining: state.game.millisecondsRemaining,
+    timeRemaining: state.game.timeRemaining,
   };
 };
 
@@ -57,9 +46,10 @@ export default connect(
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
-    // backgroundColor: 'rgba(52, 52, 52, 0.7)',
+    // backgroundColor: 'rgba(198, 77, 7, 0.8)',
+    // borderRadius: 10
   },
 
   timerText: {
