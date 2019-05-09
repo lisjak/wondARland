@@ -1,9 +1,9 @@
 //ACTION TYPES
-const START_TIMER = 'START_TIMER';
-const TIMER_RAN_OUT = 'TIMER_RAN_OUT';
 const GAME_STARTED = 'GAME_STARTED';
 const GAME_PAUSED = 'GAME_PAUSED';
 const GAME_RESUMED = 'GAME_RESUMED';
+const GAME_ENDED = 'GAME_ENDED';
+const POINT_FOUND = 'POINT_FOUND';
 
 //ACTION CREATORS
 const gameStarted = () => ({
@@ -15,13 +15,11 @@ const gamePaused = () => ({
 const gameResumed = () => ({
   type: GAME_RESUMED,
 });
-
-const startTimer = () => ({
-  type: START_TIMER,
+const gameEnded = () => ({
+  type: GAME_ENDED,
 });
-
-const timerRanOut = () => ({
-  type: TIMER_RAN_OUT,
+const pointFound = () => ({
+  type: POINT_FOUND,
 });
 
 // THUNKS
@@ -43,28 +41,26 @@ export const gameResumedThunk = () => {
   };
 };
 
-export const timerStarted = () => {
+export const gameEndedThunk = () => {
   return dispatch => {
-    dispatch(startTimer());
+    dispatch(gameEnded());
   };
 };
 
-export const timerUp = () => {
+export const pointFoundThunk = () => {
   return dispatch => {
-    dispatch(timerRanOut());
+    dispatch(pointFound());
   };
 };
 
 // INITIAL STATE
 let initialState = {
+  timeRemaining: 0,
   timeStarted: 0,
   timeElapsed: 0,
   password: '',
-  timerRunning: false,
   gameInProgress: false,
-  gameWon: false,
-  gameLost: false,
-  millisecondsRemaining: 15000,
+  pointsFound: 0,
 };
 
 // REDUCER
@@ -73,9 +69,9 @@ export default function(state = initialState, action) {
     case GAME_STARTED:
       return {
         ...state,
+        timeRemaining: 150000,
         timeStarted: Date.now(),
         gameInProgress: true,
-        timeRunning: true,
       };
     case GAME_PAUSED:
       return {
@@ -86,20 +82,22 @@ export default function(state = initialState, action) {
       return {
         ...state,
         timeStarted: Date.now(),
-        millisecondsRemaining: state.millisecondsRemaining - state.timeElapsed,
+        timeRemaining: state.timeRemaining - state.timeElapsed,
       };
-    case START_TIMER:
+    case GAME_ENDED:
       return {
         ...state,
-        timerRunning: true,
-        gameInProgress: true,
-      };
-    case TIMER_RAN_OUT:
-      return {
-        ...state,
-        timerRunning: false,
+        timeRemaining: 0,
+        timeStarted: 0,
+        timeElapsed: 0,
+        password: '',
         gameInProgress: false,
-        gameLost: true,
+        pointsFound: 0,
+      };
+    case POINT_FOUND:
+      return {
+        ...state,
+        pointsFound: state.pointsFound + 1,
       };
     default:
       return state;

@@ -10,8 +10,8 @@ import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
 import Winner from './screens/WinnerScreen';
+import Pause from './screens/PauseScreen';
 import EntryARScene from './ARScenes/EntryScene';
-import Timer from './ARScenes/Other/Timer';
 
 const uiTheme = {
   palette: {
@@ -38,10 +38,11 @@ export default class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/instructions" component={Instructions} />
+              <Route exact path="/entryarscene" component={EntryARScene} />
               <Route exact path="/loser" component={Loser} />
               <Route exact path="/password" component={PasswordScreen} />
               <Route exact path="/winner" component={Winner} />
-              <Route exact path="/entryarscene" component={EntryARScene} />
+              <Route exact Path="/pause" component={Pause} />
             </Switch>
           </View>
         </NativeRouter>
