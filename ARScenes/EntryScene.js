@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { View, StyleSheet } from 'react-native';
 require('../secrets');
-import ButtonBar from '../ARScenes/Other/ButtonBar';
+import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
 
 let sharedProps = {
   apiKey: process.env.APIKEY,
