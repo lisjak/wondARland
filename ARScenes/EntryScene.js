@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { View, StyleSheet } from 'react-native';
-require('../secrets');
+require('../secrets.js');
 import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
 
 let sharedProps = {
   apiKey: process.env.APIKEY,
 };
 
-let InitialARScene = require('../ARScenes/Portals/PortScene');
+let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
 
 export default class EntryARScene extends Component {
   constructor() {
