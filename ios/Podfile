@@ -12,6 +12,8 @@ target 'ViroSample' do
     # Pods for testing
     pod 'RNSound', :path => '../node_modules/react-native-sound'
 
+    pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   end
 
   target 'ViroSampleTests' do

@@ -1,6 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import {
+  View,
+  List,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Image,
+} from 'react-native';
 import { Button } from 'react-native-material-ui';
+const diamond = require('../assets/images/diamonds_thumb.jpg');
+const heart = require('../assets/images/heart_thumb.jpg');
+const spade = require('../assets/images/spade_thumb.jpg');
+const club = require('../assets/images/club_thumb.jpg');
 
 class Instructions extends React.Component {
   render() {
@@ -13,11 +24,19 @@ class Instructions extends React.Component {
         <View>
           <Text style={styles.subtitle}>Instructions</Text>
 
+          <View style={styles.imageContainer}>
+            <Image style={styles.thumbnail} source={diamond} />
+            <Image style={styles.thumbnail} source={spade} />
+            <Image style={styles.thumbnail} source={heart} />
+            <Image style={styles.thumbnail} source={club} />
+          </View>
+
           <Text style={styles.bodyText}>
             Search for playing cards hidden in the real world. Scan each card to
             make a magical portal appear. Then go down the rabbit hole and
             search for clues leading to a 3-digit password.
           </Text>
+
           <Text style={styles.subtitle}>
             Can you find all the clues and escape before the timer runs out?
           </Text>
@@ -47,6 +66,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 600,
   },
+  imageContainer: {
+    flex: 0.6,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
   textWrapper: {
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -64,6 +89,7 @@ const styles = StyleSheet.create({
     // marginTop: 40,
     justifyContent: 'space-between',
     alignItems: 'center',
+    fontFamily: 'Avenir-Black',
     fontWeight: 'bold',
     fontSize: 24,
     color: 'white',
@@ -81,6 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: 'Avenir-Black',
     fontSize: 18,
     color: 'white',
   },
@@ -102,5 +129,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
+  },
+  thumbnail: {
+    height: 70,
+    width: 50,
+    padding: 5,
   },
 });
