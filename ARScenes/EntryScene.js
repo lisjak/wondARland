@@ -8,7 +8,8 @@ let sharedProps = {
   apiKey: process.env.APIKEY,
 };
 
-let InitialARScene = require('../ARScenes/Portals/PortScene');
+// let InitialARScene = require('../ARScenes/Portals/PortScene');
+let InitialARScene = require('../ARScenes/Portals/PortalSoundTest.js');
 
 export default class EntryARScene extends Component {
   constructor() {
