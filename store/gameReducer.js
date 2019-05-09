@@ -60,13 +60,7 @@ let initialState = {
   timeElapsed: 0,
   password: '',
   gameInProgress: false,
-<<<<<<< HEAD
-  gameWon: false,
-  gameLost: false,
-  millisecondsRemaining: 500000,
-=======
   pointsFound: 0,
->>>>>>> 76a90923bb394dcb18d316107ab01dfa98bc1f2d
 };
 
 // REDUCER
