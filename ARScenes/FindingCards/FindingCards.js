@@ -10,11 +10,10 @@
 import React, {Component} from '../../node_modules/react';
 import { AppRegistry, StyleSheet, Text, View, Vibration } from 'react-native';
 
-import { PortalScene2 } from '../Portals/AcePortalScene2';
-import PasswordScreen from '../../screens/PasswordScreen';
 
 import { PortalScene2 } from '../Portals/AcePortalScene2'
 import PasswordScreen from '../../screens/PasswordScreen'
+
 
 import PortScene from '../Portals/PortScene'
 import QueenPortal2 from '../Portals/QueenPortal2'
