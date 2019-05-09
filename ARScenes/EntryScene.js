@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import { ViroARSceneNavigator } from 'react-viro';
-import { View, StyleSheet } from 'react-native';
-require('../secrets');
-import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
+import React, { Component } from "react";
+import { ViroARSceneNavigator } from "react-viro";
+import { View, StyleSheet } from "react-native";
+require("../secrets");
+import ButtonBar from "../ARScenes/UIOverlay/ButtonBar";
 
 let sharedProps = {
-  apiKey: process.env.APIKEY,
+  apiKey: process.env.APIKEY
 };
 
-// let InitialARScene = require('../ARScenes/Portals/PortScene');
-let InitialARScene = require('../ARScenes/Portals/PortalSoundTest.js');
+let InitialARScene = require("../ARScenes/Portals/PortScene");
+// let InitialARScene = require('../ARScenes/Portals/PortalSoundTest.js');
 
 export default class EntryARScene extends Component {
   constructor() {
     super();
     this.state = {
-      sharedProps: sharedProps,
+      sharedProps: sharedProps
     };
   }
 
@@ -36,6 +36,6 @@ export default class EntryARScene extends Component {
 const styles = StyleSheet.create({
   ARScene: {
     flex: 1,
-    backgroundColor: 'transparent',
-  },
+    backgroundColor: "transparent"
+  }
 });
