@@ -7,54 +7,86 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
-import React from '../../node_modules/react';
+import React, { Component } from '../../node_modules/react';
 // import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import {
-    ViroARScene,
-    ViroARImageMarker,
-    Viro3DObject,
-    ViroAmbientLight,
-    Viro360Video,
-    ViroBox,
-    ViroNode,
-    Viro360Image,
-    ViroPortal,
-    ViroPortalScene,
-    ViroARTrackingTargets,
+  ViroARScene,
+  ViroARImageMarker,
+  Viro3DObject,
+  ViroAmbientLight,
+  Viro360Video,
+  ViroBox,
+  ViroNode,
+  Viro360Image,
+  ViroPortal,
+  ViroPortalScene,
+  ViroARTrackingTargets,
 } from '../../node_modules/react-viro';
 
-let createReactClass = require('../../node_modules/create-react-class');
+const shipPortal =
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx';
 
-let ARPosterDemo = createReactClass({
-    render() {
-        return (
+const portalShipDiffuse =
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
 
-                    <ViroPortalScene
-                        position={[0, -1, 0]}
-                        passable={true}
-                    >
+const portalShipNormal =
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
 
-                        <ViroPortal position={[0, 0, -1]} scale={[0.25, 0.25, 0.25]}>
-                            <Viro3DObject
-                            source={require('./portal_res/portal_ship/portal_ship.vrx')}
-                            resources={[
-                                require('./portal_res/portal_ship/portal_ship_diffuse.png'),
-                                require('./portal_res/portal_ship/portal_ship_normal.png'),
-                                require('./portal_res/portal_ship/portal_ship_specular.png'),
-                            ]}
-                            type="VRX"
-                        />
-                        </ViroPortal>
-                        <Viro360Image
-                            source={require('./portal_res/360_island.jpg')}
-                        />
-                    </ViroPortalScene>
+const portalShipSpecular =
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';
 
+import HeartObject from './HeartObject';
 
-        );
-    },
-});
+import { PortalScene2 } from './AcePortalScene2';
 
+let count = 0;
 
-module.exports = ARPosterDemo;
+// let createReactClass = require('../../node_modules/create-react-class');
+
+class TestPortal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      portalText: 'Hello There!',
+      clickCount: `click count ${count}`,
+      heart1: true,
+    };
+    this._jumpNextScene = this._jumpNextScene.bind(this);
+    // this._handleClick = this._handleClick.bind(this);
+  }
+
+  _jumpNextScene() {
+    this.props.arSceneNavigator.jump('scene2', { scene: PortalScene2 });
+  }
+
+  render() {
+    return (
+      <ViroPortalScene position={[0, 1, -1]} passable={true}>
+        <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
+          <Viro3DObject
+            source={require(shipPortal)}
+            resources={[
+              require(portalShipDiffuse),
+              require(portalShipNormal),
+              require(portalShipSpecular),
+            ]}
+            type="VRX"
+          />
+        </ViroPortal>
+        <Viro360Video
+          source={require('../../assets/portal_assets/trip2.mp4')}
+          loop={true}
+          paused={false}
+          volume={1.0}
+        />
+
+        <HeartObject position={[1, 1, -1]} />
+        <HeartObject position={[1, 1.5, -2]} />
+        <HeartObject position={[-1, 1, -1]} />
+      </ViroPortalScene>
+    );
+  }
+}
+
+module.exports = TestPortal;

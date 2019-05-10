@@ -39,6 +39,7 @@ import {
 // let createReactClass = require('create-react-class');
 
 const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
+const tumble = require('../../assets/portal_assets/tumble.gif');
 
 class FindingCards extends Component {
   constructor(props) {
@@ -173,6 +174,23 @@ class FindingCards extends Component {
               scale={[0.5, 0.5, 0.5]}
               style={styles.textStyle}
               visible={this.state.visible}
+            />
+          </ViroNode>
+
+          <ViroNode scale={[1, 1, 1]} transformBehaviors={['billboardX']}>
+            <ViroAnimatedImage
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              animation={{
+                name: 'alice',
+                run: true,
+                loop: true,
+                delay: 0,
+              }}
+              height={0.5}
+              width={0.5}
+              source={tumble}
             />
           </ViroNode>
 
