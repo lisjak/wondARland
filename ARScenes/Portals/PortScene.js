@@ -18,7 +18,8 @@ import {
   Viro3DObject,
   ViroText,
   ViroImage,
-  ViroVideo
+  ViroVideo,
+  ViroNode
 } from "../../node_modules/react-viro";
 
 import { PortalScene2 } from "./AcePortalScene2";
@@ -49,7 +50,7 @@ class PortScene extends Component {
     };
     this._onEnterPortal = this._onEnterPortal.bind(this);
     // this._jumpNextScene = this._jumpNextScene.bind(this);
-    this._handleClick = this._handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   _onEnterPortal() {
@@ -136,6 +137,29 @@ class PortScene extends Component {
           <Viro360Image
             source={require("../../assets/portal_assets/360_tiles.jpg")}
           />
+          <ViroNode position={[1, 1, -1]}>
+            <ViroText
+              text="Your Third Passcode is 0111"
+              width={2}
+              height={2}
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 1, -2]}
+              style={styles.portalTextStyles}
+              visible={this.state.showPasscode}
+            />
+
+            <Viro3DObject
+              source={require("../../assets/emoji_heart/emoji_heart.vrx")}
+              resources={[
+                require("../../assets/emoji_heart/emoji_heart_specular.png"),
+                require("../../assets/emoji_heart/emoji_heart.png")
+              ]}
+              position={[0, 0, -1]}
+              scale={[0.3, 0.3, 0.3]}
+              onClick={this.handleClick}
+              type="VRX"
+            />
+          </ViroNode>
         </ViroPortalScene>
 
         {/* <ViroImage
@@ -170,33 +194,9 @@ class PortScene extends Component {
           style={styles.portalTextStyles}
         />
 
-        <HeartObject position={[1, 1, -1]} />
-        <HeartObject position={[1, 1.5, -2]} />
-        <HeartObject position={[-1, 1, -1]} />
-
-        <ViroNode position={[1, 1, -1]}>
-          <ViroText
-            text="Your Third Passcode is 0111"
-            width={2}
-            height={2}
-            scale={[0.5, 0.5, 0.5]}
-            position={[0, 1, -2]}
-            style={styles.portalTextStyles}
-            visible={this.state.showPasscode}
-          />
-
-          <Viro3DObject
-            source={require("../../assets/emoji_heart/emoji_heart.vrx")}
-            resources={[
-              require("../../assets/emoji_heart/emoji_heart_specular.png"),
-              require("../../assets/emoji_heart/emoji_heart.png")
-            ]}
-            position={[0, 0, -1]}
-            scale={[0.3, 0.3, 0.3]}
-            onClick={this.handleClick}
-            type="VRX"
-          />
-        </ViroNode>
+        <HeartObject position={[2, 2, -3]} />
+        <HeartObject position={[1, 1.5, -5]} />
+        <HeartObject position={[-1, 1, -4]} />
       </ViroPortalScene>
     );
   }

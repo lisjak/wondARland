@@ -116,6 +116,13 @@ var styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 24
+  },
+  portalTextStyles: {
+    fontFamily: "Arial",
+    fontSize: 28,
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
   }
 });
 

@@ -8,7 +8,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 import React, { Component } from "../../node_modules/react";
-// import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View } from "react-native";
 
 import {
   ViroARScene,
@@ -23,7 +23,7 @@ import {
   ViroPortal,
   ViroPortalScene,
   ViroARTrackingTargets,
-  ViroNode
+  ViroText
 } from "../../node_modules/react-viro";
 
 import HeartObject from "./HeartObject";
@@ -165,4 +165,20 @@ export default class RosePortal extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  helloWorldTextStyle: {
+    fontFamily: "Arial",
+    fontSize: 20,
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  },
+  portalTextStyles: {
+    fontFamily: "Arial",
+    fontSize: 28,
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
+});
 module.exports = RosePortal;
