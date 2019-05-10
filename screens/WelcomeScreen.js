@@ -19,9 +19,7 @@ import {
 //   apiKey: process.env.APIKEY,
 // };
 
-
 let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
-
 
 let UNSET = 'UNSET';
 let VR_NAVIGATOR_TYPE = 'VR';
@@ -51,8 +49,9 @@ export default class WelcomeScreen extends Component {
     return (
       <View style={localStyles.outer}>
         <View style={localStyles.inner}>
-          <Text style={localStyles.titleText}>Welcome! Hello World!</Text>
-
+          {/* <Image source={wondARland} /> */}
+        </View>
+        <View style={localStyles.inner}>
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
@@ -60,12 +59,10 @@ export default class WelcomeScreen extends Component {
           >
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
-
         </View>
       </View>
     );
   }
-
 
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons

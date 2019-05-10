@@ -4,12 +4,14 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  Button,
+  ImageBackground,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
-// import BgAudio from 'react-native-background-audio';
+import { Button } from 'react-native-material-ui';
+
+let wondARland = require('../assets/images/wondARland.gif');
 
 class ViroSample extends Component {
   constructor() {
@@ -26,11 +28,14 @@ class ViroSample extends Component {
   render() {
     const { history } = this.props;
     return (
-      <View style={localStyles.outer}>
+      <View style={localStyles.container}>
+        <View style={localStyles.outer}>
+          <ImageBackground
+            source={wondARland}
+            style={{ height: '85%', width: '100%', backgroundColor: '#04152b' }}
+          />
+        </View>
         <View style={localStyles.inner}>
-          {/* <BgAudio options={audio_options} /> */}
-          <Text style={localStyles.titleText}>Welcome!</Text>
-
           <TouchableHighlight
             style={localStyles.buttons}
             // onPress={this._welcomeScreenOnPress(AR_NAVIGATOR_TYPE)}
@@ -39,17 +44,23 @@ class ViroSample extends Component {
           >
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
+          {/* </View>
+        <View style={localStyles.inner}> */}
+          <Button
+            accent
+            text="login"
+            style={localStyles.buttons}
+            onPress={() => history.push('/login')}
+          />
+          {/* </View>
+        <View style={localStyles.inner}> */}
+          <Button
+            accent
+            text="instructions"
+            style={localStyles.buttons}
+            onPress={() => history.push('/instructions')}
+          />
         </View>
-        <Button
-          title="Login"
-          style={localStyles.buttons}
-          onPress={() => history.push('/login')}
-        />
-        <Button
-          title="Instructions"
-          style={localStyles.buttons}
-          onPress={() => history.push('/instructions')}
-        />
       </View>
     );
   }
@@ -70,37 +81,32 @@ export default connect(
 let localStyles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
+    marginTop: 70,
+    margin: 10,
     // backgroundColor: 'rgba(52, 52, 52, 0.7)',
-    backgroundColor: 'transparent',
+    backgroundColor: '#04152b',
   },
   rowContainer: {
     flex: 1,
     // margin: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'transparent',
-  },
-  ARScene: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
-
-  viroContainer: {
-    flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#04152b',
   },
   outer: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'black',
-  },
-  inner: {
-    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
+  },
+  inner: {
+    flex: 0.1,
+    flexDirection: 'column',
+    marginBottom: 100,
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    justifyContent: 'space-between',
   },
   titleText: {
     paddingTop: 30,
@@ -113,17 +119,18 @@ let localStyles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 20,
+    fontWeight: 'bold',
   },
   buttons: {
-    height: 80,
-    width: 150,
+    height: 60,
+    width: 160,
     paddingTop: 20,
-    paddingBottom: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    backgroundColor: '#68a0cf',
+    paddingBottom: 10,
+    backgroundColor: '#ac3c0b',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
   },
 });
