@@ -38,22 +38,20 @@ class ViroSample extends Component {
         <View style={localStyles.inner}>
           <TouchableHighlight
             style={localStyles.buttons}
-            // onPress={this._welcomeScreenOnPress(AR_NAVIGATOR_TYPE)}
             onPress={this.handleStart}
             underlayColor="#68a0ff"
           >
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
-          {/* </View>
-        <View style={localStyles.inner}> */}
+
+{/* login button commented out until it's functional
           <Button
             accent
             text="login"
             style={localStyles.buttons}
             onPress={() => history.push('/login')}
-          />
-          {/* </View>
-        <View style={localStyles.inner}> */}
+          /> */}
+
           <Button
             accent
             text="instructions"
@@ -81,11 +79,10 @@ export default connect(
 let localStyles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    marginTop: 70,
+    // marginTop: 70,
     margin: 10,
     // backgroundColor: 'rgba(52, 52, 52, 0.7)',
-    backgroundColor: '#04152b',
+    // backgroundColor: '#04152b',
   },
   rowContainer: {
     flex: 1,
@@ -103,7 +100,7 @@ let localStyles = StyleSheet.create({
   inner: {
     flex: 0.1,
     flexDirection: 'column',
-    marginBottom: 100,
+    marginBottom: 40,
     alignItems: 'center',
     backgroundColor: 'transparent',
     justifyContent: 'space-between',
@@ -122,9 +119,9 @@ let localStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttons: {
-    height: 60,
+    height: 50,
     width: 160,
-    paddingTop: 20,
+    paddingTop: 10,
     paddingBottom: 10,
     backgroundColor: '#ac3c0b',
     borderRadius: 10,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Redirect } from 'react-router-native';
 import { StyleSheet, View } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
 
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   },
 
   timerText: {
-    // position: 'absolute',
     textAlign: 'center',
     fontFamily: 'Arial',
     fontSize: 36,

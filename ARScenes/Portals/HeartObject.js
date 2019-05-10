@@ -11,18 +11,17 @@ class HeartObject extends Component {
   constructor() {
     super();
     this.state = {
-      visibility: true
+      visibility: true,
     };
     this._handleClick = this._handleClick.bind(this);
   }
 
   _handleClick() {
     this.setState({
-      visibility: false
+      visibility: false,
     });
-        Vibration.vibrate(1, false);
+    Vibration.vibrate(1, false);
     this.props.pointFound();
-
   }
 
   render() {
@@ -31,7 +30,7 @@ class HeartObject extends Component {
         source={require('../../assets/emoji_heart/emoji_heart.vrx')}
         resources={[
           require('../../assets/emoji_heart/emoji_heart_specular.png'),
-          require('../../assets/emoji_heart/emoji_heart.png')
+          require('../../assets/emoji_heart/emoji_heart.png'),
         ]}
         position={this.props.position}
         scale={[0.3, 0.3, 0.3]}
@@ -45,7 +44,7 @@ class HeartObject extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    pointFound: () => dispatch(pointFoundThunk())
+    pointFound: () => dispatch(pointFoundThunk()),
   };
 };
 

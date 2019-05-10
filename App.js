@@ -20,11 +20,6 @@ const uiTheme = {
     backgroundColor: COLOR.teal300,
     color: COLOR.deepOrange900,
   },
-  toolbar: {
-    container: {
-      height: 10,
-    },
-  },
 };
 
 export default class App extends Component {
@@ -40,6 +35,7 @@ export default class App extends Component {
               <Route exact path="/instructions" component={Instructions} />
               <Route exact path="/entryarscene" component={EntryARScene} />
               <Route exact path="/loser" component={Loser} />
+              <Route exact path="/wrongpassword" component={Loser} />
               <Route exact path="/password" component={PasswordScreen} />
               <Route exact path="/winner" component={Winner} />
               <Route exact Path="/pause" component={Pause} />

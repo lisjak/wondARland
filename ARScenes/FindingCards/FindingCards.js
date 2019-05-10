@@ -111,7 +111,7 @@ class FindingCards extends Component {
               height={1}
               position={[0, 0, -1]}
               textAlign="center"
-              textClipMode="clipToBounds"
+              textClipMode="ClipToBounds"
               text="Card found! Loading..."
               outerStroke={{ type: 'Outline', width: 2, color: '#000000' }}
               scale={[0.5, 0.5, 0.5]}
@@ -167,7 +167,7 @@ class FindingCards extends Component {
               height={1}
               position={[0, 0, -1]}
               textAlign="center"
-              textClipMode="clipToBounds"
+              textClipMode="ClipToBounds"
               text="Card found! Loading..."
               outerStroke={{ type: 'Outline', width: 2, color: '#000000' }}
               scale={[0.5, 0.5, 0.5]}
