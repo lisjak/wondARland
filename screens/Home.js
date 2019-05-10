@@ -32,19 +32,23 @@ class ViroSample extends Component {
         <View style={localStyles.outer}>
           <ImageBackground
             source={wondARland}
-            style={{ height: '85%', width: '100%', backgroundColor: '#04152b' }}
+            style={{
+              height: '100%',
+              width: '100%',
+              backgroundColor: '#04152b',
+            }}
           />
         </View>
         <View style={localStyles.inner}>
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={this.handleStart}
-            underlayColor="#68a0ff"
+            underlayColor="#04152b"
           >
             <Text style={localStyles.buttonText}>Play</Text>
           </TouchableHighlight>
 
-{/* login button commented out until it's functional
+          {/* login button commented out until it's functional
           <Button
             accent
             text="login"
