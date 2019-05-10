@@ -19,6 +19,8 @@ import {
 } from '../../node_modules/react-viro';
 
 
+import HeartObject from './HeartObject';
+
 const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
 const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
 
@@ -66,12 +68,46 @@ export default class QueenPortal2 extends Component {
     position={[0, 2, -5]}
          />
 
+          <HeartObject position={[1, 1, -1]} />
+          <HeartObject position={[2, 1.5, -2]} />
+          <HeartObject position={[-1, -2, -1.5]} />
+
+
+<ViroText
+          style={styles.boldFont} position={[0, 0, 0]}
+          width={20} height={5} extrusionDepth={8}
+          materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
+          text="9 3 7" />
+
 
       </ViroPortalScene>
 
     );
   }
 }
+
+var styles = StyleSheet.create({
+    boldFont: {
+         color: '#FFFFFF',
+         flex: 1,
+         textAlignVertical: 'center',
+         textAlign: 'center',
+         fontWeight: 'bold',
+         fontSize: 24
+    },
+});
+
+ViroMaterials.createMaterials({
+    frontMaterial: {
+      diffuseColor: '#FFFFFF',
+    },
+    backMaterial: {
+      diffuseColor: '#FF0000',
+    },
+    sideMaterial: {
+      diffuseColor: '#0000FF',
+    },
+});
 
 
 module.exports = QueenPortal2;
