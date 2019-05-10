@@ -34,7 +34,7 @@ class ViroSample extends Component {
             source={wondARland}
             style={{
               height: '100%',
-              width: '100%',
+              width: '99%',
               backgroundColor: '#04152b',
             }}
           />
