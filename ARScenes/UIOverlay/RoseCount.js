@@ -6,9 +6,11 @@ import { roseFoundThunk } from '../../store/gameReducer';
 class RoseCount extends Component {
   render() {
     const { rosesFound } = this.props;
+    const roseIcon = '\u2740';
+    // const roseIcon = String.fromCharCode(parseInt('f09f8cb9'));
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{`\u1F339 ${rosesFound}`}</Text>
+        <Text style={styles.text}>{`${roseIcon} ${rosesFound}`}</Text>
       </View>
     );
   }
