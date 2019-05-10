@@ -63,12 +63,12 @@ export default class QueenPortal2 extends Component {
 
         <ViroText
           style={styles.boldFont}
-          position={[0, 0, 0]}
-          width={20}
+          position={[-2, -4, 0.2]}
+          // width={20}
           height={5}
           extrusionDepth={8}
           materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-          text="9 3 7"
+          text="1 0 0 1"
         />
       </ViroPortalScene>
     );
