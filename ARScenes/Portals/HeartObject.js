@@ -11,14 +11,14 @@ class HeartObject extends Component {
   constructor() {
     super();
     this.state = {
-      visibility: true
+      visibility: true,
     };
     this._handleClick = this._handleClick.bind(this);
   }
 
   _handleClick() {
     this.setState({
-      visibility: false
+      visibility: false,
     });
     Vibration.vibrate(1, false);
     this.props.pointFound();
@@ -44,7 +44,7 @@ class HeartObject extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    pointFound: () => dispatch(pointFoundThunk())
+    pointFound: () => dispatch(pointFoundThunk()),
   };
 };
 

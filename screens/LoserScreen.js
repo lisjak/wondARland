@@ -1,26 +1,56 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { gameResumedThunk } from '../store/gameReducer';
+import { connect } from 'react-redux';
 
 class Loser extends Component {
+  constructor() {
+    super();
+    this.state = {
+      headline: 'You Lose!',
+      loseMessage: `You didn't escape in time.`,
+      buttonLabel: 'Try again?',
+      passwordWrong: false,
+    };
+    this.handleOnPress = this.handleOnPress.bind(this);
+  }
+
+  componentDidMount() {
+    const { headline, loseMessage, buttonLabel, passwordWrong } = this.props;
+    if (this.props.headline) {
+      this.setState({
+        headline,
+        loseMessage,
+        buttonLabel,
+        passwordWrong,
+      });
+    }
+  }
+
+  handleOnPress() {
+    const { history, resumeGame } = this.props;
+    if (this.state.passwordWrong) {
+      resumeGame();
+      history.goBack();
+    } else history.push('/');
+  }
+
   render() {
     const { history } = this.props;
     return (
       <View style={styles.outer}>
         <View style={styles.container}>
-          <Text style={styles.title}>You Lose!</Text>
-          {/* <Text style={styles.subtitle}>Jinkies!</Text> */}
-          <Text style={styles.subtitle}>
-            You weren't able to escape in time.
-          </Text>
+          <Text style={styles.title}>{this.state.headline}</Text>
+          <Text style={styles.subtitle}>{this.state.loseMessage}</Text>
         </View>
 
         <View style={styles.container}>
           <TouchableHighlight
             style={styles.buttons}
-            onPress={()=> history.push('/')}
+            onPress={this.handleOnPress}
             underlayColor="#68a0ff"
           >
-            <Text style={styles.buttonText}>Try again?</Text>
+            <Text style={styles.buttonText}>{this.state.buttonLabel}</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -28,11 +58,21 @@ class Loser extends Component {
   }
 }
 
-export default Loser;
+const mapDispatch = dispatch => {
+  return {
+    resumeGame: () => dispatch(gameResumedThunk()),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatch
+)(Loser);
 
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
+    backgroundColor: '#c4440d',
   },
   container: {
     flex: 1,
