@@ -5,7 +5,7 @@ import { Vibration } from "react-native";
 import { Viro3DObject } from "react-viro";
 
 import { connect } from "react-redux";
-import { pointFoundThunk } from "../../store/gameReducer";
+import { roseFoundThunk } from "../../store/gameReducer";
 
 class RoseObject extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class RoseObject extends Component {
       visibility: false
     });
     Vibration.vibrate(1, false);
-    this.props.pointFound();
+    this.props.rosepointFound();
   }
 
   render() {
@@ -45,7 +45,7 @@ class RoseObject extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    pointFound: () => dispatch(pointFoundThunk())
+    rosepointFound: () => dispatch(roseFoundThunk())
   };
 };
 
