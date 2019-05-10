@@ -5,16 +5,17 @@ require('../secrets.js');
 import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
 
 let sharedProps = {
-  apiKey: process.env.APIKEY
+  apiKey: process.env.APIKEY,
 };
 
 let InitialARScene = require('../ARScenes/FindingCards/FindingCards.js');
+// let InitialARScene = require('../ARScenes/Portals/RosesPortal.js');
 
 export default class EntryARScene extends Component {
   constructor() {
     super();
     this.state = {
-      sharedProps: sharedProps
+      sharedProps: sharedProps,
     };
   }
 
@@ -35,6 +36,6 @@ export default class EntryARScene extends Component {
 const styles = StyleSheet.create({
   ARScene: {
     flex: 1,
-    backgroundColor: "transparent"
-  }
+    backgroundColor: 'transparent',
+  },
 });
