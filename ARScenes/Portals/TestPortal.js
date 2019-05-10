@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable react/prefer-es6-class */
 /**
  * Copyright (c) 2017-present, Viro Media, Inc.
@@ -8,6 +9,10 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 import React, { Component } from '../../node_modules/react';
+=======
+
+import React from '../../node_modules/react';
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
 // import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import {
@@ -30,8 +35,16 @@ const shipPortal =
 const portalShipDiffuse =
   '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
 
+<<<<<<< HEAD
 const portalShipNormal =
   '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
+=======
+                    <ViroPortalScene
+                        position={[0, -1, 0]}
+                        passable={true}
+                        onTrackingUpdated={this._onInitialized
+                    >
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
 
 const portalShipSpecular =
   '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';

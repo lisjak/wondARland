@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import React, { Component } from '../../node_modules/react';
+import React, { Component } from "../../node_modules/react";
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 import {
   ViroSceneNavigator,
@@ -17,35 +17,45 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroText,
+<<<<<<< HEAD
   ViroImage,
   ViroVideo,
 } from '../../node_modules/react-viro';
+=======
+  ViroImage
+} from "../../node_modules/react-viro";
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
 
-import { PortalScene2 } from './AcePortalScene2';
+import { PortalScene2 } from "./AcePortalScene2";
 // import PasswordScreen from '../PasswordScreen'
 
-import HeartObject from './HeartObject';
+import HeartObject from "./HeartObject";
+import RoseObject from "./RoseObject";
 
 let count = 0;
 const shipPortal =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx";
 
 const portalShipDiffuse =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png";
 
 const portalShipNormal =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png";
 
 const portalShipSpecular =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png";
 
 class PortScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       portalText: 'Down the rabbit hole...',
+=======
+      portalText: "Hello There!",
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
       clickCount: `click count ${count}`,
-      heart1: true,
+      heart1: true
     };
     this._onEnterPortal = this._onEnterPortal.bind(this);
     this._jumpNextScene = this._jumpNextScene.bind(this);
@@ -54,13 +64,17 @@ class PortScene extends Component {
 
   _onEnterPortal() {
     this.setState({
+<<<<<<< HEAD
       portalText: 'Down the rabbit hole...',
+=======
+      portalText: "Find the key!"
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
     });
   }
 
   //jump to second scene
   _jumpNextScene() {
-    this.props.arSceneNavigator.jump('scene2', { scene: PortalScene2 });
+    this.props.arSceneNavigator.jump("scene2", { scene: PortalScene2 });
   }
 
   render() {
@@ -102,13 +116,21 @@ class PortScene extends Component {
               resources={[
                 require(portalShipDiffuse),
                 require(portalShipNormal),
-                require(portalShipSpecular),
+                require(portalShipSpecular)
               ]}
               type="VRX"
             />
           </ViroPortal>
+<<<<<<< HEAD
           <Viro360Image
             source={require('../../assets/portal_assets/360_space.jpg')}
+=======
+          <Viro360Video
+            source={require("../../assets/portal_assets/trippy360_480p.mp4")}
+            loop={true}
+            paused={false}
+            volume={1.0}
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
           />
         </ViroPortalScene>
         <ViroPortalScene
@@ -133,6 +155,19 @@ class PortScene extends Component {
           <Viro360Image
             source={require('../../assets/portal_assets/360_tiles.jpg')}
           />
+<<<<<<< HEAD
+=======
+          {/* <ViroImage
+            source={require('../res/signExit.png')}
+            position={[1, 1, -3]}
+            scale={[0.1, 0.1, 0.1]}
+            onClick={this._handleClick}
+          /> */}
+          <HeartObject position={[1, 1, -1]} />
+          <HeartObject position={[1, 1.5, -2]} />
+          <HeartObject position={[-1, 1, -1]} />
+          <RoseObject position={[2, 1, -5]} scale={[0.05, 0.05, 0.05]} />
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
         </ViroPortalScene>
 
         <ViroImage
@@ -177,19 +212,32 @@ class PortScene extends Component {
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 20,
+<<<<<<< HEAD
     color: '#ffffff',
     textAlignVertical: 'center',
     textAlign: 'center',
+=======
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
   },
   portalTextStyles: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 28,
+<<<<<<< HEAD
     color: '#ffffff',
     textAlignVertical: 'center',
     textAlign: 'center',
   },
+=======
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
+>>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
 });
 
 module.exports = PortScene;

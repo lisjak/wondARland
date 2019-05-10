@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { gameResumedThunk } from '../store/gameReducer';
 import Winner from './WinnerScreen';
@@ -24,8 +24,6 @@ class PasswordScreen extends Component {
     this.handleGoBack = this.handleGoBack.bind(this);
   }
 
-  componentDidMount() {}
-
   onSubmitChange() {
     if (
       this.state.firstcode === passcode[0] &&
@@ -42,7 +40,15 @@ class PasswordScreen extends Component {
     if (this.state.isWin) {
       return <Winner history={history} />;
     } else {
-      return <Loser history={history} />;
+      return (
+        <Loser
+          history={history}
+          headline="Nope!"
+          loseMessage="You entered the wrong password."
+          buttonLabel="Try again?"
+          passwordWrong={true}
+        />
+      );
     }
   }
 
@@ -61,7 +67,7 @@ class PasswordScreen extends Component {
     return !this.state.isSubmit ? (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>Ready to enter your passcode?</Text>
+          <Text style={styles.subtitle}>Ready to enter your passcode?</Text>
         </View>
         <View style={styles.inputContainer}>
           <Input
@@ -91,21 +97,33 @@ class PasswordScreen extends Component {
           />
         </View>
 
-        <Button
+        <Text style={styles.text}>
+          (Be careful! If you're wrong, you'll have to replay all the portals in
+          the time you have left.)
+        </Text>
+        {/* <Button
           containerStyle={styles.button}
           buttonStyle={styles.buttonstyle1}
           title="submit"
           type="solid"
           onPress={() => this.onSubmitChange()}
-        />
+        /> */}
 
-        <Button
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this.onSubmitChange}
+          underlayColor="#68a0ff"
+        >
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableHighlight>
+
+        {/* <Button
           containerStyle={styles.link}
           buttonStyle={styles.buttonstyle2}
           title="<-Go Back"
           type="solid"
           onPress={this.handleGoBack}
-        />
+        /> */}
       </View>
     ) : (
       this.renderResult()
@@ -127,7 +145,8 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: 'black',
+    margin: 10,
   },
   textContainer: {
     flex: 1,
@@ -157,9 +176,16 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     alignSelf: 'center',
+    margin: 10,
+    height: 60,
+    width: 160,
+    paddingTop: 20,
+    paddingBottom: 10,
+    backgroundColor: '#ac3c0b',
+    borderRadius: 10,
   },
   buttonstyle1: {
-    backgroundColor: 'purple',
+    backgroundColor: 'black',
     height: 50,
     width: 100,
     borderRadius: 10,
@@ -172,8 +198,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonstyle2: {
-    backgroundColor: 'purple',
+    backgroundColor: 'black',
     height: 50,
     width: 100,
+  },
+
+  title: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontWeight: 'bold',
+    fontSize: 50,
+    color: 'white',
+  },
+  subtitle: {
+    marginTop: 20,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: 'white',
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  buttons: {
+    height: 60,
+    width: 160,
+    paddingTop: 20,
+    paddingBottom: 10,
+    backgroundColor: '#ac3c0b',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
   },
 });
