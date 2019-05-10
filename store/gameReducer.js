@@ -69,11 +69,7 @@ export default function(state = initialState, action) {
     case GAME_STARTED:
       return {
         ...state,
-<<<<<<< HEAD
         timeRemaining: 15000000,
-=======
-        timeRemaining: 5000,
->>>>>>> f0b042f8b433b97955aefe2ae68ade3ebc415bce
         timeStarted: Date.now(),
         gameInProgress: true,
       };
