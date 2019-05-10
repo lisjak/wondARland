@@ -93,30 +93,6 @@ export default class RosePortal extends Component {
         <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} />
         <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} />
 
-        <ViroNode position={[1, 1, -1]}>
-          <ViroText
-            text="Your Second Passcode is 011"
-            width={2}
-            height={2}
-            scale={[0.5, 0.5, 0.5]}
-            position={[0, 1, -2]}
-            style={styles.portalTextStyles}
-            visible={this.state.showPasscode}
-          />
-
-          <Viro3DObject
-            source={require("../../assets/emoji_heart/emoji_heart.vrx")}
-            resources={[
-              require("../../assets/emoji_heart/emoji_heart_specular.png"),
-              require("../../assets/emoji_heart/emoji_heart.png")
-            ]}
-            position={[0, 0, -1]}
-            scale={[0.3, 0.3, 0.3]}
-            onClick={this.handleClick}
-            type="VRX"
-          />
-        </ViroNode>
-
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
@@ -145,7 +121,29 @@ export default class RosePortal extends Component {
           <Viro360Image
             source={require("../../assets/portal_assets/tree360.jpg")}
           />
+          <ViroNode position={[1, 1, -1]}>
+            <ViroText
+              text="Your Second Passcode is 011"
+              width={2}
+              height={2}
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 1, -2]}
+              style={styles.portalTextStyles}
+              visible={this.state.showPasscode}
+            />
 
+            <Viro3DObject
+              source={require("../../assets/emoji_heart/emoji_heart.vrx")}
+              resources={[
+                require("../../assets/emoji_heart/emoji_heart_specular.png"),
+                require("../../assets/emoji_heart/emoji_heart.png")
+              ]}
+              position={[0, 0, -1]}
+              scale={[0.3, 0.3, 0.3]}
+              onClick={this.handleClick}
+              type="VRX"
+            />
+          </ViroNode>
           <HeartObject position={[1, 1, -3]} />
           <HeartObject position={[0, 2, -5]} />
           <HeartObject position={[2, -1, -4]} />
