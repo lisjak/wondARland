@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import React, { Component } from "../../node_modules/react";
+import React, { Component } from '../../node_modules/react';
 
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 import {
   ViroSceneNavigator,
@@ -17,34 +17,34 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroText,
-  ViroImage
-} from "../../node_modules/react-viro";
+  ViroImage,
+} from '../../node_modules/react-viro';
 
-import { PortalScene2 } from "./AcePortalScene2";
+import { PortalScene2 } from './AcePortalScene2';
 // import PasswordScreen from '../PasswordScreen'
 
-import HeartObject from "./HeartObject";
+import HeartObject from './HeartObject';
 
 let count = 0;
 const shipPortal =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx';
 
 const portalShipDiffuse =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
 
 const portalShipNormal =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
 
 const portalShipSpecular =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';
 
 class PortScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      portalText: "Hello There!",
+      portalText: 'Hello There!',
       clickCount: `click count ${count}`,
-      heart1: true
+      heart1: true,
     };
     this._onEnterPortal = this._onEnterPortal.bind(this);
     this._jumpNextScene = this._jumpNextScene.bind(this);
@@ -53,13 +53,13 @@ class PortScene extends Component {
 
   _onEnterPortal() {
     this.setState({
-      portalText: "Find the key!"
+      portalText: 'Find the key!',
     });
   }
 
   //jump to second scene
   _jumpNextScene() {
-    this.props.arSceneNavigator.jump("scene2", { scene: PortalScene2 });
+    this.props.arSceneNavigator.jump('scene2', { scene: PortalScene2 });
   }
 
   // _handleClick() {
@@ -93,13 +93,16 @@ class PortScene extends Component {
               resources={[
                 require(portalShipDiffuse),
                 require(portalShipNormal),
-                require(portalShipSpecular)
+                require(portalShipSpecular),
               ]}
               type="VRX"
             />
           </ViroPortal>
-          <Viro360Image
-            source={require("../../assets/portal_assets/portal_res/360_island.jpg")}
+          <Viro360Video
+            source={require('../../assets/portal_assets/trippy360_480p.mp4')}
+            loop={true}
+            paused={false}
+            volume={1.0}
           />
 
           {/* <ViroPortalScene
@@ -194,19 +197,19 @@ class PortScene extends Component {
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 20,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
   portalTextStyles: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 28,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
-  }
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
 });
 
 module.exports = PortScene;
