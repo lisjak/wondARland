@@ -5,6 +5,7 @@ import { gamePausedThunk, gameEndedThunk } from '../../store/gameReducer';
 import { Button } from 'react-native-material-ui';
 import Timer from './Timer';
 import PointCount from './PointCount';
+import RoseCount from './RoseCount';
 
 class ButtonBar extends Component {
   constructor() {
@@ -44,6 +45,7 @@ class ButtonBar extends Component {
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <Timer history={this.props.history} />
+          <RoseCount />
           <PointCount />
         </View>
         <View style={styles.secondRowContainer}>
