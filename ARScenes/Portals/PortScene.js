@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-import React, { Component } from '../../node_modules/react';
+import React, { Component } from "../../node_modules/react";
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 import {
   ViroSceneNavigator,
@@ -19,50 +19,53 @@ import {
   ViroText,
   ViroImage,
   ViroVideo,
-} from '../../node_modules/react-viro';
+  ViroNode
+} from "../../node_modules/react-viro";
 
-import { PortalScene2 } from './AcePortalScene2';
+import { PortalScene2 } from "./AcePortalScene2";
 // import PasswordScreen from '../PasswordScreen'
 
-import HeartObject from './HeartObject';
-import RoseObject from './RoseObject';
+import HeartObject from "./HeartObject";
+import RoseObject from "./RoseObject";
 
 let count = 0;
 const shipPortal =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx";
 
 const portalShipDiffuse =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png";
 
 const portalShipNormal =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png";
 
 const portalShipSpecular =
-  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';
+  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png";
 
 class PortScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      portalText: 'Down the rabbit hole...',
-      clickCount: `click count ${count}`,
-      heart1: true,
+      portalText: "Down the rabbit hole...",
+      showPasscode: false
     };
     this._onEnterPortal = this._onEnterPortal.bind(this);
-    this._jumpNextScene = this._jumpNextScene.bind(this);
-    // this._handleClick = this._handleClick.bind(this);
+    // this._jumpNextScene = this._jumpNextScene.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   _onEnterPortal() {
     this.setState({
-      portalText: 'Down the rabbit hole...',
+      portalText: "Down the rabbit hole..."
     });
+  }
+  handleClick() {
+    this.setState({ showPasscode: true });
   }
 
   //jump to second scene
-  _jumpNextScene() {
-    this.props.arSceneNavigator.jump('scene2', { scene: PortalScene2 });
-  }
+  // _jumpNextScene() {
+  //   this.props.arSceneNavigator.jump('scene2', { scene: PortalScene2 });
+  // }
 
   render() {
     return (
@@ -73,19 +76,19 @@ class PortScene extends Component {
           this._onEnterPortal();
         }}
       >
-        <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
+        <ViroPortal position={[0, 0.7, 0]} scale={[0.5, 0.5, 0.5]}>
           <Viro3DObject
             source={require(shipPortal)}
             resources={[
               require(portalShipDiffuse),
               require(portalShipNormal),
-              require(portalShipSpecular),
+              require(portalShipSpecular)
             ]}
             type="VRX"
           />
         </ViroPortal>
         <Viro360Video
-          source={require('../../assets/portal_assets/2ndtrip.mp4')}
+          source={require("../../assets/portal_assets/2ndtrip.mp4")}
           loop={true}
           paused={false}
           volume={1.0}
@@ -97,19 +100,19 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[-2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[-2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
                 require(portalShipDiffuse),
                 require(portalShipNormal),
-                require(portalShipSpecular),
+                require(portalShipSpecular)
               ]}
               type="VRX"
             />
           </ViroPortal>
           <Viro360Image
-            source={require('../../assets/portal_assets/360_space.jpg')}
+            source={require("../../assets/portal_assets/360_space.jpg")}
           />
         </ViroPortalScene>
         <ViroPortalScene
@@ -120,28 +123,51 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
                 require(portalShipDiffuse),
                 require(portalShipNormal),
-                require(portalShipSpecular),
+                require(portalShipSpecular)
               ]}
               type="VRX"
             />
           </ViroPortal>
           <Viro360Image
-            source={require('../../assets/portal_assets/360_tiles.jpg')}
+            source={require("../../assets/portal_assets/360_tiles.jpg")}
           />
+          <ViroNode position={[1, 1, -1]}>
+            <ViroText
+              text="Your Third Passcode is 0111"
+              width={2}
+              height={2}
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 1, -2]}
+              style={styles.portalTextStyles}
+              visible={this.state.showPasscode}
+            />
+
+            <Viro3DObject
+              source={require("../../assets/emoji_heart/emoji_heart.vrx")}
+              resources={[
+                require("../../assets/emoji_heart/emoji_heart_specular.png"),
+                require("../../assets/emoji_heart/emoji_heart.png")
+              ]}
+              position={[0, 0, -1]}
+              scale={[0.3, 0.3, 0.3]}
+              onClick={this.handleClick}
+              type="VRX"
+            />
+          </ViroNode>
         </ViroPortalScene>
 
-        <ViroImage
+        {/* <ViroImage
           source={require('../../assets/res/Clickme.jpg')}
           position={[2, 2, -4]}
           scale={[0.3, 0.3, 0.3]}
           onClick={this._jumpNextScene}
-        />
+        /> */}
 
         <ViroText
           text={this.state.portalText}
@@ -151,12 +177,12 @@ class PortScene extends Component {
           position={[0, 0.4, -3]}
           style={styles.portalTextStyles}
         />
-        <ViroImage
+        {/* <ViroImage
           source={require('../../assets/res/signExit.png')}
           position={[1, 1, -3]}
           scale={[0.1, 0.1, 0.1]}
           onClick={this._handleClick}
-        />
+        /> */}
 
         <ViroText
           text={this.state.portalText}
@@ -164,13 +190,13 @@ class PortScene extends Component {
           height={2}
           scale={[0.5, 0.5, 0.5]}
           position={[0, 0.4, -3]}
-          outerStroke={{ type: 'Outline', width: 2, color: '#000000' }}
+          outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
           style={styles.portalTextStyles}
         />
 
-        <HeartObject position={[1, 1, -1]} />
-        <HeartObject position={[1, 1.5, -2]} />
-        <HeartObject position={[-1, 1, -1]} />
+        <HeartObject position={[2, 2, -3]} />
+        <HeartObject position={[1, 1.5, -5]} />
+        <HeartObject position={[-1, 1, -4]} />
       </ViroPortalScene>
     );
   }
@@ -178,19 +204,19 @@ class PortScene extends Component {
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 20,
-    color: '#ffffff',
-    textAlignVertical: 'center',
-    textAlign: 'center',
+    color: "#ffffff",
+    textAlignVertical: "center",
+    textAlign: "center"
   },
   portalTextStyles: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 28,
-    color: '#ffffff',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    color: "#ffffff",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
 });
 
 module.exports = PortScene;
