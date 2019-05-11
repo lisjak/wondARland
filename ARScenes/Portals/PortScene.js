@@ -76,7 +76,7 @@ class PortScene extends Component {
           this._onEnterPortal();
         }}
       >
-        <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
+        <ViroPortal position={[0, 0.7, 0]} scale={[0.5, 0.5, 0.5]}>
           <Viro3DObject
             source={require(shipPortal)}
             resources={[
@@ -100,7 +100,7 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[-2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[-2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
@@ -123,7 +123,7 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[2, 0, -5]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[

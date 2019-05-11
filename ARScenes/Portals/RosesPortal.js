@@ -107,7 +107,7 @@ export default class RosePortal extends Component {
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
         >
-          <ViroPortal position={[2, 1, -4]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[0, 0.5, -2]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
               resources={[
