@@ -97,13 +97,7 @@ export default function(state = initialState, action) {
       };
     case GAME_ENDED:
       return {
-        ...state,
-        timeRemaining: 0,
-        timeStarted: 0,
-        timeElapsed: 0,
-        password: '',
-        gameInProgress: false,
-        pointsFound: 0,
+        state: initialState
       };
     case POINT_FOUND:
       return {
