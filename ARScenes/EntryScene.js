@@ -8,8 +8,7 @@ let sharedProps = {
   apiKey: process.env.APIKEY
 };
 
-// let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
-let InitialARScene = require("./Portals/TestPortalSceneEmma");
+let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
 
 export default class EntryARScene extends Component {
   constructor() {
