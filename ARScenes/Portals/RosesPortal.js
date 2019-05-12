@@ -7,8 +7,8 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  */
-import React, { Component } from "../../node_modules/react";
-import { AppRegistry, StyleSheet, Text, View } from "react-native";
+import React, { Component } from '../../node_modules/react';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import {
   ViroARScene,
@@ -23,11 +23,12 @@ import {
   ViroPortal,
   ViroPortalScene,
   ViroARTrackingTargets,
-  ViroText
-} from "../../node_modules/react-viro";
+  ViroText,
+} from '../../node_modules/react-viro';
 
-import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
+import HeartObject from './HeartObject';
+import RoseObject from './RoseObject';
+import DeadEndforRosePortal from './DeadEndforRosePortal';
 
 export default class RosePortal extends Component {
   constructor() {
@@ -35,7 +36,7 @@ export default class RosePortal extends Component {
     this.state = {
       playPortal1Sound: true,
       playPortal2Sound: true,
-      showPasscode: false
+      showPasscode: false,
     };
 
     this.handleEnterPortal1 = this.handleEnterPortal1.bind(this);
@@ -66,24 +67,24 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, -1, 0]}
+        position={[0.5, 0.5, -1]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0, 0, -1]} scale={[0.25, 0.25, 0.25]}>
+        <ViroPortal position={[0.5, 0.5, -1]} scale={[0.25, 0.25, 0.25]}>
           <Viro3DObject
-            source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
+            source={require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx')}
             resources={[
-              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png"),
-              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png"),
-              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png")
+              require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame_diffuse.png'),
+              require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame_normal.png'),
+              require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame_specular.png'),
             ]}
             type="VRX"
           />
         </ViroPortal>
         <Viro360Image
-          source={require("../../assets/portal_assets/360roses.png")}
+          source={require('../../assets/portal_assets/360roses.png')}
         />
 
         <HeartObject position={[1, 1, -3]} />
@@ -96,10 +97,11 @@ export default class RosePortal extends Component {
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require("../../assets/music/arcadia-by-kevin-macleod.mp3")}
+          source={require('../../assets/music/arcadia-by-kevin-macleod.mp3')}
           loop={true}
           volume={1.0}
         />
+        <DeadEndforRosePortal />
 
         <ViroPortalScene
           position={[0, -1, 0]}
@@ -107,19 +109,20 @@ export default class RosePortal extends Component {
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
         >
-          <ViroPortal position={[0, 0.5, -2]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[3, 2, -2]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
-              source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
+              source={require('../../assets/portal_assets/portal_res/portal_archway/portal_archway.vrx')}
               resources={[
-                require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png"),
-                require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png"),
-                require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png")
+                require('../../assets/portal_assets/portal_res/portal_archway/portal_archway_diffuse.png'),
+                require('../../assets/portal_assets/portal_res/portal_archway/portal_archway_normal.png'),
+                require('../../assets/portal_assets/portal_res/portal_archway/portal_archway_specular.png'),
+                require('../../assets/portal_assets/portal_res/portal_archway/portal_entry.png'),
               ]}
               type="VRX"
             />
           </ViroPortal>
           <Viro360Image
-            source={require("../../assets/portal_assets/tree360.jpg")}
+            source={require('../../assets/portal_assets/tree360.jpg')}
           />
           <ViroNode position={[1, 1, -1]}>
             <ViroText
@@ -133,10 +136,10 @@ export default class RosePortal extends Component {
             />
 
             <Viro3DObject
-              source={require("../../assets/emoji_heart/emoji_heart.vrx")}
+              source={require('../../assets/emoji_heart/emoji_heart.vrx')}
               resources={[
-                require("../../assets/emoji_heart/emoji_heart_specular.png"),
-                require("../../assets/emoji_heart/emoji_heart.png")
+                require('../../assets/emoji_heart/emoji_heart_specular.png'),
+                require('../../assets/emoji_heart/emoji_heart.png'),
               ]}
               position={[0, 0, -1]}
               scale={[0.3, 0.3, 0.3]}
@@ -153,7 +156,7 @@ export default class RosePortal extends Component {
           <ViroSound
             paused={this.state.playPortal2Sound}
             muted={false}
-            source={require("../../assets/music/monkeys-spinning-monkeys-by-kevin-macleod.mp3")}
+            source={require('../../assets/music/monkeys-spinning-monkeys-by-kevin-macleod.mp3')}
             loop={true}
             volume={1.0}
           />
@@ -165,18 +168,18 @@ export default class RosePortal extends Component {
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 20,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
   portalTextStyles: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 28,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
-  }
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
 });
 module.exports = RosePortal;
