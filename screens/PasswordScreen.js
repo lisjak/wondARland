@@ -1,22 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { Input, Button } from 'react-native-elements';
-import { gameResumedThunk } from '../store/gameReducer';
-import Winner from './WinnerScreen';
-import Loser from './LoserScreen';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Keyboard
+} from "react-native";
+import { Input, Button } from "react-native-elements";
+import { gameResumedThunk } from "../store/gameReducer";
+import Winner from "./WinnerScreen";
+import Loser from "./LoserScreen";
 
-const passcode = ['9', '3', '7'];
+const passcode = "937";
 
 class PasswordScreen extends Component {
   constructor() {
     super();
     this.state = {
-      firstcode: '',
-      secondcode: '',
-      thirdcode: '',
+      firstcode: "",
+      secondcode: "",
+      thirdcode: "",
+      // code: "",
       isWin: false,
-      isSubmit: false,
+      isSubmit: false
     };
     this.onSubmitChange = this.onSubmitChange.bind(this);
     this.renderResult = this.renderResult.bind(this);
@@ -29,6 +36,7 @@ class PasswordScreen extends Component {
       this.state.firstcode === passcode[0] &&
       this.state.secondcode === passcode[1] &&
       this.state.thirdcode === passcode[2]
+      // this.state.code === passcode
     ) {
       this.setState({ isWin: true });
     }
@@ -67,7 +75,9 @@ class PasswordScreen extends Component {
     return !this.state.isSubmit ? (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.subtitle}>Ready to enter your passcode?</Text>
+          <Text style={styles.subtitle}>
+            Ready to enter your three passcode?
+          </Text>
         </View>
         <View style={styles.inputContainer}>
           <Input
@@ -75,26 +85,53 @@ class PasswordScreen extends Component {
             containerStyle={styles.input}
             inputStyle={styles.inputstyle}
             defaultvalue={this.state.firstcode}
-            onChangeText={text => this.setState({ firstcode: text })}
+            keyboardType="numeric"
+            maxLength={1}
+            onChangeText={text => {
+              this.setState({ firstcode: text });
+              this.refs["2"].focus();
+            }}
             returnKeyType="next"
-            onSubmitEditing={() => this.focusNextField('2')}
+            // onSubmitEditing={() => this.focusNextField("2")}
           />
           <Input
             ref="2"
             containerStyle={styles.input}
             inputStyle={styles.inputstyle}
             defaultvalue={this.state.secondcode}
-            onChangeText={text => this.setState({ secondcode: text })}
+            keyboardType="numeric"
+            maxLength={1}
+            onChangeText={text => {
+              this.setState({ secondcode: text });
+              this.refs["3"].focus();
+            }}
             returnKeyType="next"
-            onSubmitEditing={() => this.focusNextField('3')}
+            // onSubmitEditing={() => this.focusNextField("3")}
           />
           <Input
             ref="3"
             containerStyle={styles.input}
             inputStyle={styles.inputstyle}
-            defaultvalue={this.state.secondcode}
-            onChangeText={text => this.setState({ thirdcode: text })}
+            defaultvalue={this.state.thirdcode}
+            keyboardType="numeric"
+            maxLength={1}
+            onChangeText={text => {
+              this.setState({ thirdcode: text });
+              Keyboard.dismiss();
+            }}
           />
+          {/* <Input
+            containerStyle={styles.input}
+            inputStyle={styles.inputstyle}
+            defaultvalue={this.state.code}
+            keyboardType="numbers-and-punctuation"
+            maxLength={3}
+            placeholder="000"
+            placeholderTextColor="white"
+            onChangeText={text => {
+              this.setState({ code: text });
+            }}
+          /> */}
         </View>
 
         <Text style={styles.text}>
@@ -133,7 +170,7 @@ class PasswordScreen extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    resumeGame: () => dispatch(gameResumedThunk()),
+    resumeGame: () => dispatch(gameResumedThunk())
   };
 };
 
@@ -145,95 +182,96 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    margin: 10,
+    backgroundColor: "black",
+    margin: 10
   },
   textContainer: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center"
   },
   text: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
-    color: 'white',
+    color: "white"
   },
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center"
   },
   input: {
-    width: 60,
-    alignSelf: 'center',
+    width: 50,
+    alignSelf: "center"
   },
   inputstyle: {
-    color: 'white',
+    color: "white",
     fontSize: 45,
     borderBottomWidth: 2,
-    borderColor: 'white',
+    borderColor: "white"
   },
   button: {
-    flex: 1,
-    alignSelf: 'center',
+    // flex: 1,
+    alignSelf: "center",
     margin: 10,
+    marginBottom: 50,
     height: 60,
     width: 160,
     paddingTop: 20,
     paddingBottom: 10,
-    backgroundColor: '#ac3c0b',
-    borderRadius: 10,
+    backgroundColor: "#ac3c0b",
+    borderRadius: 10
   },
   buttonstyle1: {
-    backgroundColor: 'black',
+    backgroundColor: "black",
     height: 50,
     width: 100,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: "#fff"
   },
   link: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
   buttonstyle2: {
-    backgroundColor: 'black',
+    backgroundColor: "black",
     height: 50,
-    width: 100,
+    width: 100
   },
 
   title: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontWeight: "bold",
     fontSize: 50,
-    color: 'white',
+    color: "white"
   },
   subtitle: {
     marginTop: 20,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontWeight: "bold",
     fontSize: 30,
-    color: 'white',
+    color: "white"
   },
   buttonText: {
-    color: '#fff',
-    textAlign: 'center',
+    color: "#fff",
+    textAlign: "center",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
   buttons: {
     height: 60,
     width: 160,
     paddingTop: 20,
     paddingBottom: 10,
-    backgroundColor: '#ac3c0b',
+    backgroundColor: "#ac3c0b",
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
-    shadowRadius: 3,
-  },
+    shadowRadius: 3
+  }
 });
