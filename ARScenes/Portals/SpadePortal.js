@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import {
   Viro3DObject,
@@ -6,10 +6,10 @@ import {
   ViroNode,
   Viro360Image,
   ViroPortal,
-  ViroPortalScene,
-} from 'react-viro';
+  ViroPortalScene
+} from "react-viro";
 
-import HeartObjectWithSound from './HeartObjectWithSound';
+import HeartObjectWithSound from "./HeartObjectWithSound";
 // import RoseObject from './RoseObject';
 
 export default class SpadePortal extends Component {
@@ -23,11 +23,11 @@ export default class SpadePortal extends Component {
       >
         <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
           <Viro3DObject
-            source={require('../../assets/portal_assets/portal_wood_frame/portal_wood_frame.vrx')}
+            source={require("../../assets/portal_assets/portal_wood_frame/portal_wood_frame.vrx")}
             resources={[
-              require('../../assets/portal_assets/portal_wood_frame/portal_wood_frame_diffuse.png'),
-              require('../../assets/portal_assets/portal_wood_frame/portal_wood_frame_normal.png'),
-              require('../../assets/portal_assets/portal_wood_frame/portal_wood_frame_specular.png'),
+              require("../../assets/portal_assets/portal_wood_frame/portal_wood_frame_diffuse.png"),
+              require("../../assets/portal_assets/portal_wood_frame/portal_wood_frame_normal.png"),
+              require("../../assets/portal_assets/portal_wood_frame/portal_wood_frame_specular.png")
             ]}
             type="VRX"
           />
@@ -44,7 +44,7 @@ export default class SpadePortal extends Component {
             outerAngle={20}
           />
           <Viro360Image
-            source={require('../../assets/portal_assets/allblack.jpg')}
+            source={require("../../assets/portal_assets/allblack.jpg")}
           />
         </ViroNode>
 
