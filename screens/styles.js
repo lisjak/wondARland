@@ -19,7 +19,7 @@ export default StyleSheet.create({
   button: {
     padding: 18,
     alignItems: 'center',
-    backgroundColor: '#303030',
+    backgroundColor: '#fff',
     borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 2, height: 3 },
@@ -30,6 +30,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 20,
-    color: '#fff',
+    color: '#000',
   },
 });

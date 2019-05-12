@@ -80,7 +80,7 @@ export default function(state = initialState, action) {
     case GAME_STARTED:
       return {
         ...state,
-        timeRemaining: 15000000,
+        timeRemaining: 5000,
         timeStarted: Date.now(),
         gameInProgress: true,
       };
@@ -97,7 +97,13 @@ export default function(state = initialState, action) {
       };
     case GAME_ENDED:
       return {
-        state: initialState
+        timeRemaining: 0,
+        timeStarted: 0,
+        timeElapsed: 0,
+        password: '',
+        gameInProgress: false,
+        pointsFound: 0,
+        rosesFound: 0,
       };
     case POINT_FOUND:
       return {

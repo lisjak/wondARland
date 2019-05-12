@@ -18,4 +18,10 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     // alignItems: 'center'
   },
+  timerText: {
+    textAlign: 'center',
+    fontFamily: 'Arial',
+    fontSize: 36,
+    color: 'white',
+  },
 });

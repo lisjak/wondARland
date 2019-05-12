@@ -5,7 +5,6 @@ import { gamePausedThunk, gameEndedThunk } from '../../store/gameReducer';
 import { Button } from 'react-native-material-ui';
 import styles from './styles';
 import Timer from './Timer';
-import Message from '../../screens/MessageScreen';
 import PointCount from './PointCount';
 import RoseCount from './RoseCount';
 
@@ -16,7 +15,6 @@ class ButtonBar extends Component {
     this.handlePause = this.handlePause.bind(this);
     this.handleResume = this.handleResume.bind(this);
     this.handleExit = this.handleExit.bind(this);
-    this.renderPause = this.renderPause.bind(this);
   }
 
   handlePassword() {
@@ -26,8 +24,9 @@ class ButtonBar extends Component {
   }
 
   handlePause() {
-    this.props.pauseGame();
-    this.renderPause();
+    const { history, pauseGame } = this.props;
+    pauseGame();
+    history.push('/pause');
   }
 
   handleResume() {
@@ -42,18 +41,6 @@ class ButtonBar extends Component {
     history.push('/');
   }
 
-  renderPause() {
-    const { history } = this.props;
-    return (
-      <Message
-        history={history}
-        title="Game Paused"
-        buttonText="Resume"
-        gameStatus="gamePaused"
-      />
-    );
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -64,7 +51,7 @@ class ButtonBar extends Component {
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          <Button accent text="pause" onPress={this.handlePause} />
+          {/* <Button accent text="pause" onPress={this.handlePause} /> */}
           <Button accent text="exit" onPress={this.handleExit} />
         </View>
       </View>

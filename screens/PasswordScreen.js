@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { gameResumedThunk } from "../store/gameReducer";
-import Winner from "./WinnerScreen";
-import Loser from "./LoserScreen";
+import Message from "./MessageScreen";
 
 const passcode = "937";
 
@@ -175,7 +174,7 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: '#04152b',
     margin: 10
   },
   textContainer: {

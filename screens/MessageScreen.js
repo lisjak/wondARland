@@ -41,8 +41,8 @@ class Message extends Component {
     const backgroundColor = {
       gameWon: '#498933',
       gamePaused: '#c4440d',
-      wrongPassword: '#db5e00',
-      timerRanOut: '#ec1c1a',
+      wrongPassword: '#ac3c0b',
+      timerRanOut: '#ac3c0b',
       default: '#000',
     };
 
@@ -65,7 +65,7 @@ class Message extends Component {
           <TouchableHighlight
             style={styles.button}
             onPress={this.handleOnPress}
-            underlayColor="#404040"
+            underlayColor="whitesmoke"
           >
             <Text style={styles.buttonText}>{buttonText}</Text>
           </TouchableHighlight>
