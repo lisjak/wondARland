@@ -9,8 +9,7 @@ import Login from './screens/LogIn';
 import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
-import Winner from './screens/WinnerScreen';
-import Pause from './screens/PauseScreen';
+import Message from './screens/MessageScreen';
 import EntryARScene from './ARScenes/EntryScene';
 
 const uiTheme = {
@@ -35,10 +34,8 @@ export default class App extends Component {
               <Route exact path="/instructions" component={Instructions} />
               <Route exact path="/entryarscene" component={EntryARScene} />
               <Route exact path="/loser" component={Loser} />
-              <Route exact path="/wrongpassword" component={Loser} />
               <Route exact path="/password" component={PasswordScreen} />
-              <Route exact path="/winner" component={Winner} />
-              <Route exact Path="/pause" component={Pause} />
+              <Route exact path="/message" component={Message} />
             </Switch>
           </View>
         </NativeRouter>
@@ -52,6 +49,6 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: '#04152b',
   },
 });
