@@ -14,11 +14,8 @@ import {
 } from "../../node_modules/react-viro";
 
 import HeartObject from "./HeartObject";
-// import RoseObject from "./RoseObject";
+import RoseObject from "./RoseObject";
 import RosePortal from "./RosesPortal";
-import QueenPortal from "./QueenPortal2";
-import PortPortal from "./PortScene";
-import SpadePortal from "./SpadePortal";
 
 const shipPortal =
   "../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx";
@@ -130,10 +127,7 @@ class TestPortalScene extends Component {
             />
           </ViroNode>
         </ViroPortalScene> */}
-        {/* <RosePortal /> */}
-        {/* <QueenPortal /> */}
-        {/* <PortPortal /> */}
-        <SpadePortal />
+        <RosePortal />
       </ViroARScene>
     );
   }

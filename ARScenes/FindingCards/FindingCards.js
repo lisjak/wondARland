@@ -51,7 +51,8 @@ class FindingCards extends Component {
   _onAnchorFound() {
     this.setState({
       playAnim: true,
-      visible: true
+      visible: true,
+      modalVisible: true
     });
     Vibration.vibrate(1, false);
   }
