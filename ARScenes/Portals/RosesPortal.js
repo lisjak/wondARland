@@ -62,12 +62,12 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0.2, 0]}
+        position={[0, 0, -1]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0.5, 0.5, -1]} scale={[0.25, 0.25, 0.25]}>
+        <ViroPortal position={[0, 0, 0]} scale={[0.25, 0.25, 0.25]}>
           <Viro3DObject
             source={require("../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx")}
             resources={[
@@ -97,12 +97,12 @@ export default class RosePortal extends Component {
         <DeadEndforRosePortal />
 
         <ViroPortalScene
-          position={[0, -1, 0]}
+          position={[1, 0, -2]}
           passable={true}
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
         >
-          <ViroPortal position={[3, 2, -2]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require("../../assets/portal_assets/portal_res/portal_archway/portal_archway.vrx")}
               resources={[
@@ -125,8 +125,9 @@ export default class RosePortal extends Component {
               // width={2}
               height={3}
               extrusionDepth={3}
-              materials={["frontMaterial", "backMaterial", "sideMaterial"]}
-              text="Second Passcode 011"
+
+              materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
+              text="The second number in the password is 3"
               visible={this.state.showPasscode}
             />
 

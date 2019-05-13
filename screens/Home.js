@@ -19,6 +19,7 @@ class ViroSample extends Component {
     this.handleStart = this.handleStart.bind(this);
   }
 
+
   handleStart() {
     const { history, startGame } = this.props;
     startGame();
@@ -69,6 +70,13 @@ class ViroSample extends Component {
             underlayColor="#04152b"
           >
             <Text style={localStyles.buttonText}>Instructions</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={localStyles.buttons}
+            onPress={() => history.push('/login')}
+            underlayColor="#04152b"
+          >
+            <Text style={localStyles.buttonText}>Login</Text>
           </TouchableHighlight>
         </View>
       </View>
