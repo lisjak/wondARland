@@ -145,7 +145,7 @@ class PortScene extends Component {
               height={3}
               extrusionDepth={3}
               materials={["frontMaterial", "backMaterial", "sideMaterial"]}
-              text="Third Passcode 0111"
+              text="Third Number of password is 7"
               visible={this.state.showPasscode}
             />
 
