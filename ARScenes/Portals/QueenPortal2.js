@@ -1,5 +1,5 @@
-import React, { Component } from '../../node_modules/react';
-import { StyleSheet } from 'react-native';
+import React, { Component } from "../../node_modules/react";
+import { StyleSheet } from "react-native";
 
 import {
   ViroARScene,
@@ -16,13 +16,13 @@ import {
   Viro360Video,
   ViroVideo,
   Viro3DObject,
-  ViroMaterials,
-} from '../../node_modules/react-viro';
+  ViroMaterials
+} from "../../node_modules/react-viro";
 
-import HeartObject from './HeartObject';
+import HeartObject from "./HeartObject";
 
-const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
-const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
+const cheshireCat = require("../../assets/portal_assets/chesh.mp4");
+const transparentCheshire = require("../../assets/portal_assets/cheshireTransparent.gif");
 
 export default class QueenPortal2 extends Component {
   constructor() {
@@ -31,14 +31,14 @@ export default class QueenPortal2 extends Component {
     // set initial state
     this.state = {
       runShowTitleAnimation: true,
-      showPasscode: false,
+      showPasscode: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     this.setState({
-      showPasscode: true,
+      showPasscode: true
     });
   }
 
@@ -47,11 +47,11 @@ export default class QueenPortal2 extends Component {
       <ViroPortalScene position={[0, 1, -1]} passable={true}>
         <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
           <Viro3DObject
-            source={require('../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx')}
+            source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
             resources={[
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png'),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png")
             ]}
             type="VRX"
           />
@@ -65,39 +65,31 @@ export default class QueenPortal2 extends Component {
           position={[0, 2, -5]}
         />
 
-        <HeartObject position={[1, 1, -1]} />
-        <HeartObject position={[2, 1.5, -2]} />
-        <HeartObject position={[-1, -2, -1.5]} />
+        <HeartObject position={[-0.5, 1, -3]} />
+        <HeartObject position={[0, 1, -4]} />
+        <HeartObject position={[-2, -1, -1.5]} />
+        <HeartObject position={[2, -2, -3]} />
+        <HeartObject position={[-2, -1, -3]} />
 
-        {/* 3D Text vertion for passcode */}
-        {/* <ViroText
-          style={styles.boldFont}
-          position={[-2, -4, 0.2]}
-          // width={20}
-          height={5}
-          extrusionDepth={8}
-          materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-          text="1 0 0 1"
-        /> */}
-
-        <ViroNode position={[1, 1, -1]}>
+        <ViroNode position={[4, 1, -4]}>
+          {/* 3D Text vertion for passcode */}
           <ViroText
-            text="Your First Passcode is 1001"
-            width={2}
-            height={2}
-            scale={[0.5, 0.5, 0.5]}
-            position={[0, 1, -2]}
-            style={styles.portalTextStyles}
+            style={styles.boldFont}
+            position={[0, 0.1, -0.1]}
+            height={3}
+            extrusionDepth={3}
+            materials={["frontMaterial", "backMaterial", "sideMaterial"]}
+            text="First Passcode 1001"
             visible={this.state.showPasscode}
           />
 
           <Viro3DObject
-            source={require('../../assets/emoji_heart/emoji_heart.vrx')}
+            source={require("../../assets/emoji_heart/emoji_heart.vrx")}
             resources={[
-              require('../../assets/emoji_heart/emoji_heart_specular.png'),
-              require('../../assets/emoji_heart/emoji_heart.png'),
+              require("../../assets/emoji_heart/emoji_heart_specular.png"),
+              require("../../assets/emoji_heart/emoji_heart.png")
             ]}
-            position={[0, 0, -1]}
+            position={[0, 0, -0.2]}
             scale={[0.3, 0.3, 0.3]}
             onClick={this.handleClick}
             type="VRX"
@@ -110,32 +102,32 @@ export default class QueenPortal2 extends Component {
 
 var styles = StyleSheet.create({
   boldFont: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     flex: 1,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 24,
+    textAlignVertical: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 24
   },
   portalTextStyles: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 28,
-    color: '#C8243B',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
 });
 
 ViroMaterials.createMaterials({
   frontMaterial: {
-    diffuseColor: '#FFFFFF',
+    diffuseColor: "#FFFFFF"
   },
   backMaterial: {
-    diffuseColor: '#FF0000',
+    diffuseColor: "#001D4A"
   },
   sideMaterial: {
-    diffuseColor: '#0000FF',
-  },
+    diffuseColor: "#7EA8BE"
+  }
 });
 
 module.exports = QueenPortal2;
