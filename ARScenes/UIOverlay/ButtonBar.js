@@ -6,7 +6,6 @@ import { Button } from 'react-native-material-ui';
 import styles from './styles';
 import Timer from './Timer';
 import PointCount from './PointCount';
-import RoseCount from './RoseCount';
 
 class ButtonBar extends Component {
   constructor() {
@@ -46,12 +45,10 @@ class ButtonBar extends Component {
       <View style={styles.container}>
         <View style={styles.rowContainer}>
           <Timer history={this.props.history} />
-          <RoseCount />
           <PointCount />
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          {/* <Button accent text="pause" onPress={this.handlePause} /> */}
           <Button accent text="exit" onPress={this.handleExit} />
         </View>
       </View>
