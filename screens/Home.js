@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
 import { Button } from 'react-native-material-ui';
 
-let wondARland = require('../assets/images/wondARland.gif');
+let wondARland = require('../assets/images/screen.gif');
 
 class ViroSample extends Component {
   constructor() {
