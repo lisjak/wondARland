@@ -111,7 +111,7 @@ export default class MainScene extends Component {
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require('../../aassets/music/giant-wyrm-by-kevin-macleod.mp3')}
+          source={require('../../assets/music/giant-wyrm-trimmed.mp3')}
           loop={true}
           volume={1.0}
         />

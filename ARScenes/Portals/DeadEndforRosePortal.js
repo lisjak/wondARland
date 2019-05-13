@@ -12,8 +12,6 @@ import {
   ViroMaterials,
 } from '../../node_modules/react-viro';
 
-import RoseObject from './RoseObject';
-
 export default class DeadEndforRosePortal extends Component {
   constructor() {
     super();
@@ -87,12 +85,12 @@ export default class DeadEndforRosePortal extends Component {
         <HeartObject position={[0, 2, -5]} />
         <HeartObject position={[2, -1, -4]} />
         <HeartObject position={[0, 4, -1]} /> */}
-        <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} />
+        {/* <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require('../../assets/music/comfortable-mystery-by-kevin-macleod.mp3')}
+          source={require('../../assets/music/comfortable-mystery-trimmed.wav')}
           loop={true}
           volume={1.0}
         />
