@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "firebase": "^6.0.2",
     "firebase-admin": "^7.3.0",
     "material-design-icons": "^3.0.1",
     "react": "16.8.3",
