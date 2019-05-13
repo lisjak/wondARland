@@ -18,7 +18,7 @@ const objectType = objects[object].type;
 const x = randomNum(-2, 3);
 const y = randomNum(0, 1);
 const z = randomNum(-3, 3);
-const scale = randomNum(0.03, 0.3);
+const scale = randomNum(0.01, objects[object].maxScale);
 
 class RandomObject extends Component {
   constructor() {
