@@ -2,55 +2,64 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import { gameResumedThunk } from '../store/gameReducer';
 import { connect } from 'react-redux';
+import styles from './styles';
 
 class Loser extends Component {
   constructor() {
     super();
     this.state = {
-      headline: 'You Lose!',
-      loseMessage: `You didn't escape in time.`,
-      buttonLabel: 'Try again?',
-      passwordWrong: false,
+      title: 'You Lose!',
+      message: `You didn't escape in time.`,
+      buttonText: 'Try again?',
+      gameStatus: 'timerRanOut',
     };
     this.handleOnPress = this.handleOnPress.bind(this);
   }
 
   componentDidMount() {
-    const { headline, loseMessage, buttonLabel, passwordWrong } = this.props;
-    if (this.props.headline) {
+    const { title, message, buttonText, gameStatus } = this.props;
+    if (this.props.title) {
       this.setState({
-        headline,
-        loseMessage,
-        buttonLabel,
-        passwordWrong,
+        title,
+        message,
+        buttonText,
+        gameStatus,
       });
     }
   }
 
   handleOnPress() {
     const { history, resumeGame } = this.props;
-    if (this.state.passwordWrong) {
+    if (this.state.gameStatus === 'wrongPassword') {
       resumeGame();
       history.goBack();
     } else history.push('/');
   }
 
   render() {
-    const { history } = this.props;
+    const { title, message, buttonText } = this.state;
     return (
-      <View style={styles.outer}>
-        <View style={styles.container}>
-          <Text style={styles.title}>{this.state.headline}</Text>
-          <Text style={styles.subtitle}>{this.state.loseMessage}</Text>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-around',
+          backgroundColor: '#ac3c0b',
+          height: 600,
+        }}
+      >
+        <View style={styles.inner}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.message}>{message}</Text>
         </View>
 
-        <View style={styles.container}>
+        <View style={styles.inner}>
           <TouchableHighlight
-            style={styles.buttons}
+            style={styles.button}
             onPress={this.handleOnPress}
-            underlayColor="#68a0ff"
+            underlayColor="whitesmoke"
           >
-            <Text style={styles.buttonText}>{this.state.buttonLabel}</Text>
+            <Text style={styles.buttonText}>{buttonText}</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -68,51 +77,3 @@ export default connect(
   null,
   mapDispatch
 )(Loser);
-
-const styles = StyleSheet.create({
-  outer: {
-    flex: 1,
-    backgroundColor: '#c4440d',
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#c4440d',
-    height: 600,
-  },
-  title: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 50,
-    color: 'white',
-  },
-  subtitle: {
-    marginTop: 20,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
-    color: 'white',
-  },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  buttons: {
-    height: 60,
-    width: 160,
-    paddingTop: 20,
-    paddingBottom: 10,
-    backgroundColor: '#ac3c0b',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 3 },
-    shadowOpacity: 0.4,
-    shadowRadius: 3,
-  },
-});

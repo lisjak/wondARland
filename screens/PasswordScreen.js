@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { gameResumedThunk } from "../store/gameReducer";
-import Winner from "./WinnerScreen";
-import Loser from "./LoserScreen";
+import Message from "./MessageScreen";
 
 const passcode = "937";
 
@@ -46,15 +45,23 @@ class PasswordScreen extends Component {
   renderResult() {
     const { history } = this.props;
     if (this.state.isWin) {
-      return <Winner history={history} />;
+      return (
+        <Message
+          history={history}
+          title="You Won!"
+          message="You've escaped!"
+          buttonText="Play again?"
+          gameStatus="gameWon"
+        />
+      );
     } else {
       return (
-        <Loser
+        <Message
           history={history}
-          headline="Nope!"
-          loseMessage="You entered the wrong password."
-          buttonLabel="Try again?"
-          passwordWrong={true}
+          title="Nope!"
+          message="You entered the wrong password."
+          buttonText="Try again?"
+          gameStatus="wrongPassword"
         />
       );
     }
@@ -138,13 +145,6 @@ class PasswordScreen extends Component {
           (Be careful! If you're wrong, you'll have to replay all the portals in
           the time you have left.)
         </Text>
-        {/* <Button
-          containerStyle={styles.button}
-          buttonStyle={styles.buttonstyle1}
-          title="submit"
-          type="solid"
-          onPress={() => this.onSubmitChange()}
-        /> */}
 
         <TouchableHighlight
           style={styles.button}
@@ -153,14 +153,6 @@ class PasswordScreen extends Component {
         >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
-
-        {/* <Button
-          containerStyle={styles.link}
-          buttonStyle={styles.buttonstyle2}
-          title="<-Go Back"
-          type="solid"
-          onPress={this.handleGoBack}
-        /> */}
       </View>
     ) : (
       this.renderResult()
@@ -182,7 +174,7 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: '#04152b',
     margin: 10
   },
   textContainer: {

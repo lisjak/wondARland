@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-native';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
+import styles from './styles'
 
 class Timer extends Component {
+
   handleStart() {
     const { history, resumeGame } = this.props;
     resumeGame();
@@ -14,10 +15,10 @@ class Timer extends Component {
   render() {
     const { history } = this.props;
     return (
-      <View style={styles.container}>
+      <View style={{alignItems: 'center'}}>
         <TimerCountdown
           initialMilliseconds={this.props.timeRemaining}
-          onExpire={() => history.push('/loser')}
+          onExpire={() => history.push(`/loser`)}
           formatMilliseconds={milliseconds => {
             const remainingSec = Math.round(milliseconds / 1000);
             const seconds = parseInt((remainingSec % 60).toString(), 10);
@@ -43,19 +44,3 @@ export default connect(
   mapState,
   null
 )(Timer);
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    alignItems: 'center',
-    // backgroundColor: 'rgba(198, 77, 7, 0.8)',
-    // borderRadius: 10
-  },
-
-  timerText: {
-    textAlign: 'center',
-    fontFamily: 'Arial',
-    fontSize: 36,
-    color: 'white',
-  },
-});
