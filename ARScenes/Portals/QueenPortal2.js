@@ -1,28 +1,18 @@
-import React, { Component } from '../../node_modules/react';
+import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 
 import {
-  ViroARScene,
-  ViroAmbientLight,
-  ViroScene,
-  Viro360Image,
-  ViroImage,
-  ViroAnimations,
   ViroNode,
   ViroText,
-  ViroAnimatedImage,
   ViroPortal,
   ViroPortalScene,
-  Viro360Video,
   ViroVideo,
   Viro3DObject,
   ViroMaterials,
-} from '../../node_modules/react-viro';
+} from 'react-viro';
 
 import HeartObject from './HeartObject';
-
 const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
-const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
 
 export default class QueenPortal2 extends Component {
   constructor() {
@@ -65,29 +55,21 @@ export default class QueenPortal2 extends Component {
           position={[0, 2, -5]}
         />
 
-        <HeartObject position={[1, 1, -1]} />
-        <HeartObject position={[2, 1.5, -2]} />
-        <HeartObject position={[-1, -2, -1.5]} />
+        <HeartObject position={[-0.5, 1, -3]} />
+        <HeartObject position={[0, 1, -4]} />
+        <HeartObject position={[-2, -1, -1.5]} />
+        <HeartObject position={[2, -2, -3]} />
+        <HeartObject position={[-2, -1, -3]} />
 
-        {/* 3D Text vertion for passcode */}
-        {/* <ViroText
-          style={styles.boldFont}
-          position={[-2, -4, 0.2]}
-          // width={20}
-          height={5}
-          extrusionDepth={8}
-          materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-          text="1 0 0 1"
-        /> */}
-
-        <ViroNode position={[1, 1, -1]}>
+        <ViroNode position={[4, 1, -4]}>
+          {/* 3D Text vertion for passcode */}
           <ViroText
-            text="Your First Passcode is 1001"
-            width={2}
-            height={2}
-            scale={[0.5, 0.5, 0.5]}
-            position={[0, 1, -2]}
-            style={styles.portalTextStyles}
+            style={styles.boldFont}
+            position={[0, 0.1, -0.1]}
+            height={3}
+            extrusionDepth={3}
+            materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
+            text="First Passcode 1001"
             visible={this.state.showPasscode}
           />
 
@@ -97,7 +79,7 @@ export default class QueenPortal2 extends Component {
               require('../../assets/emoji_heart/emoji_heart_specular.png'),
               require('../../assets/emoji_heart/emoji_heart.png'),
             ]}
-            position={[0, 0, -1]}
+            position={[0, 0, -0.2]}
             scale={[0.3, 0.3, 0.3]}
             onClick={this.handleClick}
             type="VRX"
@@ -131,10 +113,10 @@ ViroMaterials.createMaterials({
     diffuseColor: '#FFFFFF',
   },
   backMaterial: {
-    diffuseColor: '#FF0000',
+    diffuseColor: '#001D4A',
   },
   sideMaterial: {
-    diffuseColor: '#0000FF',
+    diffuseColor: '#7EA8BE',
   },
 });
 

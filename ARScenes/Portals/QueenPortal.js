@@ -1,12 +1,8 @@
-import React, { Component } from '../../node_modules/react';
+import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 
 import {
-  ViroARScene,
-  ViroAmbientLight,
-  ViroScene,
   Viro360Image,
-  ViroImage,
   ViroAnimations,
   ViroNode,
   ViroText,
@@ -15,7 +11,7 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroSound,
-} from '../../node_modules/react-viro';
+} from 'react-viro';
 
 const cheshireCat = require('../../assets/portal_assets/cheshirecatsmile.png');
 
@@ -115,7 +111,7 @@ export default class MainScene extends Component {
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require('../../aassets/music/giant-wyrm-by-kevin-macleod.mp3')}
+          source={require('../../assets/music/giant-wyrm-trimmed.mp3')}
           loop={true}
           volume={1.0}
         />

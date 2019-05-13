@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
 import { Button } from 'react-native-material-ui';
 
-let wondARland = require('../assets/images/wondARland.gif');
+let wondARland = require('../assets/images/screen.gif');
 
 class ViroSample extends Component {
   constructor() {
@@ -33,8 +33,8 @@ class ViroSample extends Component {
           <ImageBackground
             source={wondARland}
             style={{
-              height: '100%',
-              width: '99%',
+              height: '94%',
+              width: '100%',
               backgroundColor: '#04152b',
             }}
           />
@@ -56,12 +56,20 @@ class ViroSample extends Component {
             onPress={() => history.push('/login')}
           /> */}
 
-          <Button
+          {/* <Button
             accent
             text="instructions"
             style={localStyles.buttons}
             onPress={() => history.push('/instructions')}
-          />
+          /> */}
+
+          <TouchableHighlight
+            style={localStyles.buttons}
+            onPress={() => history.push('/instructions')}
+            underlayColor="#04152b"
+          >
+            <Text style={localStyles.buttonText}>Instructions</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -96,7 +104,7 @@ let localStyles = StyleSheet.create({
     backgroundColor: '#04152b',
   },
   outer: {
-    flex: 1,
+    flex: 0.82,
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: 'transparent',
@@ -133,5 +141,6 @@ let localStyles = StyleSheet.create({
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
+    marginBottom: 15,
   },
 });

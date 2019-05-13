@@ -11,19 +11,14 @@ import React, { Component } from "../../node_modules/react";
 import { AppRegistry, StyleSheet, Text, View } from "react-native";
 
 import {
-  ViroARScene,
-  ViroARImageMarker,
   Viro3DObject,
-  ViroAmbientLight,
-  Viro360Video,
-  ViroBox,
   ViroSound,
   ViroNode,
   Viro360Image,
   ViroPortal,
   ViroPortalScene,
-  ViroARTrackingTargets,
-  ViroText
+  ViroText,
+  ViroMaterials
 } from "../../node_modules/react-viro";
 
 import HeartObject from "./HeartObject";
@@ -67,8 +62,7 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        // position={[0.5, 0.5, -1]}
-        position={[0, 0, -1]}
+        position={[0, 0.2, 0]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
@@ -90,15 +84,13 @@ export default class RosePortal extends Component {
 
         <HeartObject position={[1, 1, -3]} />
         <HeartObject position={[0, 2, -5]} />
-        <HeartObject position={[2, -1, -4]} />
-        <HeartObject position={[0, 4, -1]} />
-        <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} />
-        <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} />
+        {/* <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} /> */}
+        {/* <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require("../../assets/music/arcadia-by-kevin-macleod.mp3")}
+          source={require("../../assets/music/arcadiatrimmed.wav")}
           loop={true}
           volume={1.0}
         />
@@ -126,13 +118,15 @@ export default class RosePortal extends Component {
             source={require("../../assets/portal_assets/tree360.jpg")}
           />
           <ViroNode position={[1, 1, -1]}>
+            {/* 3D Text vertion for passcode */}
             <ViroText
-              text="Your Second Passcode is 011"
-              width={2}
-              height={2}
-              scale={[0.5, 0.5, 0.5]}
-              position={[0, 1, -2]}
-              style={styles.portalTextStyles}
+              style={styles.boldFont}
+              position={[0, 0.1, -0.1]}
+              // width={2}
+              height={3}
+              extrusionDepth={3}
+              materials={["frontMaterial", "backMaterial", "sideMaterial"]}
+              text="Second Passcode 011"
               visible={this.state.showPasscode}
             />
 
@@ -142,7 +136,7 @@ export default class RosePortal extends Component {
                 require("../../assets/emoji_heart/emoji_heart_specular.png"),
                 require("../../assets/emoji_heart/emoji_heart.png")
               ]}
-              position={[0, 0, -1]}
+              position={[0, 0, -0.2]}
               scale={[0.3, 0.3, 0.3]}
               onClick={this.handleClick}
               type="VRX"
@@ -150,14 +144,12 @@ export default class RosePortal extends Component {
           </ViroNode>
           <HeartObject position={[1, 1, -3]} />
           <HeartObject position={[0, 2, -5]} />
-          <HeartObject position={[2, -1, -4]} />
-          <HeartObject position={[0, 4, -1]} />
-          <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} />
+          {/* <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
           <ViroSound
             paused={this.state.playPortal2Sound}
             muted={false}
-            source={require("../../assets/music/monkeys-spinning-monkeys-by-kevin-macleod.mp3")}
+            source={require("../../assets/music/monkeys-spinning-monkeys-trimmed.wav")}
             loop={true}
             volume={1.0}
           />
@@ -175,12 +167,25 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     textAlign: "center"
   },
-  portalTextStyles: {
-    fontFamily: "Arial",
-    fontSize: 28,
-    color: "#C8243B",
+  boldFont: {
+    color: "#FFFFFF",
+    flex: 1,
     textAlignVertical: "center",
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16
+  }
+});
+
+ViroMaterials.createMaterials({
+  frontMaterial: {
+    diffuseColor: "#FFFFFF"
+  },
+  backMaterial: {
+    diffuseColor: "#C9F299"
+  },
+  sideMaterial: {
+    diffuseColor: "#88BB92"
   }
 });
 module.exports = RosePortal;

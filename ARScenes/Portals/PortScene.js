@@ -1,32 +1,23 @@
 "use strict";
 
-import React, { Component } from "../../node_modules/react";
+import React, { Component } from "react";
 
 import { StyleSheet } from "react-native";
 
 import {
-  ViroSceneNavigator,
-  ViroScene,
-  ViroARScene,
-  ViroAmbientLight,
-  ViroSpinner,
   Viro360Video,
   Viro360Image,
-  ViroUtils,
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
   ViroText,
-  ViroImage,
-  ViroVideo,
-  ViroNode
-} from "../../node_modules/react-viro";
+  ViroNode,
+  ViroMaterials
+} from "react-viro";
 
 import { PortalScene2 } from "./AcePortalScene2";
-// import PasswordScreen from '../PasswordScreen'
 
 import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
 
 let count = 0;
 const shipPortal =
@@ -70,13 +61,13 @@ class PortScene extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 1, -1]}
+        position={[0, 0.5, -2]}
         passable={true}
         onPortalEnter={() => {
           this._onEnterPortal();
         }}
       >
-        <ViroPortal position={[0, 0.7, 0]} scale={[0.5, 0.5, 0.5]}>
+        <ViroPortal position={[0, 0, -1]} scale={[0.3, 0.3, 0.3]}>
           <Viro3DObject
             source={require(shipPortal)}
             resources={[
@@ -100,7 +91,7 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[-2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[-2, 0, -3]} scale={[0.3, 0.3, 0.3]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
@@ -123,7 +114,7 @@ class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[2, 0, -4]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[2, 0, -3]} scale={[0.3, 0.3, 0.3]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
@@ -137,14 +128,24 @@ class PortScene extends Component {
           <Viro360Image
             source={require("../../assets/portal_assets/360_tiles.jpg")}
           />
-          <ViroNode position={[1, 1, -1]}>
-            <ViroText
+          <ViroNode position={[2, 0, -3]}>
+            {/* <ViroText
               text="Your Third Passcode is 0111"
               width={2}
               height={2}
               scale={[0.5, 0.5, 0.5]}
               position={[0, 1, -2]}
               style={styles.portalTextStyles}
+              visible={this.state.showPasscode}
+            /> */}
+            {/* 3D Text vertion for passcode */}
+            <ViroText
+              style={styles.boldFont}
+              position={[1, 0.4, -0.1]}
+              height={3}
+              extrusionDepth={3}
+              materials={["frontMaterial", "backMaterial", "sideMaterial"]}
+              text="Third Passcode 0111"
               visible={this.state.showPasscode}
             />
 
@@ -154,7 +155,7 @@ class PortScene extends Component {
                 require("../../assets/emoji_heart/emoji_heart_specular.png"),
                 require("../../assets/emoji_heart/emoji_heart.png")
               ]}
-              position={[0, 0, -1]}
+              position={[1, 0.5, -0.2]}
               scale={[0.3, 0.3, 0.3]}
               onClick={this.handleClick}
               type="VRX"
@@ -216,6 +217,26 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     textAlignVertical: "center",
     textAlign: "center"
+  },
+  boldFont: {
+    color: "#6E7E85",
+    flex: 1,
+    textAlignVertical: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 24
+  }
+});
+
+ViroMaterials.createMaterials({
+  frontMaterial: {
+    diffuseColor: "#6E7E85"
+  },
+  backMaterial: {
+    diffuseColor: "#B7B7B7"
+  },
+  sideMaterial: {
+    diffuseColor: "#FEFFFE"
   }
 });
 
