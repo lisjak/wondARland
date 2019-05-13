@@ -9,15 +9,6 @@ export const objects = {
     type: 'VRX',
   },
   2: {
-    name: 'rose',
-    source: require('../../assets/res/rose/rose.vrx'),
-    res1: require('../../assets/res/rose/texture-green-paper-pattern-scratch-background-photo-hd-wallpaper.jpg'),
-    res2: require('../../assets/res/rose/grass_texture225.jpg'),
-    res3: require('../../assets/res/rose/wildtextures-leather-Campo-rose.jpg'),
-    maxScale: 0.02,
-    type: 'VRX',
-  },
-  3: {
     name: 'teacup',
     source: require('../../assets/teacup/cup.obj'),
     res1: require('../../assets/teacup/cup.mtl'),
