@@ -33,14 +33,15 @@ export default class ColorPortal extends Component {
           />
         </ViroPortal>
         <ViroSkyBox
-          source={{
-            nx: skybox,
-            px: skybox,
-            ny: skybox,
-            py: skybox,
-            nz: skybox,
-            pz: skybox
-          }}
+          color="red"
+          // source={{
+          //   nx: skybox,
+          //   px: skybox,
+          //   ny: skybox,
+          //   py: skybox,
+          //   nz: skybox,
+          //   pz: skybox
+          // }}
         />
         <ViroNode position={[-0.02, 0, -0.05]}>
           <RandomObject />
