@@ -1,15 +1,5 @@
-/* eslint-disable react/prefer-es6-class */
-/**
- * Copyright (c) 2017-present, Viro Media, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 import React, { Component } from "../../node_modules/react";
-import { AppRegistry, StyleSheet, Text, View } from "react-native";
-
+import { StyleSheet } from "react-native";
 import {
   Viro3DObject,
   ViroSound,
@@ -19,10 +9,8 @@ import {
   ViroPortalScene,
   ViroText,
   ViroMaterials
-} from "../../node_modules/react-viro";
-
+} from "react-viro";
 import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
 import DeadEndforRosePortal from "./DeadEndforRosePortal";
 
 export default class RosePortal extends Component {
