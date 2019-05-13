@@ -1,24 +1,17 @@
 'use strict';
 
-import React, { Component } from '../../node_modules/react';
+import React, { Component } from 'react';
 
 import { StyleSheet } from 'react-native';
 
 import {
-  ViroSceneNavigator,
-  ViroScene,
-  ViroARScene,
-  ViroAmbientLight,
-  ViroSpinner,
-  Viro360Video,
   Viro360Image,
-  ViroUtils,
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
   ViroText,
   ViroImage,
-} from '../../node_modules/react-viro';
+} from 'react-viro';
 
 import { PortalScene2 } from './AcePortalScene2';
 // import PasswordScreen from '../../screens/PasswordScreen'
