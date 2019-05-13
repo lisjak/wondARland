@@ -56,7 +56,7 @@ export default class DeadEndforRosePortal extends Component {
         <Viro360Image
           source={require('../../assets/portal_assets/360maze.jpg')}
         />
-        <ViroNode position={[1, 1, -1]}>
+        <ViroNode position={[0, 0.08, 0]}>
           <ViroText
             text="Oops, this is a dead end!"
             // width={2}
