@@ -1,5 +1,14 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+/* eslint-disable react/prefer-es6-class */
+/**
+ * Copyright (c) 2017-present, Viro Media, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+import React, { Component } from '../../node_modules/react';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import {
   Viro3DObject,
@@ -10,7 +19,7 @@ import {
   ViroPortalScene,
   ViroText,
   ViroMaterials,
-} from 'react-viro';
+} from '../../node_modules/react-viro';
 
 import HeartObject from './HeartObject';
 import RoseObject from './RoseObject';
@@ -75,15 +84,13 @@ export default class RosePortal extends Component {
 
         <HeartObject position={[1, 1, -3]} />
         <HeartObject position={[0, 2, -5]} />
-        <HeartObject position={[2, -1, -4]} />
-        <HeartObject position={[0, 4, -1]} />
-        <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} />
-        <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} />
+        {/* <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} /> */}
+        {/* <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
         <ViroSound
           paused={this.state.playPortal1Sound}
           muted={false}
-          source={require('../../assets/music/arcadia-by-kevin-macleod.mp3')}
+          source={require('../../assets/music/arcadiatrimmed.wav')}
           loop={true}
           volume={1.0}
         />
@@ -137,14 +144,12 @@ export default class RosePortal extends Component {
           </ViroNode>
           <HeartObject position={[1, 1, -3]} />
           <HeartObject position={[0, 2, -5]} />
-          <HeartObject position={[2, -1, -4]} />
-          <HeartObject position={[0, 4, -1]} />
-          <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} />
+          {/* <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
           <ViroSound
             paused={this.state.playPortal2Sound}
             muted={false}
-            source={require('../../assets/music/monkeys-spinning-monkeys-by-kevin-macleod.mp3')}
+            source={require('../../assets/music/monkeys-spinning-monkeys-trimmed.wav')}
             loop={true}
             volume={1.0}
           />

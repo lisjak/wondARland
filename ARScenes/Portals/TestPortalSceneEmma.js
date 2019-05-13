@@ -14,7 +14,7 @@ import {
 } from "../../node_modules/react-viro";
 
 import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
+// import RoseObject from "./RoseObject";
 import RosePortal from "./RosesPortal";
 import QueenPortal from "./QueenPortal2";
 import PortPortal from "./PortScene";

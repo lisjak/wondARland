@@ -18,7 +18,6 @@ import {
 import { PortalScene2 } from "./AcePortalScene2";
 
 import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
 
 let count = 0;
 const shipPortal =
