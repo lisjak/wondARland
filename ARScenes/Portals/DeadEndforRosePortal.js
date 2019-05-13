@@ -37,12 +37,12 @@ export default class DeadEndforRosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0, -2]}
+        position={[-3, 0, -3]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0, 0, -2]} scale={[0.5, 0.5, 0.5]}>
+        <ViroPortal position={[0, 0, 0]} scale={[0.5, 0.5, 0.5]}>
           <Viro3DObject
             source={require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx')}
             resources={[
@@ -56,7 +56,7 @@ export default class DeadEndforRosePortal extends Component {
         <Viro360Image
           source={require('../../assets/portal_assets/360maze.jpg')}
         />
-        <ViroNode position={[1, 1, -1]}>
+        <ViroNode position={[0, 0.08, 0]}>
           <ViroText
             text="Oops, this is a dead end!"
             // width={2}

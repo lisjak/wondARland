@@ -1,15 +1,5 @@
-/* eslint-disable react/prefer-es6-class */
-/**
- * Copyright (c) 2017-present, Viro Media, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 import React, { Component } from '../../node_modules/react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet } from 'react-native';
 import {
   Viro3DObject,
   ViroSound,
@@ -19,8 +9,7 @@ import {
   ViroPortalScene,
   ViroText,
   ViroMaterials,
-} from '../../node_modules/react-viro';
-
+} from 'react-viro';
 import HeartObject from './HeartObject';
 import DeadEndforRosePortal from './DeadEndforRosePortal';
 
@@ -61,12 +50,12 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0.2, 0]}
+        position={[0, 0, -1]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0.5, 0.5, -1]} scale={[0.25, 0.25, 0.25]}>
+        <ViroPortal position={[0, 0, 0]} scale={[0.25, 0.25, 0.25]}>
           <Viro3DObject
             source={require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx')}
             resources={[
@@ -83,8 +72,6 @@ export default class RosePortal extends Component {
 
         <HeartObject position={[1, 1, -3]} />
         <HeartObject position={[0, 2, -5]} />
-        {/* <RoseObject position={[2, 2, -2]} scale={[0.02, 0.02, 0.02]} /> */}
-        {/* <RoseObject position={[2, 5, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
         <ViroSound
           paused={this.state.playPortal1Sound}
@@ -96,12 +83,12 @@ export default class RosePortal extends Component {
         <DeadEndforRosePortal />
 
         <ViroPortalScene
-          position={[0, -1, 0]}
+          position={[1, 0, -2]}
           passable={true}
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
         >
-          <ViroPortal position={[3, 2, -2]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
             <Viro3DObject
               source={require('../../assets/portal_assets/portal_res/portal_archway/portal_archway.vrx')}
               resources={[
@@ -125,7 +112,7 @@ export default class RosePortal extends Component {
               height={3}
               extrusionDepth={3}
               materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-              text="Second Passcode 011"
+              text="The second number in the password is 3"
               visible={this.state.showPasscode}
             />
 
@@ -143,7 +130,6 @@ export default class RosePortal extends Component {
           </ViroNode>
           <HeartObject position={[1, 1, -3]} />
           <HeartObject position={[0, 2, -5]} />
-          {/* <RoseObject position={[-3, 2, -5]} scale={[0.02, 0.02, 0.02]} /> */}
 
           <ViroSound
             paused={this.state.playPortal2Sound}
@@ -157,6 +143,18 @@ export default class RosePortal extends Component {
     );
   }
 }
+
+ViroMaterials.createMaterials({
+  frontMaterial: {
+    diffuseColor: '#FFFFFF',
+  },
+  backMaterial: {
+    diffuseColor: '#C9F299',
+  },
+  sideMaterial: {
+    diffuseColor: '#88BB92',
+  },
+});
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
@@ -176,15 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-ViroMaterials.createMaterials({
-  frontMaterial: {
-    diffuseColor: '#FFFFFF',
-  },
-  backMaterial: {
-    diffuseColor: '#C9F299',
-  },
-  sideMaterial: {
-    diffuseColor: '#88BB92',
-  },
-});
 module.exports = RosePortal;
