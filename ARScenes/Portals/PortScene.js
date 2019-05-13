@@ -1,6 +1,6 @@
 "use strict";
 
-import React, { Component } from "../../node_modules/react";
+import React, { Component } from "react";
 
 import { StyleSheet } from "react-native";
 
@@ -11,11 +11,9 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroText,
-  ViroImage,
-  ViroVideo,
   ViroNode,
   ViroMaterials
-} from "../../node_modules/react-viro";
+} from "react-viro";
 
 import { PortalScene2 } from "./AcePortalScene2";
 

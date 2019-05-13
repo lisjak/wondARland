@@ -1,13 +1,10 @@
 import React from '../../node_modules/react';
 import {
-  ViroARScene,
-  ViroAmbientLight,
   ViroPortalScene,
   ViroPortal,
   Viro3DObject,
   ViroText,
   Viro360Image,
-  ViroSpinner,
 } from '../../node_modules/react-viro';
 import { StyleSheet } from 'react-native';
 

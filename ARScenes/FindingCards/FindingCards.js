@@ -1,17 +1,5 @@
-/* eslint-disable react/prefer-es6-class */
-/**
- * Copyright (c) 2017-present, Viro Media, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-import React, { Component } from "../../node_modules/react";
-import { AppRegistry, StyleSheet, Text, View, Vibration } from "react-native";
-
-import { PortalScene2 } from "../Portals/AcePortalScene2";
-import PasswordScreen from "../../screens/PasswordScreen";
+import React, { Component } from "react";
+import { StyleSheet, Vibration } from "react-native";
 
 import PortScene from "../Portals/PortScene";
 import QueenPortal2 from "../Portals/QueenPortal2";
@@ -21,21 +9,13 @@ import {
   ViroARScene,
   ViroSpinner,
   ViroText,
-  ViroImage,
   ViroARImageMarker,
-  Viro3DObject,
   ViroAmbientLight,
-  Viro360Video,
-  ViroBox,
   ViroNode,
-  Viro360Image,
-  ViroPortal,
-  ViroPortalScene,
   ViroAnimatedImage,
   ViroARTrackingTargets,
-  ViroARPlane,
   ViroConstants
-} from "../../node_modules/react-viro";
+} from "react-viro";
 
 // let createReactClass = require('create-react-class');
 
