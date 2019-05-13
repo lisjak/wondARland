@@ -8,7 +8,15 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 import React, { Component } from "../../node_modules/react";
-import { AppRegistry, StyleSheet, Text, View, Vibration } from "react-native";
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Vibration,
+  Modal,
+  TouchableHighlight
+} from "react-native";
 
 import { PortalScene2 } from "../Portals/AcePortalScene2";
 import PasswordScreen from "../../screens/PasswordScreen";
@@ -71,7 +79,8 @@ class FindingCards extends Component {
   _onAnchorFound() {
     this.setState({
       playAnim: true,
-      visible: true
+      visible: true,
+      modalVisible: true
     });
     Vibration.vibrate(1, false);
   }
