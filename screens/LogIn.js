@@ -20,16 +20,7 @@ export default class Login extends React.Component {
   }
 
   componentWillMount() {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyD6Zj_eSqSEhwhAuTdOK4JWoKe9zSBdqXY',
-      authDomain: 'wondarland.firebaseapp.com',
-      databaseURL: 'https://wondarland.firebaseio.com',
-      projectId: 'wondarland',
-      storageBucket: 'wondarland.appspot.com',
-      messagingSenderId: '1018504361983',
-      appId: '1:1018504361983:web:43e8f5fa0b2ebeaf',
-    };
-    firebase.initializeApp(firebaseConfig);
+  
   }
 
   onPressSignIn() {
