@@ -7,56 +7,72 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Input } from './LoginInput';
-import { f, database } from '../firebaseInitializer';
-// import * as firebase from 'firebase';
+// import { f, database } from '../firebaseInitializer';
+import * as firebase from 'firebase';
 require('../firebaseInitializer');
 
 export default class Signup extends React.Component {
   constructor() {
     super();
+    this.ref = firebase.firestore().collection('users');
     this.state = {
       email: '',
       password: '',
       name: '',
-      authenticating: false,
-      errorMessage: null,
+      loading: false,
+      error: '',
     };
-    // this.handleSignUp = this.handleSignUp.bind(this);
-    // this.createUser = this.createUser.bind(this);
-  }
-
-  createUser(userObj, email, name) {
-    const user = {
-      name,
-      email,
-    };
-
-    database
-      .ref('users')
-      .child(userObj.uid)
-      .set(user);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.saveUser = this.saveUser.bind(this);
+    this.signUpAndSave = this.signUpAndSave.bind(this);
   }
 
   handleSignUp() {
-    const { name, email, password } = this.state;
-    f.auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(userObj => this.createUser(userObj.user, email, name))
-      .then(this.props.history.push('/'))
-      .catch(error => this.setState({ errorMessage: error.errorMessage }));
+    const { email, password } = this.state;
+    this.setState({ loading: true });
+    try {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          this.setState({ error: '', loading: false });
+          this.props.history.push('/');
+        });
+    } catch (error) {
+      this.setState({ error: 'Cannot authenticate', loading: false });
+    }
   }
 
+  saveUser() {
+    this.ref.add({ email: this.state.email });
+  }
+
+  signUpAndSave() {
+    this.saveUser();
+    this.handleSignUp();
+  }
+
+  handleSignOut() {
+    try {
+      this.setState({ loading: true });
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.setState({ loading: false, error: '' });
+          this.props.history.push('/');
+        });
+    } catch (error) {
+      this.setState({ error: 'Cannot log out!' });
+    }
+  }
   renderCurrentState() {
-    if (this.state.authenticating) {
-      return (
-        <View style={styles.form}>
-          <ActivityIndicator size="large" />
-        </View>
-      );
+    if (this.state.loading) {
+      return <ActivityIndicator size="large" />;
     }
     return (
       <View style={styles.form}>
-        <Text style={styles.label}>Login</Text>
+        {/* <Text style={styles.label}>Login</Text> */}
         <Input
           placeholder={`What's your name?`}
           label={'Your name'}
@@ -78,7 +94,7 @@ export default class Signup extends React.Component {
 
         <TouchableHighlight
           style={styles.buttons}
-          onPress={() => this.handleSignUp()}
+          onPress={this.signUpAndSave}
           underlayColor="#04152b"
         >
           <Text style={styles.buttonText}>Sign Up</Text>
@@ -86,10 +102,17 @@ export default class Signup extends React.Component {
 
         <TouchableHighlight
           style={styles.buttons}
+          onPress={() => this.props.history.push('/')}
+          underlayColor="#04152b"
+        >
+          <Text style={styles.buttonText}>Sign Out</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.buttons}
           onPress={() => this.props.history.push('/login')}
           underlayColor="#04152b"
         >
-          <Text style={styles.buttonText}>Account holder? Login</Text>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableHighlight>
       </View>
     );
