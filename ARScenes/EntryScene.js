@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import { ViroARSceneNavigator } from 'react-viro';
+import React, { Component } from "react";
+import { ViroARSceneNavigator } from "react-viro";
 import {
   View,
   StyleSheet,
   Modal,
   Text,
   Image,
-  TouchableHighlight,
-} from 'react-native';
-require('../secrets.js');
-import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
-import firebase from 'firebase';
+  TouchableHighlight
+} from "react-native";
+require("../secrets.js");
+import ButtonBar from "../ARScenes/UIOverlay/ButtonBar";
+import firebase from "firebase";
 
 let sharedProps = {
-  apiKey: process.env.APIKEY,
+  apiKey: process.env.APIKEY
 };
 
-let InitialARScene = require('../ARScenes/FindingCards/FindingCards');
-// let InitialARScene = require("../ARScenes/Portals/TestPortalSceneEmma");
+let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
 
 export default class EntryARScene extends Component {
   constructor() {
@@ -25,7 +24,7 @@ export default class EntryARScene extends Component {
     this.state = {
       sharedProps: sharedProps,
       modalVisible: true,
-      stateGame: false,
+      stateGame: false
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
@@ -54,31 +53,31 @@ export default class EntryARScene extends Component {
                 ) : null}
                 <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
                 <Text style={styles.text}>
-                  {'\n'}♥ Look around! {'\n'}
+                  {"\n"}♥ Look around! {"\n"}
                 </Text>
-                <Text style={styles.text}> ♠ Find a card! {'\n'}</Text>
+                <Text style={styles.text}> ♠ Find a card! {"\n"}</Text>
                 <Text style={styles.text}>
-                  {' '}
-                  ♦ Point your camera to scan it! {'\n'}
+                  {" "}
+                  ♦ Point your camera to scan it! {"\n"}
                 </Text>
                 <Text style={styles.text}>
-                  {' '}
+                  {" "}
                   ♣ Move your body through the portal to explore the
-                  adventurescape! {'\n'}
+                  adventurescape! {"\n"}
                 </Text>
                 <Text style={styles.text}>
-                  {' '}
+                  {" "}
                   ♥ Can't exit or enter the portal? Hit Stuck! on the button
-                  bar. {'\n'}
+                  bar. {"\n"}
                 </Text>
                 <Text style={styles.text}>
-                  {' '}
-                  ♠ Find all three digits for the passcode before time runs out!{' '}
-                  {'\n'}
+                  {" "}
+                  ♠ Find all three digits for the passcode before time runs out!{" "}
+                  {"\n"}
                 </Text>
                 <Text style={styles.text}>
-                  {' '}
-                  ♦ Don't get too lost down the rabbit hole!{' '}
+                  {" "}
+                  ♦ Don't get too lost down the rabbit hole!{" "}
                 </Text>
               </View>
               <TouchableHighlight
@@ -110,61 +109,60 @@ export default class EntryARScene extends Component {
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent"
   },
   ARScene: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent"
   },
   modalView: {
     flex: 1,
-    backgroundColor: '#1D1A05',
-    // backgroundColor: "transparent",
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#1D1A05",
+    justifyContent: "center",
+    alignItems: "center",
     paddingBottom: 0,
-    marginBottom: 0,
+    marginBottom: 0
   },
   container: {
     flex: 1,
-    backgroundColor: '#ac3c0b',
+    backgroundColor: "#ac3c0b",
     borderRadius: 10,
     margin: 20,
     marginBottom: 120,
-    padding: 10,
+    padding: 10
   },
   textContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10
   },
   text: {
-    color: 'white',
+    color: "white",
     fontSize: 24,
-    fontWeight: 'normal',
+    fontWeight: "normal"
   },
   headerText: {
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
     fontSize: 34,
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
   buttons: {
     padding: 18,
     marginTop: 50,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
-    margin: 20,
+    margin: 20
   },
   buttonText: {
-    color: '#ac3c0b',
+    color: "#ac3c0b",
     fontSize: 24,
-    fontWeight: 'normal',
-    alignSelf: 'center',
-  },
+    fontWeight: "normal",
+    alignSelf: "center"
+  }
 });
