@@ -50,6 +50,11 @@ class EntryARScene extends Component {
               <View>
                 <ScrollView>
                   <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
+                  {user ? (
+                    <Text style={styles.headerText}>
+                      Welcome {user.email}!
+                    </Text>
+                  ) : null }
                   <Text style={styles.text}>
                     {'\n'}♥ Look around! {'\n'}
                   </Text>

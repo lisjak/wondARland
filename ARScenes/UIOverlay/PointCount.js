@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { pointFoundThunk } from '../../store/gameReducer';
 
+
 class PointCount extends Component {
+
   render() {
-    const { pointsFound, pointFound } = this.props;
+    const { pointsFound } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{`\u2665 ${pointsFound}`}</Text>
-        {/* <Button title="+1" onPress={() => pointFound()} /> */}
       </View>
     );
   }
@@ -23,7 +24,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    pointFound: () => dispatch(pointFoundThunk()),
+    pointFoundThunk: () => dispatch(pointFoundThunk()),
   };
 };
 

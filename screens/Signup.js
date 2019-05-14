@@ -45,7 +45,12 @@ export default class Signup extends React.Component {
   }
 
   saveUser() {
-    this.ref.add({ email: this.state.email, name: this.state.name });
+    const { email } = this.state;
+    firebase
+      .firestore()
+      .collection('users')
+      .doc(email)
+      .set({ name: this.state.name });
   }
 
   signUpAndSave() {

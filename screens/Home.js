@@ -46,13 +46,6 @@ class ViroSample extends Component {
           });
           history.push('/');
         });
-      firebase
-        .firestore()
-        .collection('users')
-        .doc(user.uid)
-        .collection('pointsFound')
-        .doc()
-        .set(pointsFound);
     } catch (error) {
       this.setState({ error: 'Cannot log out!' });
     }
