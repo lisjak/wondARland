@@ -44,10 +44,15 @@ export default class EntryARScene extends Component {
         >
           <View style={styles.modalView}>
             <View style={styles.container}>
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>Find the Cards</Text>
-                <Text style={styles.text}>Hold Camera Straight and Scan</Text>
-                <Text style={styles.text}>Please wait for the magic!</Text>
+              <View >
+              <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text >
+              <Text style={styles.text}>{"\n"}♥ Look around! {"\n"}</Text>
+                <Text style={styles.text}> ♠ Find a card! {"\n"}</Text >
+                <Text style={styles.text}> ♦ Point your camera to scan it! {"\n"}</Text >
+                <Text style={styles.text}> ♣ Move your body through the portal to explore the adventurescape! {"\n"}</Text >
+                <Text style={styles.text}> ♥ Can't exit or enter the portal? Hit Stuck! on the button bar. {"\n"}</Text >
+                <Text style={styles.text}> ♠ Find all three digits for the passcode before time runs out! {"\n"}</Text >
+                <Text style={styles.text}> ♦ Don't get too lost down the rabbit hole! </Text>
               </View>
               <TouchableHighlight
                 onPress={() => {
@@ -89,14 +94,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D1A05",
     // backgroundColor: "transparent",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    paddingBottom: 0,
+    marginBottom: 0
+
   },
   container: {
     flex: 1,
     backgroundColor: "#ac3c0b",
     borderRadius: 10,
     margin: 20,
-    marginBottom: 200
+    marginBottom: 120,
+    padding: 10,
   },
   textContainer: {
     flex: 1,
@@ -109,8 +118,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "normal"
   },
+  headerText: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 34,
+    fontWeight: "bold"
+  },
   buttons: {
     padding: 18,
+    marginTop: 50,
     backgroundColor: "#fff",
     borderRadius: 10,
     shadowColor: "#000",

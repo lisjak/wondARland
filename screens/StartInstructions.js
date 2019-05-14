@@ -20,8 +20,13 @@ class Instructions extends React.Component {
         <View>
           <Text style={styles.title}>Instructions</Text>
           <Text style={styles.bodyText}>
-            <Text style={styles.boldText} />Try to find four playing cards
-            somewhere in the real world. Scanning each card will open a different portal you can step into and explore. Find all the cards before time runs out.
+            <Text style={styles.boldText} />
+            ♥ Look around!<br />
+            ♠ Find a card!<br />
+            ♦ Point your camera to scan it!<br />
+            ♣ Move your body through the portal to explore the adventurescape!<br />
+            ♥ Can't exit or enter the portal? Hit Stuck! on the button bar.<br />
+            ♠ Find all three digits for the passcode before time runs out! Don't get too lost down the rabbit hole!
           </Text>
           <View style={styles.imageContainer}>
             <Image style={styles.thumbnail} source={diamond} />
