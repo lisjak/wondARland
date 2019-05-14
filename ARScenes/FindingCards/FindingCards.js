@@ -14,7 +14,7 @@ import {
   ViroNode,
   ViroAnimatedImage,
   ViroARTrackingTargets,
-  ViroConstants
+  ViroConstants,
 } from "react-viro";
 
 const transparentCheshire = require("../../assets/portal_assets/cheshireTransparent.gif");
@@ -23,22 +23,18 @@ const tumble = require("../../assets/portal_assets/tumble.gif");
 const rose = require("../../assets/portal_assets/rose.gif");
 const rabbit = require("../../assets/portal_assets/rabbit.gif");
 
+
 class FindingCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
       isLoading: true,
       playAnim: false,
-      spinnerState: true,
       visible: true
     };
     this._onInitialized = this._onInitialized.bind(this);
     this._isPortalLoading = this._isPortalLoading.bind(this);
     this._onAnchorFound = this._onAnchorFound.bind(this);
-    this._onAnchorRemoved = this._onAnchorRemoved.bind(this);
-    // this._timeToVibrate = this._timeToVibrate.bind(this);
-    this._handlespinner = this._handlespinner.bind(this);
   }
 
   // Text update when AR initialized
@@ -59,24 +55,12 @@ class FindingCards extends Component {
     Vibration.vibrate(1, false);
   }
 
-  _onAnchorRemoved() {
-    this.setState({
-      playAnim: false,
-      visible: false
-    });
-  }
-
   _isPortalLoading() {
     this.setState({
       isLoading: false
     });
   }
-  // _timeToVibrate() {
-  //     Vibration.vibrate(500);
-  //   }
-  _handlespinner() {
-    this.setState({ spinnerState: false, visible: false });
-  }
+
 
   render() {
     return (
@@ -95,16 +79,11 @@ class FindingCards extends Component {
               position={[0, 0, -1]}
               textAlign="center"
               textClipMode="ClipToBounds"
-              text="Card found! Portal Loading...somewhere around you"
+              text="Card found! Look around for a portal!"
               outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
               scale={[0.5, 0.5, 0.5]}
               style={styles.textStyle}
               visible={this.state.visible}
-            />
-            <ViroSpinner
-              type="Light"
-              position={[0, 0, 0]}
-              visible={this.state.spinnerState}
             />
           </ViroNode>
 
@@ -114,7 +93,6 @@ class FindingCards extends Component {
               position={[0, 0, 0]}
               rotation={[0, 0, 0]}
               animation={{
-                name: "cheshireCat",
                 run: this.state.playAnim,
                 loop: true,
                 delay: 0
@@ -125,7 +103,20 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
-          <QueenPortal2 enterPortal={this._handlespinner} />
+<ViroSpinner
+            type='light'
+            position={[0, 0, -2]}
+            visible={this.state.isLoading}
+          />
+
+          <QueenPortal2
+                onLoadEnd={() => {
+                  this.setState({
+                    isLoading: false,
+                    isPortalRendered: true
+                  });
+                }}
+                    />
         </ViroARImageMarker>
 
         {/***************-Joker Card************************************/}
@@ -141,16 +132,11 @@ class FindingCards extends Component {
               position={[0, 0, -1]}
               textAlign="center"
               textClipMode="ClipToBounds"
-              text="Card found! Portal Loading...somewhere around you"
+              text="Card found! Look around for a portal!"
               outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
               scale={[0.5, 0.5, 0.5]}
               style={styles.textStyle}
               visible={this.state.visible}
-            />
-            <ViroSpinner
-              type="Light"
-              position={[0, 0, 0]}
-              visible={this.state.spinnerState}
             />
           </ViroNode>
 
@@ -160,7 +146,6 @@ class FindingCards extends Component {
               position={[0, 0, 0]}
               rotation={[0, 0, 0]}
               animation={{
-                name: "alice",
                 run: true,
                 loop: true,
                 delay: 0
@@ -171,7 +156,14 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
-          <PortScene enterPortal={this._handlespinner} />
+          <PortScene
+onLoadEnd={() => {
+                  this.setState({
+                    isLoading: false,
+                    isPortalRendered: true
+                  })
+                }}
+          />
         </ViroARImageMarker>
 
         {/***************-Spades Card************************************/}
@@ -187,16 +179,11 @@ class FindingCards extends Component {
               position={[0, 0, -1]}
               textAlign="center"
               textClipMode="ClipToBounds"
-              text="Card found! Portal Loading...somewhere around you"
+              text="Card found! Look around for a portal!"
               outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
               scale={[0.5, 0.5, 0.5]}
               style={styles.textStyle}
               visible={this.state.visible}
-            />
-            <ViroSpinner
-              type="Light"
-              position={[0, 0, 0]}
-              visible={this.state.spinnerState}
             />
           </ViroNode>
 
@@ -206,7 +193,6 @@ class FindingCards extends Component {
               position={[0, 0, 0]}
               rotation={[0, 0, 0]}
               animation={{
-                name: "rose",
                 run: true,
                 loop: true,
                 delay: 0
@@ -216,7 +202,14 @@ class FindingCards extends Component {
               source={rose}
             />
           </ViroNode>
-          <DiamondPortal enterPortal={this._handlespinner} />
+          <PortScene
+          onLoadEnd={() => {
+                  this.setState({
+                    isLoading: false,
+                    isPortalRendered: true
+                  });
+                }}
+                  />
         </ViroARImageMarker>
 
         {/***************-Diamond Card************************************/}
@@ -232,16 +225,11 @@ class FindingCards extends Component {
               position={[0, 0, -1]}
               textAlign="center"
               textClipMode="ClipToBounds"
-              text="Card found! Portal Loading...somewhere around you"
+              text="Card found! Look around for a portal!"
               outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
               scale={[0.5, 0.5, 0.5]}
               style={styles.textStyle}
               visible={this.state.visible}
-            />
-            <ViroSpinner
-              type="Light"
-              position={[0, 0, 0]}
-              visible={this.state.spinnerState}
             />
           </ViroNode>
 
@@ -251,7 +239,6 @@ class FindingCards extends Component {
               position={[0, 0, 0]}
               rotation={[0, 0, 0]}
               animation={{
-                name: "rabbit",
                 run: true,
                 loop: true,
                 delay: 0
@@ -261,7 +248,13 @@ class FindingCards extends Component {
               source={rabbit}
             />
           </ViroNode>
-          <DiamondPortal enterPortal={this._handlespinner} />
+          <DiamondPortal
+                  onLoadEnd={() => {
+                  this.setState({
+                    isLoading: false,
+                    isPortalRendered: true
+                  });
+                }} />
         </ViroARImageMarker>
       </ViroARScene>
     );
@@ -284,6 +277,19 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ViroARTrackingTargets.createTargets({
   queen: {
