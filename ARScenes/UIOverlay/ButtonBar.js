@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import { gamePausedThunk, gameEndedThunk } from '../../store/gameReducer';
-import { Button } from 'react-native-material-ui';
-import styles from './styles';
-import Timer from './Timer';
-import PointCount from './PointCount';
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { gamePausedThunk, gameEndedThunk } from "../../store/gameReducer";
+import { Button } from "react-native-material-ui";
+import styles from "./styles";
+import Timer from "./Timer";
+import PointCount from "./PointCount";
 
 class ButtonBar extends Component {
   constructor() {
@@ -19,13 +19,13 @@ class ButtonBar extends Component {
   handlePassword() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push('/password');
+    history.push("/password");
   }
 
   handlePause() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push('/pause');
+    history.push("/pause");
   }
 
   handleResume() {
@@ -37,7 +37,7 @@ class ButtonBar extends Component {
   handleExit() {
     const { history, endGame } = this.props;
     endGame();
-    history.push('/');
+    history.push("/");
   }
 
   render() {
@@ -59,7 +59,7 @@ class ButtonBar extends Component {
 const mapDispatch = dispatch => {
   return {
     pauseGame: () => dispatch(gamePausedThunk()),
-    endGame: () => dispatch(gameEndedThunk()),
+    endGame: () => dispatch(gameEndedThunk())
   };
 };
 
