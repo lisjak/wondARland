@@ -8,6 +8,7 @@ import {
   ViroPortalScene,
   ViroVideo,
   Viro3DObject,
+  ViroSound,
   ViroMaterials,
 } from 'react-viro';
 
@@ -46,6 +47,13 @@ export default class QueenPortal2 extends Component {
             type="VRX"
           />
         </ViroPortal>
+        {/* <ViroSound
+          paused={this.state.playPortal1Sound}
+          muted={false}
+          source={require('../../assets/music/cube_sound.wav')}
+          loop={true}
+          volume={1.0}
+        /> */}
 
         <ViroVideo
           source={cheshireCat}
