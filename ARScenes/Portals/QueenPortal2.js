@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, Vibration } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Vibration } from "react-native";
 
 import {
   ViroNode,
@@ -18,36 +18,32 @@ const cheshireCat = require("../../assets/portal_assets/chesh.mp4");
 
 export default class QueenPortal2 extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       showPasscode: false,
-      visible: false,
-    }
+      visible: false
+    };
     this.handleClick = this.handleClick.bind(this);
     this.cheshClick = this.cheshClick.bind(this);
+    this.handleEnterPortal = this.handleEnterPortal.bind(this);
   }
-
-
-
 
   handleClick() {
     this.setState({
-      showPasscode: true,
-    })
-  }
-
-
-cheshClick(){
-  this.setState({
-    visible: true
+      showPasscode: true
     });
-    Vibration.vibrate([0,250,500,750], false);
   }
+
+  cheshClick() {
+    this.setState({
+      visible: true
+    });
+    Vibration.vibrate([0, 250, 500, 750], false);
+  }
+
   handleEnterPortal() {
     this.props.enterPortal();
   }
-
-
 
   render() {
     return (
@@ -68,28 +64,25 @@ cheshClick(){
           />
         </ViroPortal>
 
-
-                <ViroVideo
+        <ViroVideo
           source={cheshireCat}
           height={6}
           width={6}
           loop={true}
           position={[0, 0, -5]}
-          rotation={[0,0,0]}
-          onClick={this.cheshClick}/>
+          rotation={[0, 0, 0]}
+          onClick={this.cheshClick}
+        />
 
-                    <ViroText
-            text={`Curious and curiouser... keep looking...`}
-            width={2}
-            height={2}
-            scale={[0.5, 0.5, 0.5]}
-            position={[0, 0.8, -2]}
-            outerStroke={{ type: 'Outline', width: 2, color: '#0080FF' }}
-            visible={this.state.visible}
-          />
-
-
-
+        <ViroText
+          text={`Curious and curiouser... keep looking...`}
+          width={2}
+          height={2}
+          scale={[0.5, 0.5, 0.5]}
+          position={[0, 0.8, -2]}
+          outerStroke={{ type: "Outline", width: 2, color: "#0080FF" }}
+          visible={this.state.visible}
+        />
 
         <HeartObject position={[-0.5, 1, -3]} />
         <HeartObject position={[0, 1, -4]} />
@@ -98,13 +91,12 @@ cheshClick(){
         <HeartObject position={[-2, -1, -3]} />
 
         <ViroNode position={[4, 1, -4]}>
-
           <ViroText
             style={styles.boldFont}
             position={[0, 0.1, -0.1]}
             height={3}
             extrusionDepth={3}
-            materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
+            materials={["frontMaterial", "backMaterial", "sideMaterial"]}
             text="Pass Digit #1: 9"
             visible={this.state.showPasscode}
           />
@@ -122,12 +114,10 @@ cheshClick(){
           />
         </ViroNode>
 
-
-
         <ViroSound
           paused={false}
           muted={false}
-          source={require('../../assets/music/spooky.m4a')}
+          source={require("../../assets/music/spooky.m4a")}
           loop={true}
           volume={1.0}
         />
