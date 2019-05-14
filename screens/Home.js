@@ -9,7 +9,6 @@ import {
 
 import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
-import { Button } from 'react-native-material-ui';
 
 let wondARland = require('../assets/images/screen.gif');
 
@@ -42,26 +41,11 @@ class ViroSample extends Component {
         <View style={localStyles.inner}>
           <TouchableHighlight
             style={localStyles.buttons}
-            onPress={this.handleStart}
+            onPress={() => history.push('/entryarscene')}
             underlayColor="#04152b"
           >
             <Text style={localStyles.buttonText}>Start Game</Text>
           </TouchableHighlight>
-
-          {/* login button commented out until it's functional
-          <Button
-            accent
-            text="login"
-            style={localStyles.buttons}
-            onPress={() => history.push('/login')}
-          /> */}
-
-          {/* <Button
-            accent
-            text="instructions"
-            style={localStyles.buttons}
-            onPress={() => history.push('/instructions')}
-          /> */}
 
           <TouchableHighlight
             style={localStyles.buttons}
@@ -70,13 +54,7 @@ class ViroSample extends Component {
           >
             <Text style={localStyles.buttonText}>Instructions</Text>
           </TouchableHighlight>
-          {/* <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={() => history.push('/login')}
-            underlayColor="#04152b"
-          >
-            <Text style={localStyles.buttonText}>Login</Text>
-          </TouchableHighlight> */}
+
           <TouchableHighlight
             style={localStyles.buttons}
             onPress={() => history.push('/signup')}

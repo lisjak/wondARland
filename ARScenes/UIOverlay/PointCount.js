@@ -8,7 +8,7 @@ class PointCount extends Component {
     const { pointsFound, pointFound } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{`\u{1F339} ${pointsFound}`}</Text>
+        <Text style={styles.text}>{`\u2665 ${pointsFound}`}</Text>
         {/* <Button title="+1" onPress={() => pointFound()} /> */}
       </View>
     );

@@ -2,7 +2,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { gamePausedThunk, gameEndedThunk } from '../../store/gameReducer';
+import {
+  gamePausedThunk,
+  gameEndedThunk,
+  gameResumedThunk,
+} from '../../store/gameReducer';
 import { Button } from 'react-native-material-ui';
 import styles from './styles';
 import Timer from './Timer';
@@ -37,10 +41,8 @@ class ButtonBar extends Component {
   }
 
   handleStuck() {
-    const { history, pauseGame, resumeGame } = this.props;
-    pauseGame();
-    resumeGame();
-    // history.goBack();
+    const { history } = this.props;
+    history.push('entryarscene');
   }
 
   handleExit() {
@@ -70,6 +72,7 @@ const mapDispatch = dispatch => {
   return {
     pauseGame: () => dispatch(gamePausedThunk()),
     endGame: () => dispatch(gameEndedThunk()),
+    resumeGame: () => dispatch(gameResumedThunk()),
   };
 };
 
