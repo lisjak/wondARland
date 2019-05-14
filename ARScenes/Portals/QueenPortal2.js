@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Vibration } from 'react-native';
 
 import {
   ViroNode,
@@ -7,6 +7,7 @@ import {
   ViroPortal,
   ViroPortalScene,
   ViroVideo,
+  Viro360Video,
   Viro3DObject,
   ViroSound,
   ViroMaterials,
@@ -17,21 +18,33 @@ const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
 
 export default class QueenPortal2 extends Component {
   constructor() {
-    super();
-
-    // set initial state
+    super()
     this.state = {
-      runShowTitleAnimation: true,
       showPasscode: false,
-    };
+      visible: false,
+    }
     this.handleClick = this.handleClick.bind(this);
+    this.cheshClick = this.cheshClick.bind(this);
   }
+
+
+
 
   handleClick() {
     this.setState({
       showPasscode: true,
-    });
+    })
   }
+
+
+cheshClick(){
+  this.setState({
+    visible: true
+    });
+    Vibration.vibrate([0,250,500,750], false);
+  }
+
+
 
   render() {
     return (
@@ -47,21 +60,29 @@ export default class QueenPortal2 extends Component {
             type="VRX"
           />
         </ViroPortal>
-        {/* <ViroSound
-          paused={this.state.playPortal1Sound}
-          muted={false}
-          source={require('../../assets/music/cube_sound.wav')}
-          loop={true}
-          volume={1.0}
-        /> */}
 
-        <ViroVideo
+
+                <ViroVideo
           source={cheshireCat}
-          height={4}
-          width={4}
+          height={6}
+          width={6}
           loop={true}
-          position={[0, 2, -5]}
-        />
+          position={[0, 0, -5]}
+          rotation={[0,0,0]}
+          onClick={this.cheshClick}/>
+
+                    <ViroText
+            text={`Curious and curiouser... keep looking...`}
+            width={2}
+            height={2}
+            scale={[0.5, 0.5, 0.5]}
+            position={[0, 0.8, -2]}
+            outerStroke={{ type: 'Outline', width: 2, color: '#0080FF' }}
+            visible={this.state.visible}
+          />
+
+
+
 
         <HeartObject position={[-0.5, 1, -3]} />
         <HeartObject position={[0, 1, -4]} />
@@ -70,14 +91,14 @@ export default class QueenPortal2 extends Component {
         <HeartObject position={[-2, -1, -3]} />
 
         <ViroNode position={[4, 1, -4]}>
-          {/* 3D Text vertion for passcode */}
+
           <ViroText
             style={styles.boldFont}
             position={[0, 0.1, -0.1]}
             height={3}
             extrusionDepth={3}
             materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-            text="First Number of password is 9"
+            text="Pass Digit #1: 9"
             visible={this.state.showPasscode}
           />
 
@@ -93,6 +114,16 @@ export default class QueenPortal2 extends Component {
             type="VRX"
           />
         </ViroNode>
+
+
+
+        <ViroSound
+          paused={false}
+          muted={false}
+          source={require('../../assets/music/spooky.m4a')}
+          loop={true}
+          volume={1.0}
+        />
       </ViroPortalScene>
     );
   }
