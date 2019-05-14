@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-
 import { Vibration } from "react-native";
-
 import { Viro3DObject } from "react-viro";
-
 import { connect } from "react-redux";
 import { pointFoundThunk } from "../../store/gameReducer";
+import firebase from 'firebase'
 
 class HeartObject extends Component {
   constructor() {
