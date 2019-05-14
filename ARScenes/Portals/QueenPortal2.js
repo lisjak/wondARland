@@ -10,11 +10,11 @@ import {
   Viro360Video,
   Viro3DObject,
   ViroSound,
-  ViroMaterials,
-} from 'react-viro';
+  ViroMaterials
+} from "react-viro";
 
-import HeartObject from './HeartObject';
-const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
+import HeartObject from "./HeartObject";
+const cheshireCat = require("../../assets/portal_assets/chesh.mp4");
 
 export default class QueenPortal2 extends Component {
   constructor() {
@@ -43,19 +43,26 @@ cheshClick(){
     });
     Vibration.vibrate([0,250,500,750], false);
   }
+  handleEnterPortal() {
+    this.props.enterPortal();
+  }
 
 
 
   render() {
     return (
-      <ViroPortalScene position={[0, 0, 0]} passable={true}>
+      <ViroPortalScene
+        position={[0, 0, 0]}
+        passable={true}
+        onPortalEnter={this.handleEnterPortal}
+      >
         <ViroPortal position={[0.5, -0.5, -0.7]} scale={[0.4, 0.4, 0.4]}>
           <Viro3DObject
-            source={require('../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx')}
+            source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
             resources={[
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png'),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png")
             ]}
             type="VRX"
           />
@@ -103,10 +110,10 @@ cheshClick(){
           />
 
           <Viro3DObject
-            source={require('../../assets/emoji_heart/emoji_heart.vrx')}
+            source={require("../../assets/emoji_heart/emoji_heart.vrx")}
             resources={[
-              require('../../assets/emoji_heart/emoji_heart_specular.png'),
-              require('../../assets/emoji_heart/emoji_heart.png'),
+              require("../../assets/emoji_heart/emoji_heart_specular.png"),
+              require("../../assets/emoji_heart/emoji_heart.png")
             ]}
             position={[0, 0, -0.2]}
             scale={[0.3, 0.3, 0.3]}
@@ -131,32 +138,32 @@ cheshClick(){
 
 ViroMaterials.createMaterials({
   frontMaterial: {
-    diffuseColor: '#FFFFFF',
+    diffuseColor: "#FFFFFF"
   },
   backMaterial: {
-    diffuseColor: '#001D4A',
+    diffuseColor: "#001D4A"
   },
   sideMaterial: {
-    diffuseColor: '#7EA8BE',
-  },
+    diffuseColor: "#7EA8BE"
+  }
 });
 
 const styles = StyleSheet.create({
   boldFont: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     flex: 1,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 24,
+    textAlignVertical: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 24
   },
   portalTextStyles: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 28,
-    color: '#C8243B',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
 });
 
 module.exports = QueenPortal2;
