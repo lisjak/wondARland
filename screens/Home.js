@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
   ImageBackground,
 } from 'react-native';
-
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
 
@@ -15,7 +15,13 @@ let wondARland = require('../assets/images/screen.gif');
 class ViroSample extends Component {
   constructor() {
     super();
+    this.state = {
+      loading: false,
+      user: firebase.auth().currentUser,
+      error: '',
+    };
     this.handleStart = this.handleStart.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   handleStart() {
@@ -24,7 +30,36 @@ class ViroSample extends Component {
     history.push('/entryarscene');
   }
 
+  handleSignOut() {
+    const { user } = this.state;
+    const { pointsFound, history } = this.props;
+    try {
+      this.setState({ loading: true });
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.setState({
+            loading: false,
+            error: '',
+            user: null,
+          });
+          history.push('/');
+        });
+      firebase
+        .firestore()
+        .collection('users')
+        .doc(user.uid)
+        .collection('pointsFound')
+        .doc()
+        .set(pointsFound);
+    } catch (error) {
+      this.setState({ error: 'Cannot log out!' });
+    }
+  }
+
   render() {
+    const { user } = this.state;
     const { history } = this.props;
     return (
       <View style={localStyles.container}>
@@ -47,27 +82,49 @@ class ViroSample extends Component {
             <Text style={localStyles.buttonText}>Start Game</Text>
           </TouchableHighlight>
 
-          <TouchableHighlight
+          {/* <TouchableHighlight
             style={localStyles.buttons}
             onPress={() => history.push('/instructions')}
             underlayColor="#04152b"
           >
             <Text style={localStyles.buttonText}>Instructions</Text>
-          </TouchableHighlight>
+          </TouchableHighlight> */}
 
-          <TouchableHighlight
-            style={localStyles.buttons}
-            onPress={() => history.push('/signup')}
-            underlayColor="#04152b"
-          >
-            <Text style={localStyles.buttonText}>Signup</Text>
-          </TouchableHighlight>
+          {user ? (
+            <TouchableHighlight
+              style={localStyles.buttons}
+              onPress={this.handleSignOut}
+              underlayColor="#04152b"
+            >
+              <Text style={localStyles.buttonText}>Sign Out</Text>
+            </TouchableHighlight>
+          ) : (
+            <View>
+              <TouchableHighlight
+                style={localStyles.buttons}
+                onPress={() => history.push('/signup')}
+                underlayColor="#04152b"
+              >
+                <Text style={localStyles.buttonText}>Signup</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={localStyles.buttons}
+                onPress={() => this.props.history.push('/login')}
+                underlayColor="#04152b"
+              >
+                <Text style={localStyles.buttonText}>Log In</Text>
+              </TouchableHighlight>
+            </View>
+          )}
         </View>
       </View>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  pointsFound: state.game.pointsFound,
+});
 const mapDispatch = dispatch => {
   return {
     startGame: () => dispatch(gameStartedThunk()),
@@ -75,7 +132,7 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatch
 )(ViroSample);
 

@@ -22,6 +22,7 @@ const pointFound = () => ({
   type: POINT_FOUND,
 });
 
+
 // THUNKS
 export const gameStartedThunk = () => {
   return dispatch => {

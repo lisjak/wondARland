@@ -25,13 +25,13 @@ class ButtonBar extends Component {
   handlePassword() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push('/password');
+    history.push("/password");
   }
 
   handlePause() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push('/pause');
+    history.push("/pause");
   }
 
   handleResume() {
@@ -48,7 +48,7 @@ class ButtonBar extends Component {
   handleExit() {
     const { history, endGame } = this.props;
     endGame();
-    history.push('/');
+    history.push("/");
   }
 
   render() {

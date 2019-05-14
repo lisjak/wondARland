@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import {
   View,
   StyleSheet,
@@ -25,7 +26,7 @@ class EntryARScene extends Component {
   constructor() {
     super();
     this.state = {
-      // sharedProps: sharedProps,
+      sharedProps: sharedProps,
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
@@ -36,6 +37,7 @@ class EntryARScene extends Component {
 
   render() {
     const { history } = this.props;
+    const user = firebase.auth().currentUser;
     return (
       <View style={styles.outer}>
         <Modal
