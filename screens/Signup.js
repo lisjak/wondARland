@@ -41,6 +41,7 @@ export default class Signup extends React.Component {
         });
     } catch (error) {
       this.setState({ error: 'Cannot authenticate', loading: false });
+      this.props.history.push('/');
     }
   }
 

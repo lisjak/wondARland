@@ -21,11 +21,14 @@ export default class QueenPortal2 extends Component {
     super();
     this.state = {
       showPasscode: false,
-      visible: false
+      visible: false,
+      playPortalSound: true,
+
     };
     this.handleClick = this.handleClick.bind(this);
     this.cheshClick = this.cheshClick.bind(this);
     this.handleEnterPortal = this.handleEnterPortal.bind(this);
+    this.handleExitPortal = this.handleExitPortal.bind(this)
   }
 
   handleClick() {
@@ -43,6 +46,11 @@ export default class QueenPortal2 extends Component {
 
   handleEnterPortal() {
     this.props.enterPortal();
+    this.setState({ playPortalSound: false });
+
+  }
+  handleExitPortal() {
+    this.setState({ playPortalSound: true });
   }
 
   render() {
@@ -51,6 +59,7 @@ export default class QueenPortal2 extends Component {
         position={[0, 0, 0]}
         passable={true}
         onPortalEnter={this.handleEnterPortal}
+        onPortalExit={this.handleExitPortal}
       >
         <ViroPortal position={[0.5, -0.5, -0.7]} scale={[0.4, 0.4, 0.4]}>
           <Viro3DObject
@@ -115,7 +124,7 @@ export default class QueenPortal2 extends Component {
         </ViroNode>
 
         <ViroSound
-          paused={false}
+          paused={this.state.playPortalSound}
           muted={false}
           source={require("../../assets/music/spooky.m4a")}
           loop={true}

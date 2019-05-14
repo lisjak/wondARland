@@ -32,12 +32,12 @@ class HeartObject extends Component {
   }
 
   _handleClick() {
+    this.savePoints();
     this.setState({
       visibility: false,
     });
     Vibration.vibrate(1, false);
     this.props.pointFound();
-    this.savePoints();
   }
 
   render() {
