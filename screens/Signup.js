@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Input } from './LoginInput';
 // import { f, database } from '../firebaseInitializer';
 import * as firebase from 'firebase';
@@ -36,7 +37,7 @@ export default class Signup extends React.Component {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           this.setState({ error: '', loading: false });
-          this.props.history.push('/');
+          this.props.history.push('/entryarscene');
         });
     } catch (error) {
       this.setState({ error: 'Cannot authenticate', loading: false });
@@ -44,7 +45,7 @@ export default class Signup extends React.Component {
   }
 
   saveUser() {
-    this.ref.add({ email: this.state.email });
+    this.ref.add({ email: this.state.email, name: this.state.name });
   }
 
   signUpAndSave() {
@@ -52,27 +53,13 @@ export default class Signup extends React.Component {
     this.handleSignUp();
   }
 
-  handleSignOut() {
-    try {
-      this.setState({ loading: true });
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.setState({ loading: false, error: '' });
-          this.props.history.push('/');
-        });
-    } catch (error) {
-      this.setState({ error: 'Cannot log out!' });
-    }
-  }
   renderCurrentState() {
-    if (this.state.loading) {
+    const { loading } = this.state;
+    if (loading) {
       return <ActivityIndicator size="large" />;
     }
     return (
       <View style={styles.form}>
-        {/* <Text style={styles.label}>Login</Text> */}
         <Input
           placeholder={`What's your name?`}
           label={'Your name'}
@@ -98,21 +85,6 @@ export default class Signup extends React.Component {
           underlayColor="#04152b"
         >
           <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          style={styles.buttons}
-          onPress={() => this.props.history.push('/')}
-          underlayColor="#04152b"
-        >
-          <Text style={styles.buttonText}>Sign Out</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.buttons}
-          onPress={() => this.props.history.push('/login')}
-          underlayColor="#04152b"
-        >
-          <Text style={styles.buttonText}>Log In</Text>
         </TouchableHighlight>
       </View>
     );
