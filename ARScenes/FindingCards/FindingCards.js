@@ -18,7 +18,10 @@ import {
 } from "react-viro";
 
 const transparentCheshire = require("../../assets/portal_assets/cheshireTransparent.gif");
+// const transparentCheshire = require('../../assets/portal_assets/cartoonchesh.gif');
 const tumble = require("../../assets/portal_assets/tumble.gif");
+const rose = require("../../assets/portal_assets/rose.gif");
+const rabbit = require("../../assets/portal_assets/rabbit.gif");
 
 class FindingCards extends Component {
   constructor(props) {
@@ -79,12 +82,8 @@ class FindingCards extends Component {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized}>
         <ViroAmbientLight color="#ffffff" intensity={200} />
-
-        <ViroARImageMarker
-          target="queen"
-          onAnchorFound={this._onAnchorFound}
-          onAnchorRemoved={this._onAnchorRemoved}
-        >
+        {/***************-Queen Card************************************/}
+        <ViroARImageMarker target="queen" onAnchorFound={this._onAnchorFound}>
           <ViroNode
             scale={[1, 1, 1]}
             transformBehaviors={["billboardX"]}
@@ -129,6 +128,7 @@ class FindingCards extends Component {
           <QueenPortal2 enterPortal={this._handlespinner} />
         </ViroARImageMarker>
 
+        {/***************-Joker Card************************************/}
         <ViroARImageMarker target="joker" onAnchorFound={this._onAnchorFound}>
           <ViroNode
             scale={[1, 1, 1]}
@@ -174,11 +174,8 @@ class FindingCards extends Component {
           <PortScene enterPortal={this._handlespinner} />
         </ViroARImageMarker>
 
-        <ViroARImageMarker
-          target="diamond"
-          onAnchorFound={this._onAnchorFound}
-          onAnchorRemoved={this._onAnchorRemoved}
-        >
+        {/***************-Spades Card************************************/}
+        <ViroARImageMarker target="spades" onAnchorFound={this._onAnchorFound}>
           <ViroNode
             scale={[1, 1, 1]}
             transformBehaviors={["billboardX"]}
@@ -203,6 +200,67 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
+          <ViroNode scale={[1, 1, 1]} transformBehaviors={["billboardX"]}>
+            <ViroAnimatedImage
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              animation={{
+                name: "rose",
+                run: true,
+                loop: true,
+                delay: 0
+              }}
+              height={0.2}
+              width={0.2}
+              source={rose}
+            />
+          </ViroNode>
+          <DiamondPortal enterPortal={this._handlespinner} />
+        </ViroARImageMarker>
+
+        {/***************-Diamond Card************************************/}
+        <ViroARImageMarker target="diamond" onAnchorFound={this._onAnchorFound}>
+          <ViroNode
+            scale={[1, 1, 1]}
+            transformBehaviors={["billboardX"]}
+            rotation={[0, -180, 0]}
+          >
+            <ViroText
+              width={2}
+              height={3}
+              position={[0, 0, -1]}
+              textAlign="center"
+              textClipMode="ClipToBounds"
+              text="Card found! Portal Loading...somewhere around you"
+              outerStroke={{ type: "Outline", width: 2, color: "#000000" }}
+              scale={[0.5, 0.5, 0.5]}
+              style={styles.textStyle}
+              visible={this.state.visible}
+            />
+            <ViroSpinner
+              type="Light"
+              position={[0, 0, 0]}
+              visible={this.state.spinnerState}
+            />
+          </ViroNode>
+
+          <ViroNode scale={[1, 1, 1]} transformBehaviors={["billboardX"]}>
+            <ViroAnimatedImage
+              scale={[0.5, 0.5, 0.5]}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              animation={{
+                name: "rabbit",
+                run: true,
+                loop: true,
+                delay: 0
+              }}
+              height={0.2}
+              width={0.2}
+              source={rabbit}
+            />
+          </ViroNode>
           <DiamondPortal enterPortal={this._handlespinner} />
         </ViroARImageMarker>
       </ViroARScene>

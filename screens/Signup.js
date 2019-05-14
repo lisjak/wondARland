@@ -7,69 +7,78 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Input } from './LoginInput';
-import firebase from 'firebase';
+// import { f, database } from '../firebaseInitializer';
+import * as firebase from 'firebase';
+require('../firebaseInitializer');
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
   constructor() {
     super();
+    this.ref = firebase.firestore().collection('users');
     this.state = {
       email: '',
       password: '',
+      name: '',
       loading: false,
       error: '',
     };
-    this.onLogin = this.onLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.saveUser = this.saveUser.bind(this);
+    this.signUpAndSave = this.signUpAndSave.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.authUnsubscriber = firebase
-  //     .auth()
-  //     .onAuthStateChanged(user => this.setState({ user: user }));
-  //   this.firestoreUnsubscriber = this.ref.onSnapshot(this.onCollectionUpdate);
-  // }
-
-  // componentWillUnmount() {
-  //   if (this.authUnsubscriber) {
-  //     this.authUnsubscriber();
-  //   }
-  //   if (this.firestoreUnsubscriber) {
-  //     this.firestoreUnsubscriber();
-  //   }
-  // }
-
-  onLogin() {
-    this.setState({ loading: true });
+  handleSignUp() {
     const { email, password } = this.state;
+    this.setState({ loading: true });
     try {
       firebase
         .auth()
-        .signInWithEmailAndPassword(email, password)
+        .createUserWithEmailAndPassword(email, password)
         .then(() => {
-          this.setState({
-            loading: false,
-            error: '',
-          });
+          this.setState({ error: '', loading: false });
           this.props.history.push('/');
         });
     } catch (error) {
-      this.setState({
-        loading: false,
-        error: 'Cannot authenticate',
-      });
+      this.setState({ error: 'Cannot authenticate', loading: false });
     }
   }
 
+  saveUser() {
+    this.ref.add({ email: this.state.email });
+  }
+
+  signUpAndSave() {
+    this.saveUser();
+    this.handleSignUp();
+  }
+
+  handleSignOut() {
+    try {
+      this.setState({ loading: true });
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.setState({ loading: false, error: '' });
+          this.props.history.push('/');
+        });
+    } catch (error) {
+      this.setState({ error: 'Cannot log out!' });
+    }
+  }
   renderCurrentState() {
     if (this.state.loading) {
-      return (
-        // <View style={styles.form}>
-        <ActivityIndicator size="large" />
-        // </View>
-      );
+      return <ActivityIndicator size="large" />;
     }
     return (
       <View style={styles.form}>
-        <Text style={styles.label}>Login</Text>
+        {/* <Text style={styles.label}>Login</Text> */}
+        <Input
+          placeholder={`What's your name?`}
+          label={'Your name'}
+          onChangeText={name => this.setState({ name })}
+          value={this.state.name}
+        />
         <Input
           placeholder={'Enter your email'}
           label={'Email'}
@@ -85,10 +94,10 @@ export default class Login extends React.Component {
 
         <TouchableHighlight
           style={styles.buttons}
-          onPress={this.onLogin}
+          onPress={this.signUpAndSave}
           underlayColor="#04152b"
         >
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableHighlight>
 
         <TouchableHighlight
@@ -96,7 +105,14 @@ export default class Login extends React.Component {
           onPress={() => this.props.history.push('/')}
           underlayColor="#04152b"
         >
-          <Text style={styles.buttonText}>Go back</Text>
+          <Text style={styles.buttonText}>Sign Out</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.buttons}
+          onPress={() => this.props.history.push('/login')}
+          underlayColor="#04152b"
+        >
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableHighlight>
       </View>
     );
