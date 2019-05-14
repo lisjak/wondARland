@@ -9,7 +9,6 @@ import {
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { gameStartedThunk } from '../store/gameReducer';
-import { Button } from 'react-native-material-ui';
 
 let wondARland = require('../assets/images/screen.gif');
 
@@ -77,10 +76,10 @@ class ViroSample extends Component {
         <View style={localStyles.inner}>
           <TouchableHighlight
             style={localStyles.buttons}
-            onPress={this.handleStart}
+            onPress={() => history.push('/entryarscene')}
             underlayColor="#04152b"
           >
-            <Text style={localStyles.buttonText}>Play</Text>
+            <Text style={localStyles.buttonText}>Start Game</Text>
           </TouchableHighlight>
 
           {/* <TouchableHighlight
