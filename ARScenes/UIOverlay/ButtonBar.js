@@ -1,11 +1,16 @@
-import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import { gamePausedThunk, gameEndedThunk } from "../../store/gameReducer";
-import { Button } from "react-native-material-ui";
-import styles from "./styles";
-import Timer from "./Timer";
-import PointCount from "./PointCount";
+/* eslint-disable no-alert */
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import {
+  gamePausedThunk,
+  gameEndedThunk,
+  gameResumedThunk,
+} from '../../store/gameReducer';
+import { Button } from 'react-native-material-ui';
+import styles from './styles';
+import Timer from './Timer';
+import PointCount from './PointCount';
 
 class ButtonBar extends Component {
   constructor() {
@@ -14,6 +19,7 @@ class ButtonBar extends Component {
     this.handlePause = this.handlePause.bind(this);
     this.handleResume = this.handleResume.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleStuck = this.handleStuck.bind(this);
   }
 
   handlePassword() {
@@ -34,6 +40,11 @@ class ButtonBar extends Component {
     history.goBack();
   }
 
+  handleStuck() {
+    const { history } = this.props;
+    history.push('entryarscene');
+  }
+
   handleExit() {
     const { history, endGame } = this.props;
     endGame();
@@ -49,7 +60,8 @@ class ButtonBar extends Component {
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          <Button accent text="exit" onPress={this.handleExit} />
+          <Button accent text="I'm stuck!" onPress={this.handleStuck} />
+          <Button accent text="quit" onPress={this.handleExit} />
         </View>
       </View>
     );
@@ -59,7 +71,8 @@ class ButtonBar extends Component {
 const mapDispatch = dispatch => {
   return {
     pauseGame: () => dispatch(gamePausedThunk()),
-    endGame: () => dispatch(gameEndedThunk())
+    endGame: () => dispatch(gameEndedThunk()),
+    resumeGame: () => dispatch(gameResumedThunk()),
   };
 };
 
