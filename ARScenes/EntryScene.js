@@ -25,9 +25,22 @@ class EntryARScene extends Component {
   constructor() {
     super();
     this.state = {
-      sharedProps: sharedProps
+      sharedProps: sharedProps,
+      data: [],
     };
     this.setModalVisible = this.setModalVisible.bind(this);
+  }
+
+   componentDidMount(){
+    const user = firebase.auth().currentUser;
+    const pointsFound = firebase.firestore().collection('users').doc(user.email).get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+this.setState(prevState => ({ data: [doc.data(), ...prevState.data]}))
+      })
+    });
+    // this.setState({
+    //   pointsFound: pointsFound
+    // })
   }
 
   setModalVisible(visible) {
@@ -51,7 +64,7 @@ class EntryARScene extends Component {
                   <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
                   {user ? (
                     <Text style={styles.headerText}>
-                      Welcome {user.email}!
+                      Welcome {user.email}! You've found {this.state.pointsFound} hearts!
                     </Text>
                   ) : null }
                   <Text style={styles.text}>
