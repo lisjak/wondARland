@@ -6,6 +6,7 @@ import { COLOR } from 'react-native-material-ui';
 import store from './store';
 import Home from './screens/Home';
 import Login from './screens/LogIn';
+import Signup from './screens/Signup';
 import Instructions from './screens/Instructions';
 import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
@@ -31,6 +32,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
               <Route exact path="/instructions" component={Instructions} />
               <Route exact path="/entryarscene" component={EntryARScene} />
               <Route exact path="/loser" component={Loser} />

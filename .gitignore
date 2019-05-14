@@ -3,7 +3,7 @@
 .DS_Store
 secrets.js
 config.js
-firebase.js
+firebase-config.js
 # Xcode
 #
 build/

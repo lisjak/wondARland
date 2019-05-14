@@ -50,12 +50,12 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0, -1]}
+        position={[0, 0, 0]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0, 0, 0]} scale={[0.25, 0.25, 0.25]}>
+        <ViroPortal position={[0, 0, -1]} scale={[0.25, 0.25, 0.25]}>
           <Viro3DObject
             source={require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx')}
             resources={[
@@ -83,7 +83,7 @@ export default class RosePortal extends Component {
         <DeadEndforRosePortal />
 
         <ViroPortalScene
-          position={[1, 0, -2]}
+          position={[1, 0, -1]}
           passable={true}
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
@@ -171,6 +171,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 16,
+
+  },
+});
+
+ViroMaterials.createMaterials({
+  frontMaterial: {
+    diffuseColor: '#FFFFFF',
+  },
+  backMaterial: {
+    diffuseColor: '#C9F299',
+  },
+  sideMaterial: {
+    diffuseColor: '#88BB92',
   },
 });
 
