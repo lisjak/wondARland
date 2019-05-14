@@ -1,5 +1,6 @@
+/* eslint-disable no-alert */
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { gamePausedThunk, gameEndedThunk } from '../../store/gameReducer';
 import { Button } from 'react-native-material-ui';
@@ -14,6 +15,7 @@ class ButtonBar extends Component {
     this.handlePause = this.handlePause.bind(this);
     this.handleResume = this.handleResume.bind(this);
     this.handleExit = this.handleExit.bind(this);
+    this.handleStuck = this.handleStuck.bind(this);
   }
 
   handlePassword() {
@@ -34,6 +36,13 @@ class ButtonBar extends Component {
     history.goBack();
   }
 
+  handleStuck() {
+    const { history, pauseGame, resumeGame } = this.props;
+    pauseGame();
+    resumeGame();
+    // history.goBack();
+  }
+
   handleExit() {
     const { history, endGame } = this.props;
     endGame();
@@ -49,7 +58,8 @@ class ButtonBar extends Component {
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          <Button accent text="exit" onPress={this.handleExit} />
+          <Button accent text="I'm stuck!" onPress={this.handleStuck} />
+          <Button accent text="quit" onPress={this.handleExit} />
         </View>
       </View>
     );

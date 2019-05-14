@@ -45,7 +45,7 @@ class ViroSample extends Component {
             onPress={this.handleStart}
             underlayColor="#04152b"
           >
-            <Text style={localStyles.buttonText}>Play</Text>
+            <Text style={localStyles.buttonText}>Start Game</Text>
           </TouchableHighlight>
 
           {/* login button commented out until it's functional
