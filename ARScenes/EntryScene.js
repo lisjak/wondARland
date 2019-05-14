@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { ViroARSceneNavigator } from "react-viro";
+import { connect } from "react-redux";
+import firebase from "firebase";
 import {
   View,
   StyleSheet,
   Modal,
   Text,
   Image,
+  ScrollView,
   TouchableHighlight
 } from "react-native";
 require("../secrets.js");
 import ButtonBar from "../ARScenes/UIOverlay/ButtonBar";
-import firebase from "firebase";
+import { gameStartedThunk } from "../store/gameReducer";
 
 let sharedProps = {
   apiKey: process.env.APIKEY
@@ -18,13 +21,11 @@ let sharedProps = {
 
 let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
 
-export default class EntryARScene extends Component {
+class EntryARScene extends Component {
   constructor() {
     super();
     this.state = {
-      sharedProps: sharedProps,
-      modalVisible: true,
-      stateGame: false
+      sharedProps: sharedProps
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
@@ -41,49 +42,45 @@ export default class EntryARScene extends Component {
         <Modal
           animationType="slide"
           transparent={true}
-          visible={this.state.modalVisible}
+          visible={!this.props.gameInProgress}
         >
           <View style={styles.modalView}>
             <View style={styles.container}>
               <View>
-                {user ? (
-                  <Text style={styles.headerText}>
-                    Welcome back {user.email}!
+                <ScrollView>
+                  <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
+                  <Text style={styles.text}>
+                    {"\n"}♥ Look around! {"\n"}
                   </Text>
-                ) : null}
-                <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
-                <Text style={styles.text}>
-                  {"\n"}♥ Look around! {"\n"}
-                </Text>
-                <Text style={styles.text}> ♠ Find a card! {"\n"}</Text>
-                <Text style={styles.text}>
-                  {" "}
-                  ♦ Point your camera to scan it! {"\n"}
-                </Text>
-                <Text style={styles.text}>
-                  {" "}
-                  ♣ Move your body through the portal to explore the
-                  adventurescape! {"\n"}
-                </Text>
-                <Text style={styles.text}>
-                  {" "}
-                  ♥ Can't exit or enter the portal? Hit Stuck! on the button
-                  bar. {"\n"}
-                </Text>
-                <Text style={styles.text}>
-                  {" "}
-                  ♠ Find all three digits for the passcode before time runs out!{" "}
-                  {"\n"}
-                </Text>
-                <Text style={styles.text}>
-                  {" "}
-                  ♦ Don't get too lost down the rabbit hole!{" "}
-                </Text>
+                  <Text style={styles.text}> ♠ Find a card! {"\n"}</Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    ♦ Point your camera to scan it! {"\n"}
+                  </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    ♣ Move your body through the portal to explore the
+                    adventurescape! {"\n"}
+                  </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    ♥ Can't exit or enter the portal? Hit Stuck! on the button
+                    bar. {"\n"}
+                  </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    ♠ Find all three digits for the passcode before time runs
+                    out! {"\n"}
+                  </Text>
+                  <Text style={styles.text}>
+                    {" "}
+                    ♦ Don't get too lost down the rabbit hole!{" "}
+                  </Text>
+                </ScrollView>
               </View>
               <TouchableHighlight
                 onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                  this.setState({ stateGame: true });
+                  this.props.startGame();
                 }}
                 style={styles.buttons}
               >
@@ -92,7 +89,7 @@ export default class EntryARScene extends Component {
             </View>
           </View>
         </Modal>
-        {this.state.stateGame && (
+        {this.props.gameInProgress && (
           <View style={styles.ARScene}>
             <ViroARSceneNavigator
               {...this.state.sharedProps}
@@ -105,6 +102,23 @@ export default class EntryARScene extends Component {
     );
   }
 }
+
+const mapState = state => {
+  return {
+    gameInProgress: state.game.gameInProgress
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    startGame: () => dispatch(gameStartedThunk())
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(EntryARScene);
 
 const styles = StyleSheet.create({
   outer: {

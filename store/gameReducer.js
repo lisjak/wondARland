@@ -4,7 +4,6 @@ const GAME_PAUSED = 'GAME_PAUSED';
 const GAME_RESUMED = 'GAME_RESUMED';
 const GAME_ENDED = 'GAME_ENDED';
 const POINT_FOUND = 'POINT_FOUND';
-const ROSE_FOUND = 'ROSE_FOUND';
 
 //ACTION CREATORS
 const gameStarted = () => ({
@@ -21,9 +20,6 @@ const gameEnded = () => ({
 });
 const pointFound = () => ({
   type: POINT_FOUND,
-});
-const roseFound = () => ({
-  type: ROSE_FOUND,
 });
 
 
@@ -58,12 +54,6 @@ export const pointFoundThunk = () => {
   };
 };
 
-export const roseFoundThunk = () => {
-  return dispatch => {
-    dispatch(roseFound());
-  };
-};
-
 // INITIAL STATE
 let initialState = {
   timeRemaining: 0,
@@ -72,7 +62,6 @@ let initialState = {
   password: '',
   gameInProgress: false,
   pointsFound: 0,
-  rosesFound: 0,
 };
 
 // REDUCER
@@ -110,11 +99,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         pointsFound: state.pointsFound + 1,
-      };
-    case ROSE_FOUND:
-      return {
-        ...state,
-        rosesFound: state.rosesFound + 1,
       };
     default:
       return state;
