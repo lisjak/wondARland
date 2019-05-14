@@ -22,13 +22,10 @@ export default class QueenPortal2 extends Component {
     this.state = {
       showPasscode: false,
       visible: false,
-      playPortalSound: true,
-
+            playPortalSound: true,
     };
     this.handleClick = this.handleClick.bind(this);
     this.cheshClick = this.cheshClick.bind(this);
-    this.handleEnterPortal = this.handleEnterPortal.bind(this);
-    this.handleExitPortal = this.handleExitPortal.bind(this)
   }
 
   handleClick() {
@@ -44,7 +41,7 @@ export default class QueenPortal2 extends Component {
     Vibration.vibrate([0, 250, 500, 750], false);
   }
 
-  handleEnterPortal() {
+    handleEnterPortal() {
     this.props.enterPortal();
     this.setState({ playPortalSound: false });
 
@@ -53,15 +50,15 @@ export default class QueenPortal2 extends Component {
     this.setState({ playPortalSound: true });
   }
 
+
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0, 0]}
         passable={true}
-        onPortalEnter={this.handleEnterPortal}
-        onPortalExit={this.handleExitPortal}
       >
-        <ViroPortal position={[0.5, -0.5, -0.7]} scale={[0.4, 0.4, 0.4]}>
+        <ViroPortal position={[0, 0, -1.3]} scale={[0.15, 0.15, 0.15]}
+        onPortalEnter={this.handleEnterPortal}
+        onPortalExit={this.handleExitPortal}>
           <Viro3DObject
             source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
             resources={[
@@ -75,8 +72,8 @@ export default class QueenPortal2 extends Component {
 
         <ViroVideo
           source={cheshireCat}
-          height={6}
-          width={6}
+          height={4}
+          width={4}
           loop={true}
           position={[0, 0, -5]}
           rotation={[0, 0, 0]}
@@ -164,5 +161,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+
+
+
 
 module.exports = QueenPortal2;

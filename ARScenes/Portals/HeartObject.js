@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Vibration } from 'react-native';
-import { Viro3DObject } from 'react-viro';
+import { Viro3DObject, ViroAnimations } from 'react-viro';
 import { connect } from 'react-redux';
 import { pointFoundThunk } from '../../store/gameReducer';
 import firebase from 'firebase';
@@ -48,6 +48,11 @@ class HeartObject extends Component {
           require('../../assets/emoji_heart/emoji_heart_specular.png'),
           require('../../assets/emoji_heart/emoji_heart.png'),
         ]}
+        animation= {{
+          name: 'bounceUpAndDownAndRotate',
+          run: true,
+          loop: true
+        }}
         position={this.props.position}
         scale={[0.3, 0.3, 0.3]}
         onClick={this._handleClick}
@@ -57,6 +62,37 @@ class HeartObject extends Component {
     );
   }
 }
+
+
+ViroAnimations.registerAnimations({
+
+  rotate: {
+    properties: {
+      rotateY: '+=90'
+    },
+    duration: 1000, // 250 .25 seconds
+  },
+
+  bounceUp: {
+    properties: {
+      positionY: '+=0.5',
+    },
+    easing: 'Bounce',
+    duration: 500
+  },
+
+  bounceDown: {
+    properties: {
+      positionY: '-=0.5',
+    },
+    easing: 'Bounce',
+    duration: 500
+  },
+
+  bounceUpAndDownAndRotate: [
+      ['bounceUp', 'bounceDown', 'rotate']
+  ],
+});
 
 const mapState = state => {
   return {
