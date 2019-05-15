@@ -10,6 +10,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  homeContainer: {
+    flex: 1,
+    margin: 10,
+    alignItems: 'center',
+  },
   imageContainer: {
     flex: 0.9,
     marginTop: 12,
@@ -17,18 +23,57 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+  entrySceneContainer: {
+    flex: 1,
+    backgroundColor: '#ac3c0b',
+    borderRadius: 10,
+    margin: 20,
+    marginBottom: 100,
+    padding: 10,
+    // justifyContent: 'center'
+  },
+  homeOuter: {
+    flex: 0.82,
+    flexDirection: 'row',
+    // alignItems: 'center',
+    // backgroundColor: 'transparent',
+  },
+  outer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  homeInner: {
+    flex: 0.82,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  homeButtonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  homeButtonRow: {
+    flex: 0.5,
+    // justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
   thumbnail: {
     height: 70,
     width: 50,
     padding: 5,
   },
   bodyText: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'Avenir',
-    fontSize: 18,
-    color: 'white',
+    fontWeight: 'normal',
+    fontSize: 20,
+    color: '#fff',
+
+    marginTop: 25,
+    // textAlign: 'center',
   },
   boldText: {
     fontFamily: 'Avenir-black',
@@ -48,14 +93,18 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 50,
     color: '#fff',
+    marginBottom: 20,
   },
   message: {
     fontWeight: 'normal',
     fontSize: 30,
     color: '#fff',
+    textAlign: 'center',
   },
   button: {
     padding: 18,
+    width: 150,
+    marginBottom: 12,
     alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 10,
@@ -69,5 +118,18 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#000',
+  },
+  ARScene: {
+    flex: 1,
+    backgroundColor: 'transparent',
+  },
+  modalView: {
+    flex: 1,
+    backgroundColor: '#04152b',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+    paddingBottom: 0,
+    marginBottom: 0,
   },
 });
