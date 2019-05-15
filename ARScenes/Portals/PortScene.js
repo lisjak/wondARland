@@ -65,12 +65,12 @@ export class PortScene extends Component {
     const passcode = this.props.passcode;
     return (
       <ViroPortalScene
-        position={[0, 0, 0]}
+        // position={[0, 0, 0]}
         passable={true}
         onPortalEnter={this.handlePortalEnter}
         onPortalExit={this.handllePortalExit}
       >
-        <ViroPortal position={[0.2, -0.8, -0.2]} scale={[0.3, 0.3, 0.3]}>
+        <ViroPortal position={[0.2, -0.8, -0.8]} scale={[0.2, 0.2, 0.2]}>
           <Viro3DObject
             source={require(shipPortal)}
             resources={[
@@ -95,7 +95,7 @@ export class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[-0.5, 0, -1]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[-1, 0, -1]} scale={[0.2, 0.2, 0.2]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[
@@ -116,7 +116,7 @@ export class PortScene extends Component {
             this._onEnterPortal();
           }}
         >
-          <ViroPortal position={[-1, 0, -1.4]} scale={[0.3, 0.3, 0.3]}>
+          <ViroPortal position={[1, 0.4, 1.4]} scale={[0.2, 0.2, 0.2]}>
             <Viro3DObject
               source={require(shipPortal)}
               resources={[

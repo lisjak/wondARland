@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   View,
   Text,
   StyleSheet,
   TouchableHighlight,
-  Keyboard,
-} from 'react-native';
-import { Input, Button } from 'react-native-elements';
-import { gameResumedThunk } from '../store/gameReducer';
-import Message from './MessageScreen';
+  Keyboard
+} from "react-native";
+import { Input, Button } from "react-native-elements";
+import { gameResumedThunk } from "../store/gameReducer";
+import Message from "./MessageScreen";
 // import styles from './styles'
 
 class PasswordScreen extends Component {
   constructor() {
     super();
     this.state = {
-      firstcode: '',
-      secondcode: '',
-      thirdcode: '',
+      firstcode: "",
+      secondcode: "",
+      thirdcode: "",
       isWin: false,
-      isSubmit: false,
+      isSubmit: false
     };
     this.onSubmitChange = this.onSubmitChange.bind(this);
     this.renderResult = this.renderResult.bind(this);
@@ -93,7 +93,7 @@ class PasswordScreen extends Component {
               maxLength={1}
               onChangeText={text => {
                 this.setState({ firstcode: text });
-                this.refs['2'].focus();
+                this.refs["2"].focus();
               }}
               returnKeyType="next"
             />
@@ -106,7 +106,7 @@ class PasswordScreen extends Component {
               maxLength={1}
               onChangeText={text => {
                 this.setState({ secondcode: text });
-                this.refs['3'].focus();
+                this.refs["3"].focus();
               }}
               returnKeyType="next"
             />
@@ -142,13 +142,13 @@ class PasswordScreen extends Component {
 const mapState = state => {
   return {
     // passcode: '937',
-    passcode: state.game.passcode,
+    passcode: state.game.passcode
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    resumeGame: () => dispatch(gameResumedThunk()),
+    resumeGame: () => dispatch(gameResumedThunk())
   };
 };
 
@@ -159,91 +159,91 @@ export default connect(
 
 const styles = StyleSheet.create({
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 50,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: "center"
   },
   message: {
-    fontWeight: 'normal',
+    fontWeight: "normal",
     fontSize: 30,
-    color: '#fff',
-    textAlign: 'center',
+    color: "#fff",
+    textAlign: "center"
   },
 
   outer: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignContent: 'center',
-    backgroundColor: '#6da3f2',
-    height: '100%',
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignContent: "center",
+    backgroundColor: "#6da3f2",
+    height: "100%"
   },
   inner: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignContent: 'center',
+    justifyContent: "space-between",
+    alignContent: "center",
     margin: 36,
     marginTop: 150,
     marginBottom: 100,
-    alignItems: 'center',
+    alignItems: "center"
   },
 
   container: {
     flex: 1,
-    backgroundColor: '#04152b',
-    margin: 10,
+    backgroundColor: "#04152b",
+    margin: 10
   },
   textContainer: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center"
   },
   text: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
-    color: 'white',
+    color: "white"
   },
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center"
   },
   input: {
     width: 50,
-    alignSelf: 'center',
+    alignSelf: "center"
   },
   inputstyle: {
-    color: 'white',
+    color: "white",
     fontSize: 45,
     borderBottomWidth: 2,
-    borderColor: 'white',
+    borderColor: "white"
   },
   button: {
     padding: 18,
     width: 150,
     marginBottom: 12,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
-    shadowRadius: 3,
+    shadowRadius: 3
   },
   subtitle: {
     marginTop: 20,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontWeight: 'bold',
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontWeight: "bold",
     fontSize: 30,
-    color: 'white',
+    color: "white"
   },
   buttonText: {
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
     fontSize: 20,
-    color: '#000',
-  },
+    color: "#000"
+  }
 });
