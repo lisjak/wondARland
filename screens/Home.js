@@ -74,20 +74,20 @@ class ViroSample extends Component {
             <TouchableHighlight
               style={styles.button}
               onPress={() => history.push('/entryarscene')}
-              underlayColor="#04152b"
+              underlayColor="whitesmoke"
             >
               <Text style={styles.buttonText}>Start Game</Text>
             </TouchableHighlight>
 
 
 
-            <TouchableHighlight
+            {/* <TouchableHighlight
               style={styles.button}
               onPress={() => history.push('/instructions')}
               underlayColor="#04152b"
             >
               <Text style={styles.buttonText}>Instructions</Text>
-            </TouchableHighlight>
+            </TouchableHighlight> */}
             {/* </View> */}
             {/* {user ? (
               <TouchableHighlight
