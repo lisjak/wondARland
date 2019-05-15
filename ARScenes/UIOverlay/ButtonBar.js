@@ -25,13 +25,13 @@ class ButtonBar extends Component {
   handlePassword() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push("/password");
+    history.push('/password');
   }
 
   handlePause() {
     const { history, pauseGame } = this.props;
     pauseGame();
-    history.push("/pause");
+    history.push('/pause');
   }
 
   handleResume() {
@@ -48,19 +48,24 @@ class ButtonBar extends Component {
   handleExit() {
     const { history, endGame } = this.props;
     endGame();
-    history.push("/");
+    history.push('/');
   }
 
   render() {
+    const { history } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.rowContainer}>
-          <Timer history={this.props.history} />
+          <Timer history={history} />
           <PointCount />
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          <Button accent text="I'm stuck!" onPress={this.handleStuck} />
+          <Button
+            accent
+            text="I'm stuck!"
+            onPress={history.push('/entryarscene')}
+          />
           <Button accent text="quit" onPress={this.handleExit} />
         </View>
       </View>
