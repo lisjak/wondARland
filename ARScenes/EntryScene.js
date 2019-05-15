@@ -11,7 +11,6 @@ import {
   Text,
   Image,
   ScrollView,
-
   TouchableHighlight,
 } from 'react-native';
 require('../secrets.js');
@@ -19,12 +18,11 @@ import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
 import { gameStartedThunk } from '../store/gameReducer';
 import styles from '../screens/styles';
 
-
 let sharedProps = {
-  apiKey: process.env.APIKEY
+  apiKey: process.env.APIKEY,
 };
 
-let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
+let InitialARScene = require('../ARScenes/FindingCards/FindingCards');
 // let InitialARScene = require("../ARScenes/Portals/TestPortalSceneEmma");
 
 class EntryARScene extends Component {
@@ -34,7 +32,6 @@ class EntryARScene extends Component {
       sharedProps: sharedProps,
       // pointsFound: [],
       // user: firebase.auth().currentUser || null,
-
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
@@ -43,7 +40,7 @@ class EntryARScene extends Component {
   //   const { user } = this.state;
   //   const firebaseDB = await firebase.firestore();
   //   let info = null;
-  
+
   //   if (user) {
   //     let data = await firebaseDB
   //       .collection('users')
@@ -72,8 +69,8 @@ class EntryARScene extends Component {
           <View style={styles.modalView}>
             <View style={styles.entrySceneContainer}>
               <View>
-                <ScrollView>
-                  <Text style={styles.message}>♣♦ Helpful Hints ♠♥</Text>
+                <ScrollView style={{ marginTop: 40 }}>
+                  <Text style={styles.instructionsTitle}>How to Play</Text>
                   {/* {user ? (
                     <Text style={styles.headerText}>
                       Welcome {user.email}! You have {this.state.pointsFound}{" "}
@@ -102,16 +99,17 @@ class EntryARScene extends Component {
                     ♦ Don't get too lost down the rabbit hole!
                   </Text>
                 </ScrollView>
-                <TouchableHighlight
-                  onPress={() => {
-                    this.props.startGame();
-                  }}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>Play!</Text>
-                </TouchableHighlight>
               </View>
             </View>
+            <TouchableHighlight
+              style={styles.button}
+              underlayColor="whitesmoke"
+              onPress={() => {
+                this.props.startGame();
+              }}
+            >
+              <Text style={styles.buttonText}>Play!</Text>
+            </TouchableHighlight>
           </View>
         </Modal>
         {this.props.gameInProgress && (
@@ -131,13 +129,13 @@ class EntryARScene extends Component {
 const mapState = state => {
   return {
     gameInProgress: state.game.gameInProgress,
-    pointsFound: state.game.pointsFound
+    pointsFound: state.game.pointsFound,
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    startGame: () => dispatch(gameStartedThunk())
+    startGame: () => dispatch(gameStartedThunk()),
   };
 };
 

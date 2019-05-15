@@ -28,10 +28,11 @@ export default StyleSheet.create({
     backgroundColor: '#ac3c0b',
     borderRadius: 10,
     margin: 20,
-    marginBottom: 100,
+    marginBottom: 30,
     padding: 10,
     // justifyContent: 'center'
   },
+
   homeOuter: {
     flex: 0.82,
     flexDirection: 'row',
@@ -100,6 +101,12 @@ export default StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
+  instructionsTitle: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: '#fff',
+    textAlign: 'center',
+  },
   button: {
     padding: 18,
     width: 150,
@@ -118,6 +125,12 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#000',
   },
+  modalButton: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 30,
+    height: 60
+  },
   ARScene: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -127,8 +140,8 @@ export default StyleSheet.create({
     backgroundColor: '#04152b',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 20,
     paddingBottom: 0,
-    marginBottom: 0,
+    marginBottom: 60,
   },
 });
