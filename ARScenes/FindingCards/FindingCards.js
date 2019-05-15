@@ -231,7 +231,7 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
-          <ViroNode scale={[1, 1, 1]} transformBehaviors={['billboardX']}>
+          {/* <ViroNode scale={[1, 1, 1]} transformBehaviors={['billboardX']}>
             <ViroAnimatedImage
               scale={[0.5, 0.5, 0.5]}
               position={[0, 0, 0]}
@@ -245,7 +245,14 @@ class FindingCards extends Component {
               width={0.2}
               source={rabbit}
             />
-          </ViroNode>
+          </ViroNode> */}
+
+          {/* <ViroSpinner
+            type="light"
+            position={[0, 0, -2]}
+            visible={this.state.isLoading}
+          /> */}
+
           <DiamondPortal
             onLoadEnd={() => {
               this.setState({

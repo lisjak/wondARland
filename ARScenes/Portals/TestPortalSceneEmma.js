@@ -1,6 +1,6 @@
-import React, { Component } from "../../node_modules/react";
+import React, { Component } from '../../node_modules/react';
 
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 import {
   ViroARScene,
@@ -10,31 +10,30 @@ import {
   ViroPortalScene,
   Viro3DObject,
   ViroText,
-  ViroNode
-} from "../../node_modules/react-viro";
+  ViroNode,
+} from '../../node_modules/react-viro';
 
-import HeartObject from "./HeartObject";
-import RoseObject from "./RoseObject";
-import RosePortal from "./RosesPortal";
+import HeartObject from './HeartObject';
+import RosePortal from './RosesPortal';
 
 const shipPortal =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx';
 
 const portalShipDiffuse =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png';
 
 const portalShipNormal =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png';
 
 const portalShipSpecular =
-  "../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png";
+  '../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png';
 
 class TestPortalScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      portalText: "Hello There!",
-      showPasscode: false
+      portalText: 'Hello There!',
+      showPasscode: false,
     };
     this._onEnterPortal = this._onEnterPortal.bind(this);
     // this._jumpNextScene = this._jumpNextScene.bind(this);
@@ -45,7 +44,7 @@ class TestPortalScene extends Component {
 
   _onEnterPortal() {
     this.setState({
-      portalText: "Find the key!"
+      portalText: 'Find the key!',
     });
   }
 
@@ -59,7 +58,7 @@ class TestPortalScene extends Component {
 
   handleClick(stateValue) {
     this.setState({
-      showPasscode: true
+      showPasscode: true,
     });
   }
 
@@ -135,19 +134,19 @@ class TestPortalScene extends Component {
 
 const styles = StyleSheet.create({
   helloWorldTextStyle: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 20,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
   portalTextStyles: {
-    fontFamily: "Arial",
+    fontFamily: 'Arial',
     fontSize: 28,
-    color: "#C8243B",
-    textAlignVertical: "center",
-    textAlign: "center"
-  }
+    color: '#C8243B',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
 });
 
 module.exports = TestPortalScene;

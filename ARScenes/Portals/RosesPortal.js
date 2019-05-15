@@ -30,7 +30,6 @@ export default class RosePortal extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleEnterPortal1() {
-    // this.props.enterPortal();
     this.setState({ playPortal1Sound: false });
   }
 
@@ -52,12 +51,12 @@ export default class RosePortal extends Component {
   render() {
     return (
       <ViroPortalScene
-        position={[0, 0, 0]}
+        // position={[0, 0, 0]}
         passable={true}
         onPortalEnter={this.handleEnterPortal1}
         onPortalExit={this.handleExitPortal1}
       >
-        <ViroPortal position={[0, 0, -1]} scale={[0.25, 0.25, 0.25]}>
+        <ViroPortal position={[0, 0, -1]} scale={[0.15, 0.15, 0.15]}>
           <Viro3DObject
             source={require('../../assets/portal_assets/portal_res/portal_wood_frame/portal_wood_frame.vrx')}
             resources={[
@@ -85,12 +84,12 @@ export default class RosePortal extends Component {
         <DeadEndforRosePortal />
 
         <ViroPortalScene
-          position={[1, 0, -1]}
+          // position={[1, 0, -1]}
           passable={true}
           onPortalEnter={this.handleEnterPortal2}
           onPortalExit={this.handleExitPortal2}
         >
-          <ViroPortal position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
+          <ViroPortal position={[1, 0, -1]} scale={[0.15, 0.15, 0.15]}>
             <Viro3DObject
               source={require('../../assets/portal_assets/portal_res/portal_archway/portal_archway.vrx')}
               resources={[
@@ -104,6 +103,7 @@ export default class RosePortal extends Component {
           </ViroPortal>
           <Viro360Image
             source={require('../../assets/portal_assets/tree360.jpg')}
+            // onLoadEnd={ this.props.onLoadEnd}
           />
           <ViroNode position={[1, 1, -1]}>
             {/* 3D Text vertion for passcode */}
