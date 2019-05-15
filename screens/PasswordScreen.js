@@ -142,7 +142,7 @@ class PasswordScreen extends Component {
 const mapState = state => {
   return {
     // passcode: '937',
-    passcode: 'state.game.passcode',
+    passcode: state.game.passcode,
   };
 };
 
