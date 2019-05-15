@@ -3,6 +3,7 @@ import { ViroARSceneNavigator } from 'react-viro';
 import { connect } from 'react-redux';
 // import firebase from 'firebase';
 // import 'firebase/firestore';
+
 import {
   View,
   StyleSheet,
@@ -10,6 +11,7 @@ import {
   Text,
   Image,
   ScrollView,
+
   TouchableHighlight,
 } from 'react-native';
 require('../secrets.js');
@@ -17,11 +19,12 @@ import ButtonBar from '../ARScenes/UIOverlay/ButtonBar';
 import { gameStartedThunk } from '../store/gameReducer';
 import styles from '../screens/styles';
 
+
 let sharedProps = {
-  apiKey: process.env.APIKEY,
+  apiKey: process.env.APIKEY
 };
 
-let InitialARScene = require('../ARScenes/FindingCards/FindingCards');
+let InitialARScene = require("../ARScenes/FindingCards/FindingCards");
 // let InitialARScene = require("../ARScenes/Portals/TestPortalSceneEmma");
 
 class EntryARScene extends Component {
@@ -31,6 +34,7 @@ class EntryARScene extends Component {
       sharedProps: sharedProps,
       // pointsFound: [],
       // user: firebase.auth().currentUser || null,
+
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
@@ -39,7 +43,7 @@ class EntryARScene extends Component {
   //   const { user } = this.state;
   //   const firebaseDB = await firebase.firestore();
   //   let info = null;
-
+  
   //   if (user) {
   //     let data = await firebaseDB
   //       .collection('users')
@@ -72,7 +76,7 @@ class EntryARScene extends Component {
                   <Text style={styles.message}>♣♦ Helpful Hints ♠♥</Text>
                   {/* {user ? (
                     <Text style={styles.headerText}>
-                      Welcome {user.email}! You have {this.state.pointsFound}{' '}
+                      Welcome {user.email}! You have {this.state.pointsFound}{" "}
                       hearts!
                     </Text>
                   ) : null} */}
@@ -127,13 +131,13 @@ class EntryARScene extends Component {
 const mapState = state => {
   return {
     gameInProgress: state.game.gameInProgress,
-    pointsFound: state.game.pointsFound,
+    pointsFound: state.game.pointsFound
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    startGame: () => dispatch(gameStartedThunk()),
+    startGame: () => dispatch(gameStartedThunk())
   };
 };
 
