@@ -101,8 +101,8 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
-          <ViroSpinner
-            type="light"
+        <ViroSpinner
+            type='Light'
             position={[0, 0, -2]}
             visible={this.state.isLoading}
           />

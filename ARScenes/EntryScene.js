@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import 'firebase/firestore';
 import {
   View,
   StyleSheet,
@@ -27,21 +28,26 @@ class EntryARScene extends Component {
     super();
     this.state = {
       sharedProps: sharedProps,
-      data: [],
+      pointsFound: [],
+      user: firebase.auth().currentUser || null,
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-   componentDidMount(){
-    const user = firebase.auth().currentUser;
-    const pointsFound = firebase.firestore().collection('users').doc(user.email).get().then(snapshot => {
-      snapshot.docs.forEach(doc => {
-this.setState(prevState => ({ data: [doc.data(), ...prevState.data]}))
-      })
-    });
-    // this.setState({
-    //   pointsFound: pointsFound
-    // })
+  async componentDidMount() {
+    const { user } = this.state;
+    const firebaseDB = await firebase.firestore();
+    let info = null;
+
+    if (user) {
+      let data = await firebaseDB
+        .collection('users')
+        .doc(user.email)
+        .get();
+      let pointsFound = data._document.proto.fields.pointsFound.integerValue;
+
+      this.setState({ pointsFound: pointsFound });
+    }
   }
 
   setModalVisible(visible) {
@@ -50,7 +56,7 @@ this.setState(prevState => ({ data: [doc.data(), ...prevState.data]}))
 
   render() {
     const { history } = this.props;
-    const user = firebase.auth().currentUser;
+    const { user } = this.state;
     return (
       <View style={styles.outer}>
         <Modal
@@ -65,9 +71,10 @@ this.setState(prevState => ({ data: [doc.data(), ...prevState.data]}))
                   <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
                   {user ? (
                     <Text style={styles.headerText}>
-                      Welcome {user.email}! You've found {this.state.pointsFound} hearts!
+                      Welcome {user.email}! You have {this.state.pointsFound}{' '}
+                      hearts!
                     </Text>
-                  ) : null }
+                  ) : null}
                   <Text style={styles.text}>
                     {'\n'}♥ Look around! {'\n'}
                   </Text>
@@ -125,6 +132,7 @@ this.setState(prevState => ({ data: [doc.data(), ...prevState.data]}))
 const mapState = state => {
   return {
     gameInProgress: state.game.gameInProgress,
+    pointsFound: state.game.pointsFound,
   };
 };
 
