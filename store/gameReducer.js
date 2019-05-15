@@ -1,32 +1,38 @@
+import { randomInt } from "../ARScenes/utils";
+
 //ACTION TYPES
-const GAME_STARTED = 'GAME_STARTED';
-const GAME_PAUSED = 'GAME_PAUSED';
-const GAME_RESUMED = 'GAME_RESUMED';
-const GAME_ENDED = 'GAME_ENDED';
-const POINT_FOUND = 'POINT_FOUND';
+const GAME_STARTED = "GAME_STARTED";
+const GAME_PAUSED = "GAME_PAUSED";
+const GAME_RESUMED = "GAME_RESUMED";
+const GAME_ENDED = "GAME_ENDED";
+const POINT_FOUND = "POINT_FOUND";
 
 //ACTION CREATORS
-const gameStarted = () => ({
+const gameStarted = passcode => ({
   type: GAME_STARTED,
+  passcode
 });
 const gamePaused = () => ({
-  type: GAME_PAUSED,
+  type: GAME_PAUSED
 });
 const gameResumed = () => ({
-  type: GAME_RESUMED,
+  type: GAME_RESUMED
 });
 const gameEnded = () => ({
-  type: GAME_ENDED,
+  type: GAME_ENDED
 });
 const pointFound = () => ({
-  type: POINT_FOUND,
+  type: POINT_FOUND
 });
-
 
 // THUNKS
 export const gameStartedThunk = () => {
   return dispatch => {
-    dispatch(gameStarted());
+    let passcode = "";
+    for (let i = 0; i < 3; i++) {
+      passcode += randomInt(0, 9);
+    }
+    dispatch(gameStarted(passcode));
   };
 };
 
@@ -59,9 +65,9 @@ let initialState = {
   timeRemaining: 0,
   timeStarted: 0,
   timeElapsed: 0,
-  password: '',
+  passcord: "",
   gameInProgress: false,
-  pointsFound: 0,
+  pointsFound: 0
 };
 
 // REDUCER
@@ -73,32 +79,33 @@ export default function(state = initialState, action) {
         timeRemaining: 1500000,
         timeStarted: Date.now(),
         gameInProgress: true,
+        passcode: action.passcode
       };
     case GAME_PAUSED:
       return {
         ...state,
-        timeElapsed: Date.now() - state.timeStarted,
+        timeElapsed: Date.now() - state.timeStarted
       };
     case GAME_RESUMED:
       return {
         ...state,
         timeStarted: Date.now(),
-        timeRemaining: state.timeRemaining - state.timeElapsed,
+        timeRemaining: state.timeRemaining - state.timeElapsed
       };
     case GAME_ENDED:
       return {
         timeRemaining: 0,
         timeStarted: 0,
         timeElapsed: 0,
-        password: '',
+        passcord: "",
         gameInProgress: false,
         pointsFound: 0,
-        rosesFound: 0,
+        rosesFound: 0
       };
     case POINT_FOUND:
       return {
         ...state,
-        pointsFound: state.pointsFound + 1,
+        pointsFound: state.pointsFound + 1
       };
     default:
       return state;
