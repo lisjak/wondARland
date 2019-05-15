@@ -41,8 +41,9 @@ class ButtonBar extends Component {
   }
 
   handleStuck() {
-    const { history } = this.props;
-    history.push('entryarscene');
+    const { history, pauseGame } = this.props;
+    pauseGame();
+    history.push('/stuck');
   }
 
   handleExit() {
@@ -61,11 +62,7 @@ class ButtonBar extends Component {
         </View>
         <View style={styles.secondRowContainer}>
           <Button accent text="enter password" onPress={this.handlePassword} />
-          <Button
-            accent
-            text="I'm stuck!"
-            onPress={history.push('/entryarscene')}
-          />
+          <Button accent text="I'm stuck!" onPress={this.handleStuck} />
           <Button accent text="quit" onPress={this.handleExit} />
         </View>
       </View>

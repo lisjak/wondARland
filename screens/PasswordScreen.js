@@ -1,25 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   Text,
   StyleSheet,
   TouchableHighlight,
-  Keyboard
-} from "react-native";
-import { Input, Button } from "react-native-elements";
-import { gameResumedThunk } from "../store/gameReducer";
-import Message from "./MessageScreen";
+  Keyboard,
+} from 'react-native';
+import { Input, Button } from 'react-native-elements';
+import { gameResumedThunk } from '../store/gameReducer';
+import Message from './MessageScreen';
+// import styles from './styles'
 
 class PasswordScreen extends Component {
   constructor() {
     super();
     this.state = {
-      firstcode: "",
-      secondcode: "",
-      thirdcode: "",
+      firstcode: '',
+      secondcode: '',
+      thirdcode: '',
       isWin: false,
-      isSubmit: false
+      isSubmit: false,
     };
     this.onSubmitChange = this.onSubmitChange.bind(this);
     this.renderResult = this.renderResult.bind(this);
@@ -76,65 +77,61 @@ class PasswordScreen extends Component {
 
   render() {
     return !this.state.isSubmit ? (
-      <View style={styles.container}>
-        <View style={styles.textContainer}>
-          <Text style={styles.subtitle}>
-            Ready to enter your three passcode?
+      <View style={styles.outer}>
+        <View style={styles.inner}>
+          <Text style={styles.title}>
+            Ready to enter the complete password?
           </Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <Input
-            ref="1"
-            containerStyle={styles.input}
-            inputStyle={styles.inputstyle}
-            defaultvalue={this.state.firstcode}
-            keyboardType="numeric"
-            maxLength={1}
-            onChangeText={text => {
-              this.setState({ firstcode: text });
-              this.refs["2"].focus();
-            }}
-            returnKeyType="next"
-          />
-          <Input
-            ref="2"
-            containerStyle={styles.input}
-            inputStyle={styles.inputstyle}
-            defaultvalue={this.state.secondcode}
-            keyboardType="numeric"
-            maxLength={1}
-            onChangeText={text => {
-              this.setState({ secondcode: text });
-              this.refs["3"].focus();
-            }}
-            returnKeyType="next"
-          />
-          <Input
-            ref="3"
-            containerStyle={styles.input}
-            inputStyle={styles.inputstyle}
-            defaultvalue={this.state.thirdcode}
-            keyboardType="numeric"
-            maxLength={1}
-            onChangeText={text => {
-              this.setState({ thirdcode: text });
-              Keyboard.dismiss();
-            }}
-          />
-        </View>
 
-        <Text style={styles.text}>
-          (Be careful! If you're wrong, you'll have to replay all the portals in
-          the time you have left.)
-        </Text>
+          <View style={styles.inputContainer}>
+            <Input
+              ref="1"
+              containerStyle={styles.input}
+              inputStyle={styles.inputstyle}
+              defaultvalue={this.state.firstcode}
+              keyboardType="numeric"
+              maxLength={1}
+              onChangeText={text => {
+                this.setState({ firstcode: text });
+                this.refs['2'].focus();
+              }}
+              returnKeyType="next"
+            />
+            <Input
+              ref="2"
+              containerStyle={styles.input}
+              inputStyle={styles.inputstyle}
+              defaultvalue={this.state.secondcode}
+              keyboardType="numeric"
+              maxLength={1}
+              onChangeText={text => {
+                this.setState({ secondcode: text });
+                this.refs['3'].focus();
+              }}
+              returnKeyType="next"
+            />
+            <Input
+              ref="3"
+              containerStyle={styles.input}
+              inputStyle={styles.inputstyle}
+              defaultvalue={this.state.thirdcode}
+              keyboardType="numeric"
+              maxLength={1}
+              onChangeText={text => {
+                this.setState({ thirdcode: text });
+                Keyboard.dismiss();
+              }}
+            />
+          </View>
 
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.onSubmitChange}
-          underlayColor="#68a0ff"
-        >
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.onSubmitChange}
+            underlayColor="#68a0ff"
+          >
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     ) : (
       this.renderResult()
@@ -144,13 +141,14 @@ class PasswordScreen extends Component {
 
 const mapState = state => {
   return {
-    passcode: state.game.passcode
+    // passcode: '937',
+    passcode: 'state.game.passcode',
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    resumeGame: () => dispatch(gameResumedThunk())
+    resumeGame: () => dispatch(gameResumedThunk()),
   };
 };
 
@@ -160,59 +158,92 @@ export default connect(
 )(PasswordScreen);
 
 const styles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 50,
+    color: '#fff',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  message: {
+    fontWeight: 'normal',
+    fontSize: 30,
+    color: '#fff',
+    textAlign: 'center',
+  },
+
+  outer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignContent: 'center',
+    backgroundColor: '#6da3f2',
+    height: '100%',
+  },
+  inner: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    margin: 36,
+    marginTop: 150,
+    marginBottom: 100,
+    alignItems: 'center',
+  },
+
   container: {
     flex: 1,
-    backgroundColor: "#04152b",
-    margin: 10
+    backgroundColor: '#04152b',
+    margin: 10,
   },
   textContainer: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center"
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   text: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20,
-    color: "white"
+    color: 'white',
   },
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center"
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   input: {
     width: 50,
-    alignSelf: "center"
+    alignSelf: 'center',
   },
   inputstyle: {
-    color: "white",
+    color: 'white',
     fontSize: 45,
     borderBottomWidth: 2,
-    borderColor: "white"
+    borderColor: 'white',
   },
   button: {
-    alignSelf: "center",
-    margin: 10,
-    marginBottom: 50,
-    height: 60,
-    width: 160,
-    paddingTop: 20,
-    paddingBottom: 10,
-    backgroundColor: "#ac3c0b",
-    borderRadius: 10
+    padding: 18,
+    width: 150,
+    marginBottom: 12,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
   },
   subtitle: {
     marginTop: 20,
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontWeight: "bold",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontWeight: 'bold',
     fontSize: 30,
-    color: "white"
+    color: 'white',
   },
   buttonText: {
-    color: "#fff",
-    textAlign: "center",
+    textAlign: 'center',
+    fontWeight: 'bold',
     fontSize: 20,
-    fontWeight: "bold"
-  }
+    color: '#000',
+  },
 });

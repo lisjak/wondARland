@@ -40,7 +40,6 @@ export default StyleSheet.create({
   },
   outer: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: 'transparent',
   },
   homeInner: {
