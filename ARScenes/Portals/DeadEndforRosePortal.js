@@ -64,7 +64,7 @@ export default class DeadEndforRosePortal extends Component {
             scale={[0.5, 0.5, 0.5]}
             extrusionDepth={8}
             materials={["frontMaterial", "backMaterial", "sideMaterial"]}
-            position={[0, 0.1, -1.1]}
+            position={[0, 0.5, -1.1]}
             style={styles.boldFont}
             visible={this.state.showText}
           />
