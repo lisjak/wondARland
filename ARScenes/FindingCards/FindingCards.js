@@ -17,7 +17,7 @@ import {
   ViroConstants,
 } from 'react-viro';
 
-const transparentCheshire = require('../../assets/portal_assets/cheshireTransparent.gif');
+const transparentCheshire = require('../../assets/portal_assets/transparentCheshire.gif');
 // const transparentCheshire = require('../../assets/portal_assets/cartoonchesh.gif');
 const tumble = require('../../assets/portal_assets/tumble.gif');
 const rose = require('../../assets/portal_assets/rose.gif');
@@ -101,8 +101,8 @@ class FindingCards extends Component {
             />
           </ViroNode>
 
-        <ViroSpinner
-            type='Light'
+          <ViroSpinner
+            type="Light"
             position={[0, 0, -2]}
             visible={this.state.isLoading}
           />
