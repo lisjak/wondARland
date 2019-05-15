@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { pointFoundThunk } from '../../store/gameReducer';
+import { Button } from 'react-native-material-ui';
+import firebase from 'firebase'
 
 
 class PointCount extends Component {
+  constructor() {
+    super();
+  }
 
   render() {
     const { pointsFound } = this.props;

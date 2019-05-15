@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import 'firebase/firestore';
 import {
   View,
   StyleSheet,
@@ -27,8 +28,26 @@ class EntryARScene extends Component {
     super();
     this.state = {
       sharedProps: sharedProps,
+      pointsFound: [],
+      user: firebase.auth().currentUser || null,
     };
     this.setModalVisible = this.setModalVisible.bind(this);
+  }
+
+  async componentDidMount() {
+    const { user } = this.state;
+    const firebaseDB = await firebase.firestore();
+    let info = null;
+
+    if (user) {
+      let data = await firebaseDB
+        .collection('users')
+        .doc(user.email)
+        .get();
+      let pointsFound = data._document.proto.fields.pointsFound.integerValue;
+
+      this.setState({ pointsFound: pointsFound });
+    }
   }
 
   setModalVisible(visible) {
@@ -37,7 +56,7 @@ class EntryARScene extends Component {
 
   render() {
     const { history } = this.props;
-    const user = firebase.auth().currentUser;
+    const { user } = this.state;
     return (
       <View style={styles.outer}>
         <Modal
@@ -51,7 +70,10 @@ class EntryARScene extends Component {
                 <ScrollView>
                   <Text style={styles.headerText}>♣♦ Helpful Hints ♠♥</Text>
                   {user ? (
-                    <Text style={styles.headerText}>Welcome {user.email}!</Text>
+                    <Text style={styles.headerText}>
+                      Welcome {user.email}! You have {this.state.pointsFound}{' '}
+                      hearts!
+                    </Text>
                   ) : null}
                   <Text style={styles.text}>
                     {'\n'}♥ Look around! {'\n'}
@@ -110,6 +132,7 @@ class EntryARScene extends Component {
 const mapState = state => {
   return {
     gameInProgress: state.game.gameInProgress,
+    pointsFound: state.game.pointsFound,
   };
 };
 

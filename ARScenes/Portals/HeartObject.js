@@ -15,7 +15,6 @@ class HeartObject extends Component {
     this.savePoints = this.savePoints.bind(this);
   }
 
-  componentDidMount() {}
 
   savePoints() {
     const user = firebase.auth().currentUser;
@@ -32,12 +31,13 @@ class HeartObject extends Component {
   }
 
   _handleClick() {
-    this.savePoints();
     this.setState({
       visibility: false,
     });
     Vibration.vibrate(1, false);
-    this.props.pointFound();
+    // this.props.pointFoundThunk();
+    this.savePoints();
+
   }
 
   render() {
@@ -102,7 +102,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    pointFound: () => dispatch(pointFoundThunk()),
+    pointFoundThunk: () => dispatch(pointFoundThunk()),
   };
 };
 

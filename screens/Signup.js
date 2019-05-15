@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Input } from './LoginInput';
-// import { f, database } from '../firebaseInitializer';
 import * as firebase from 'firebase';
 require('../firebaseInitializer');
 
