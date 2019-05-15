@@ -70,7 +70,7 @@ export class RosePortal extends Component {
           />
         </ViroPortal>
         <Viro360Image
-          source={require("../../assets/portal_assets/360roses.png")}
+          source={require("../../assets/portal_assets/360roses.jpg")}
         />
 
         <HeartObject position={[1, 1, -3]} />

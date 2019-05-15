@@ -28,6 +28,7 @@ export class QueenPortal2 extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.cheshClick = this.cheshClick.bind(this);
     this.handleEnterPortal = this.handleEnterPortal.bind(this);
+    this.handleExitPortal = this.handleExitPortal.bind(this);
   }
 
   handleClick() {
