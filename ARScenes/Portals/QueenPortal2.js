@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, Vibration } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Vibration } from "react-native";
 
 import {
   ViroNode,
@@ -10,19 +10,19 @@ import {
   Viro360Video,
   Viro3DObject,
   ViroSound,
-  ViroMaterials,
-} from 'react-viro';
+  ViroMaterials
+} from "react-viro";
+import { connect } from "react-redux";
+import HeartObject from "./HeartObject";
+const cheshireCat = require("../../assets/portal_assets/chesh.mp4");
 
-import HeartObject from './HeartObject';
-const cheshireCat = require('../../assets/portal_assets/chesh.mp4');
-
-export default class QueenPortal2 extends Component {
+export class QueenPortal2 extends Component {
   constructor() {
     super();
     this.state = {
       showPasscode: false,
       visible: false,
-      playPortalSound: true,
+      playPortalSound: true
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -32,13 +32,13 @@ export default class QueenPortal2 extends Component {
 
   handleClick() {
     this.setState({
-      showPasscode: true,
+      showPasscode: true
     });
   }
 
   cheshClick() {
     this.setState({
-      visible: true,
+      visible: true
     });
     Vibration.vibrate([0, 250, 500, 750], false);
   }
@@ -51,6 +51,7 @@ export default class QueenPortal2 extends Component {
   }
 
   render() {
+    const passcode = this.props.passcode;
     return (
       <ViroPortalScene passable={true}>
         <ViroPortal
@@ -60,11 +61,11 @@ export default class QueenPortal2 extends Component {
           onPortalExit={this.handleExitPortal}
         >
           <Viro3DObject
-            source={require('../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx')}
+            source={require("../../assets/portal_assets/portal_res/portal_ship/portal_ship.vrx")}
             resources={[
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png'),
-              require('../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png'),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_diffuse.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_normal.png"),
+              require("../../assets/portal_assets/portal_res/portal_ship/portal_ship_specular.png")
             ]}
             type="VRX"
           />
@@ -86,7 +87,7 @@ export default class QueenPortal2 extends Component {
           height={2}
           scale={[0.5, 0.5, 0.5]}
           position={[0, 0.8, -2]}
-          outerStroke={{ type: 'Outline', width: 2, color: '#0080FF' }}
+          outerStroke={{ type: "Outline", width: 2, color: "#0080FF" }}
           visible={this.state.visible}
         />
 
@@ -102,16 +103,16 @@ export default class QueenPortal2 extends Component {
             position={[0, 0.1, -0.1]}
             height={3}
             extrusionDepth={3}
-            materials={['frontMaterial', 'backMaterial', 'sideMaterial']}
-            text="The first number of the passcode: 9"
+            materials={["frontMaterial", "backMaterial", "sideMaterial"]}
+            text={`The first number of the passcode: ${passcode[0]}`}
             visible={this.state.showPasscode}
           />
 
           <Viro3DObject
-            source={require('../../assets/emoji_heart/emoji_heart.vrx')}
+            source={require("../../assets/emoji_heart/emoji_heart.vrx")}
             resources={[
-              require('../../assets/emoji_heart/emoji_heart_specular.png'),
-              require('../../assets/emoji_heart/emoji_heart.png'),
+              require("../../assets/emoji_heart/emoji_heart_specular.png"),
+              require("../../assets/emoji_heart/emoji_heart.png")
             ]}
             position={[0, 0, -0.2]}
             scale={[0.3, 0.3, 0.3]}
@@ -123,7 +124,7 @@ export default class QueenPortal2 extends Component {
         <ViroSound
           paused={this.state.playPortalSound}
           muted={false}
-          source={require('../../assets/music/spooky.m4a')}
+          source={require("../../assets/music/spooky.m4a")}
           loop={true}
           volume={1.0}
         />
@@ -134,32 +135,42 @@ export default class QueenPortal2 extends Component {
 
 ViroMaterials.createMaterials({
   frontMaterial: {
-    diffuseColor: '#FFFFFF',
+    diffuseColor: "#FFFFFF"
   },
   backMaterial: {
-    diffuseColor: '#001D4A',
+    diffuseColor: "#001D4A"
   },
   sideMaterial: {
-    diffuseColor: '#7EA8BE',
-  },
+    diffuseColor: "#7EA8BE"
+  }
 });
 
 const styles = StyleSheet.create({
   boldFont: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     flex: 1,
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 24,
+    textAlignVertical: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 24
   },
   portalTextStyles: {
-    fontFamily: 'Arial',
+    fontFamily: "Arial",
     fontSize: 28,
-    color: '#C8243B',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
+    color: "#C8243B",
+    textAlignVertical: "center",
+    textAlign: "center"
+  }
 });
 
-module.exports = QueenPortal2;
+const mapState = state => {
+  return {
+    passcode: state.game.passcode
+  };
+};
+
+export default connect(
+  mapState,
+  null
+)(QueenPortal2);
+// module.exports = QueenPortal2;

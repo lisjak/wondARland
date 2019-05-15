@@ -11,8 +11,6 @@ import { Input, Button } from "react-native-elements";
 import { gameResumedThunk } from "../store/gameReducer";
 import Message from "./MessageScreen";
 
-const passcode = "937";
-
 class PasswordScreen extends Component {
   constructor() {
     super();
@@ -20,7 +18,6 @@ class PasswordScreen extends Component {
       firstcode: "",
       secondcode: "",
       thirdcode: "",
-      // code: "",
       isWin: false,
       isSubmit: false
     };
@@ -31,11 +28,11 @@ class PasswordScreen extends Component {
   }
 
   onSubmitChange() {
+    const passcode = this.props.passcode;
     if (
       this.state.firstcode === passcode[0] &&
       this.state.secondcode === passcode[1] &&
       this.state.thirdcode === passcode[2]
-      // this.state.code === passcode
     ) {
       this.setState({ isWin: true });
     }
@@ -78,7 +75,6 @@ class PasswordScreen extends Component {
   }
 
   render() {
-    const { history } = this.props;
     return !this.state.isSubmit ? (
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -99,7 +95,6 @@ class PasswordScreen extends Component {
               this.refs["2"].focus();
             }}
             returnKeyType="next"
-            // onSubmitEditing={() => this.focusNextField("2")}
           />
           <Input
             ref="2"
@@ -113,7 +108,6 @@ class PasswordScreen extends Component {
               this.refs["3"].focus();
             }}
             returnKeyType="next"
-            // onSubmitEditing={() => this.focusNextField("3")}
           />
           <Input
             ref="3"
@@ -127,18 +121,6 @@ class PasswordScreen extends Component {
               Keyboard.dismiss();
             }}
           />
-          {/* <Input
-            containerStyle={styles.input}
-            inputStyle={styles.inputstyle}
-            defaultvalue={this.state.code}
-            keyboardType="numbers-and-punctuation"
-            maxLength={3}
-            placeholder="000"
-            placeholderTextColor="white"
-            onChangeText={text => {
-              this.setState({ code: text });
-            }}
-          /> */}
         </View>
 
         <Text style={styles.text}>
@@ -160,6 +142,12 @@ class PasswordScreen extends Component {
   }
 }
 
+const mapState = state => {
+  return {
+    passcode: state.game.passcode
+  };
+};
+
 const mapDispatch = dispatch => {
   return {
     resumeGame: () => dispatch(gameResumedThunk())
@@ -167,14 +155,14 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(
-  null,
+  mapState,
   mapDispatch
 )(PasswordScreen);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#04152b',
+    backgroundColor: "#04152b",
     margin: 10
   },
   textContainer: {
@@ -203,7 +191,6 @@ const styles = StyleSheet.create({
     borderColor: "white"
   },
   button: {
-    // flex: 1,
     alignSelf: "center",
     margin: 10,
     marginBottom: 50,
@@ -213,32 +200,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: "#ac3c0b",
     borderRadius: 10
-  },
-  buttonstyle1: {
-    backgroundColor: "black",
-    height: 50,
-    width: 100,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#fff"
-  },
-  link: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  buttonstyle2: {
-    backgroundColor: "black",
-    height: 50,
-    width: 100
-  },
-
-  title: {
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontWeight: "bold",
-    fontSize: 50,
-    color: "white"
   },
   subtitle: {
     marginTop: 20,
@@ -253,17 +214,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold"
-  },
-  buttons: {
-    height: 60,
-    width: 160,
-    paddingTop: 20,
-    paddingBottom: 10,
-    backgroundColor: "#ac3c0b",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 2, height: 3 },
-    shadowOpacity: 0.4,
-    shadowRadius: 3
   }
 });
