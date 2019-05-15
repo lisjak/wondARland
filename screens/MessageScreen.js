@@ -52,8 +52,9 @@ class Message extends Component {
           flex: 1,
           flexDirection: 'column',
           justifyContent: 'space-around',
+          alignContent: 'center',
           backgroundColor: backgroundColor[gameStatus],
-          height: 600,
+          height: '100%',
         }}
       >
         <View style={styles.inner}>

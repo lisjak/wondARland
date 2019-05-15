@@ -12,6 +12,7 @@ import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
 import Message from './screens/MessageScreen';
 import EntryARScene from './ARScenes/EntryScene';
+import Stuck from './screens/Stuck'
 
 const uiTheme = {
   palette: {
@@ -38,6 +39,7 @@ export default class App extends Component {
               <Route exact path="/loser" component={Loser} />
               <Route exact path="/password" component={PasswordScreen} />
               <Route exact path="/message" component={Message} />
+              <Route exact path="/stuck" component={Stuck} />
             </Switch>
           </View>
         </NativeRouter>
