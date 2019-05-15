@@ -68,9 +68,9 @@ export class PortScene extends Component {
         // position={[0, 0, 0]}
         passable={true}
         onPortalEnter={this.handlePortalEnter}
-        onPortalExit={this.handllePortalExit}
+        onPortalExit={this.handlePortalExit}
       >
-        <ViroPortal position={[0.2, -0.8, -0.8]} scale={[0.2, 0.2, 0.2]}>
+        <ViroPortal position={[0.2, 0.3, -0.8]} scale={[0.2, 0.2, 0.2]}>
           <Viro3DObject
             source={require(shipPortal)}
             resources={[
