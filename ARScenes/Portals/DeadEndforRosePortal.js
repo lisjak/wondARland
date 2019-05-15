@@ -59,8 +59,8 @@ export default class DeadEndforRosePortal extends Component {
         <ViroNode position={[0, 0.08, 0]}>
           <ViroText
             text="Oops, this is a dead end!"
-            // width={2}
-            height={5}
+            // width={3}
+            height={2}
             scale={[0.5, 0.5, 0.5]}
             extrusionDepth={8}
             materials={["frontMaterial", "backMaterial", "sideMaterial"]}
