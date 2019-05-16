@@ -91,6 +91,13 @@ export default class Signup extends React.Component {
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.buttons}
+          onPress={() => this.props.history.push('/')}
+          underlayColor="#04152b"
+        >
+          <Text style={styles.buttonText}>Go back</Text>
+        </TouchableHighlight>
       </View>
     );
   }

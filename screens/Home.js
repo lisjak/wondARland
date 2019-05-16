@@ -16,13 +16,32 @@ let wondARland = require('../assets/images/screen.gif');
 class ViroSample extends Component {
   constructor() {
     super();
+    this.ref = firebase.firestore().collection('users');
+    this.firestoreUnsubscriber = null;
+    this.authUnsubscriber = null;
     this.state = {
       loading: false,
-      user: firebase.auth().currentUser,
+      user: null,
       error: '',
     };
     this.handleStart = this.handleStart.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  componentDidMount() {
+    this.authUnsubscriber = firebase
+      .auth()
+      .onAuthStateChanged(user => this.setState({ user: user }));
+    // this.firestoreUnsubscriber = this.ref.onSnapshot(this.onCollectionUpdate);
+  }
+
+  componentWillUnmount() {
+    if (this.authUnsubscriber) {
+      this.authUnsubscriber();
+    }
+    if (this.firestoreUnsubscriber) {
+      this.firestoreUnsubscriber();
+    }
   }
 
   handleStart() {
@@ -70,53 +89,51 @@ class ViroSample extends Component {
 
         {/* <View style={styles.homeButtonContainer}>
           <View style={styles.homeButtonRow}> */}
-            {/* <View style={styles.homeInner}> */}
+        {/* <View style={styles.homeInner}> */}
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => history.push('/entryarscene')}
+          underlayColor="whitesmoke"
+        >
+          <Text style={styles.buttonText}>Start Game</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => history.push('/instructions')}
+          underlayColor="#04152b"
+        >
+          <Text style={styles.buttonText}>Instructions</Text>
+        </TouchableHighlight>
+        {/* </View> */}
+        {user ? (
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.handleSignOut}
+            underlayColor="#04152b"
+          >
+            <Text style={styles.buttonText}>Sign Out</Text>
+          </TouchableHighlight>
+        ) : (
+          <View>
             <TouchableHighlight
               style={styles.button}
-              onPress={() => history.push('/entryarscene')}
-              underlayColor="whitesmoke"
-            >
-              <Text style={styles.buttonText}>Start Game</Text>
-            </TouchableHighlight>
-
-
-
-            {/* <TouchableHighlight
-              style={styles.button}
-              onPress={() => history.push('/instructions')}
+              onPress={() => history.push('/signup')}
               underlayColor="#04152b"
             >
-              <Text style={styles.buttonText}>Instructions</Text>
-            </TouchableHighlight> */}
-            {/* </View> */}
-            {/* {user ? (
-              <TouchableHighlight
-                style={styles.button}
-                onPress={this.handleSignOut}
-                underlayColor="#04152b"
-              >
-                <Text style={styles.buttonText}>Sign Out</Text>
-              </TouchableHighlight>
-            ) : (
-              <View>
-                <TouchableHighlight
-                  style={styles.button}
-                  onPress={() => history.push('/signup')}
-                  underlayColor="#04152b"
-                >
-                  <Text style={styles.buttonText}>Signup</Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                  style={styles.button}
-                  onPress={() => this.props.history.push('/login')}
-                  underlayColor="#04152b"
-                >
-                  <Text style={styles.buttonText}>Log In</Text>
-                </TouchableHighlight>
-              </View>
-            )} */}
-          {/* </View> */}
-        </View>
+              <Text style={styles.buttonText}>Signup</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.button}
+              onPress={() => this.props.history.push('/login')}
+              underlayColor="#04152b"
+            >
+              <Text style={styles.buttonText}>Log In</Text>
+            </TouchableHighlight>
+          </View>
+        )}
+        {/* </View> */}
+      </View>
 
       // </View>
     );
@@ -136,4 +153,3 @@ export default connect(
   mapStateToProps,
   mapDispatch
 )(ViroSample);
-

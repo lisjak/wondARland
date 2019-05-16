@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ViroARSceneNavigator } from 'react-viro';
 import { connect } from 'react-redux';
-// import firebase from 'firebase';
-// import 'firebase/firestore';
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 import {
   View,
@@ -30,27 +30,32 @@ class EntryARScene extends Component {
     super();
     this.state = {
       sharedProps: sharedProps,
-      // pointsFound: [],
-      // user: firebase.auth().currentUser || null,
+      pointsFound: 0,
+      user: firebase.auth().currentUser || null,
     };
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  // async componentDidMount() {
-  //   const { user } = this.state;
-  //   const firebaseDB = await firebase.firestore();
-  //   let info = null;
+  componentDidMount() {
+    const { user } = this.state;
+    const firebaseDB = firebase.firestore();
+    console.log(user);
 
-  //   if (user) {
-  //     let data = await firebaseDB
-  //       .collection('users')
-  //       .doc(user.email)
-  //       .get();
-  //     let pointsFound = data._document.proto.fields.pointsFound.integerValue;
+    if (user) {
+      let data = firebaseDB
+        .collection('users')
+        .doc(user.email)
+        .get()
+        .then(() => {
+          let pointsFound =
+            data._document.proto.fields.pointsFound.integerValue || 0;
 
-  //     this.setState({ pointsFound: pointsFound });
-  //   }
-  // }
+          if (!!pointsFound) {
+            this.setState({ pointsFound: Number(pointsFound) + 1 });
+          }
+        });
+    }
+  }
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
@@ -58,7 +63,7 @@ class EntryARScene extends Component {
 
   render() {
     const { history } = this.props;
-    // const { user } = this.state;
+    const { user } = this.state;
     return (
       <View style={styles.outer}>
         <Modal
@@ -71,12 +76,12 @@ class EntryARScene extends Component {
               <View>
                 <ScrollView style={{ marginTop: 40 }}>
                   <Text style={styles.instructionsTitle}>How to Play</Text>
-                  {/* {user ? (
-                    <Text style={styles.headerText}>
-                      Welcome {user.email}! You have {this.state.pointsFound}{" "}
+                  {user ? (
+                    <Text style={styles.bodyText}>
+                      Welcome {user.email}! You have {this.state.pointsFound}{' '}
                       hearts!
                     </Text>
-                  ) : null} */}
+                  ) : null}
 
                   <Text style={styles.bodyText}>♥ Look around!</Text>
                   <Text style={styles.bodyText}> ♠ Find a card! </Text>

@@ -21,22 +21,6 @@ export default class Login extends React.Component {
     this.onLogin = this.onLogin.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.authUnsubscriber = firebase
-  //     .auth()
-  //     .onAuthStateChanged(user => this.setState({ user: user }));
-  //   this.firestoreUnsubscriber = this.ref.onSnapshot(this.onCollectionUpdate);
-  // }
-
-  // componentWillUnmount() {
-  //   if (this.authUnsubscriber) {
-  //     this.authUnsubscriber();
-  //   }
-  //   if (this.firestoreUnsubscriber) {
-  //     this.firestoreUnsubscriber();
-  //   }
-  // }
-
   onLogin() {
     this.setState({ loading: true });
     const { email, password } = this.state;

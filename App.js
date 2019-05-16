@@ -12,7 +12,7 @@ import Loser from './screens/LoserScreen';
 import PasswordScreen from './screens/PasswordScreen';
 import Message from './screens/MessageScreen';
 import EntryARScene from './ARScenes/EntryScene';
-import Stuck from './screens/Stuck'
+import Stuck from './screens/Stuck';
 
 const uiTheme = {
   palette: {
@@ -25,6 +25,7 @@ const uiTheme = {
 
 export default class App extends Component {
   render() {
+    console.disableYellowBox = true;
     const { history } = this.props;
     return (
       <Provider store={store}>
