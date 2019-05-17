@@ -1,13 +1,14 @@
 /* eslint-disable no-alert */
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import {
   gamePausedThunk,
   gameEndedThunk,
   gameResumedThunk,
 } from '../../store/gameReducer';
-import { Button } from 'react-native-material-ui';
+// import { Button } from 'react-native-material-ui';
+
 import styles from './styles';
 import Timer from './Timer';
 import PointCount from './PointCount';
@@ -61,9 +62,33 @@ class ButtonBar extends Component {
           <PointCount />
         </View>
         <View style={styles.secondRowContainer}>
-          <Button accent text="enter password" onPress={this.handlePassword} />
+          <TouchableHighlight
+            style={styles.buttonBarButton}
+            onPress={this.handlePassword}
+            underlayColor="whitesmoke"
+          >
+            <Text style={styles.buttonBarText}>ENTER PASSWORD</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={styles.buttonBarButton}
+            onPress={this.handleStuck}
+            underlayColor="whitesmoke"
+          >
+            <Text style={styles.buttonBarText}>I'M STUCK!</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={styles.buttonBarButton}
+            onPress={this.handleExit}
+            underlayColor="whitesmoke"
+          >
+            <Text style={styles.buttonBarText}>QUIT</Text>
+          </TouchableHighlight>
+
+          {/* <Button accent text="enter password" onPress={this.handlePassword} />
           <Button accent text="I'm stuck!" onPress={this.handleStuck} />
-          <Button accent text="quit" onPress={this.handleExit} />
+          <Button accent text="quit" onPress={this.handleExit} /> */}
         </View>
       </View>
     );
