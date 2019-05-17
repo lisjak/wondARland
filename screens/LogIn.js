@@ -53,7 +53,6 @@ export default class Login extends React.Component {
     }
     return (
       <View style={styles.form}>
-        <Text style={styles.label}>Login</Text>
         <Input
           placeholder={'Enter your email'}
           label={'Email'}
@@ -99,9 +98,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    height: '100%',
   },
   form: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   buttonText: {
     color: '#fff',

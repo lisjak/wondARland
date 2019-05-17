@@ -112,13 +112,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
+    // backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    height: '100%',
   },
   form: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
+
   buttonText: {
     color: '#fff',
     textAlign: 'center',

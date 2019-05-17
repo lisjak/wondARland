@@ -55,6 +55,7 @@ export default StyleSheet.create({
     shadowOffset: { width: 2, height: 3 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
+    marginTop: 10,
   },
   buttonBarText: {
     color: 'white',
