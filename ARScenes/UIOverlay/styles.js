@@ -46,4 +46,20 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#000',
   },
+  buttonBarButton: {
+    alignItems: 'center',
+    padding: 8,
+    backgroundColor: 'rgba(255,255,255, 0.1)',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height: 3 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
+  },
+  buttonBarText: {
+    color: 'white',
+    // color: '#E64A19',
+    fontSize: 16,
+    fontFamily: 'Helvetica',
+  },
 });
