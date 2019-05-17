@@ -36,24 +36,19 @@ class EntryARScene extends Component {
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  componentDidMount() {
-    const { user } = this.state;
-    const firebaseDB = firebase.firestore();
-    console.log(user);
+  async componentDidMount() {
+    const { user } = await this.state;
+    const firebaseDB = await firebase.firestore();
+    // console.log(user);
 
     if (user) {
-      let data = firebaseDB
+      let data = await firebaseDB
         .collection('users')
         .doc(user.email)
-        .get()
-        .then(() => {
-          let pointsFound =
-            data._document.proto.fields.pointsFound.integerValue || 0;
-
-          if (!!pointsFound) {
-            this.setState({ pointsFound: Number(pointsFound) + 1 });
-          }
-        });
+        .get();
+      let pointsFound = await data._document.proto.fields.pointsFound
+        .integerValue;
+      await this.setState({ pointsFound: Number(pointsFound) + 1 });
     }
   }
 
