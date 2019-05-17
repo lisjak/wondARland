@@ -54,7 +54,7 @@ class EntryARScene extends Component {
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
-  }
+  } 
 
   render() {
     const { history } = this.props;
