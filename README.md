@@ -8,6 +8,11 @@ wondARland is a cross-platform mobile AR escape/adventure-style game that uses V
 
 Be careful of getting lost in wondARland -- we’re all mad here! wondARland is a testament to teamwork and how far you can come in learning new technologies in just a few weeks with hard work, perseverance, extensive planning, communication, lots of documentation reading and tons of experimentation.
 
+## Demo Video
+[![Watch the video](https://img.youtube.com/vi/WvcYmcd0u6k/maxresdefault.jpg)](https://www.youtube.com/watch?v=WvcYmcd0u6k)
+
+
+
 
 ## Developers
 [Lisa Jakubczyk](www.github.com/lisjak)
